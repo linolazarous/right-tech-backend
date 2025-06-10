@@ -1,0 +1,10 @@
+graph TD
+    A[Client Devices] --> B[Vercel CDN]
+    A --> C[Mobile App (React Native)]
+    B --> D[Next.js Frontend]
+    C & D --> E[Render Backend API]
+    E --> F[(Render PostgreSQL)]
+    E --> G[(Render Redis)]
+    E --> H[Cloudinary Media]
+    F --> I[Analytics Service]
+    I --> J[Google BigQuery]
