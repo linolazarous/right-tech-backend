@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { useAuth } from '../contexts/AuthContext';
-import PageLayout from '../layouts/PageLayout';
-import ProctoringMonitor from '../components/proctoring/ProctoringMonitor';
-import ProctoringControls from '../components/proctoring/ProctoringControls';
-import useProctoring from '../hooks/useProctoring';
-import ErrorBoundary from '../components/ErrorBoundary';
-import PermissionsModal from '../components/proctoring/PermissionsModal';
+import { useAuth } from '../contexts/AuthContext.js';
+import PageLayout from '../layouts/PageLayout.js';
+import ProctoringMonitor from '../components/proctoring/ProctoringMonitor.js';
+import ProctoringControls from '../components/proctoring/ProctoringControls.js';
+import useProctoring from '../hooks/useProctoring.js';
+import ErrorBoundary from '../components/ErrorBoundary.js';
+import PermissionsModal from '../components/proctoring/PermissionsModal.js';
 
 const ProctoringPage = () => {
   const { currentUser } = useAuth();
@@ -95,3 +95,4 @@ const ProctoringErrorScreen = () => (
 );
 
 export default ProctoringPage;
+
