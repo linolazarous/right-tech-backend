@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
-import { useAuth } from '../contexts/AuthContext';
-import PageLayout from '../layouts/PageLayout';
-import Leaderboard from '../components/gamification/Leaderboard';
-import AchievementTracker from '../components/gamification/AchievementTracker';
-import useGamification from '../hooks/useGamification';
-import { logger } from '../utils/logger';
-import { usePageTracking } from '../hooks/usePageTracking';
-import ErrorBoundary from '../components/ErrorBoundary';
-import LoadingSkeleton from '../components/gamification/LoadingSkeleton';
-import GamificationError from '../components/gamification/GamificationError';
+import { useAuth } from '../contexts/AuthContext.js';
+import PageLayout from '../layouts/PageLayout.js';
+import Leaderboard from '../components/gamification/Leaderboard.js';
+import AchievementTracker from '../components/gamification/AchievementTracker.js';
+import useGamification from '../hooks/useGamification.js';
+import { logger } from '../utils/logger.js';
+import { usePageTracking } from '../hooks/usePageTracking.js';
+import ErrorBoundary from '../components/ErrorBoundary.js';
+import LoadingSkeleton from '../components/gamification/LoadingSkeleton.js';
+import GamificationError from '../components/gamification/GamificationError.js';
 
 const GamificationPage = () => {
   const { currentUser } = useAuth();
@@ -76,3 +76,4 @@ const GamificationPage = () => {
 };
 
 export default React.memo(GamificationPage);
+
