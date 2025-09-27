@@ -2,8 +2,8 @@
  * Web Vitals reporting for performance monitoring
  */
 
-import { trackPerformance } from './monitoring';
-import logger from './logger';
+import { trackPerformance } from './monitoring.js';
+import logger from './logger.js';
 
 const reportWebVitals = (onPerfEntry) => {
   if (onPerfEntry && typeof onPerfEntry === 'function') {
