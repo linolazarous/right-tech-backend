@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { checkAPIHealth } from '../services/api';
+import { checkAPIHealth } from '../services/api.js';
 import { Toaster, toast } from 'react-hot-toast';
 
 const APITest = () => {
