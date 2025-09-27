@@ -1,4 +1,4 @@
-import api from './api';
+import api from './api.js';
 
 export const generateARVRContent = async (courseId) => {
   try {
@@ -9,3 +9,4 @@ export const generateARVRContent = async (courseId) => {
     throw new Error(error.response?.data?.message || 'Failed to generate content');
   }
 };
+
