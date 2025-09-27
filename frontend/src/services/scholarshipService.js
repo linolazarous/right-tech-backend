@@ -1,4 +1,4 @@
-import api from './api';
+import api from './api.js';
 
 export const allocateScholarship = async (studentId, criteria) => {
   try {
@@ -9,3 +9,4 @@ export const allocateScholarship = async (studentId, criteria) => {
     throw new Error(error.response?.data?.message || 'Failed to allocate scholarship');
   }
 };
+
