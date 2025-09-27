@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { useCertificate } from '../hooks/useCertificate';
-import PageLayout from '../layouts/PageLayout';
-import CertificateView from '../components/certificates/CertificateView';
-import { logger } from '../utils/logger';
-import { usePageTracking } from '../hooks/usePageTracking';
-import ErrorBoundary from '../components/ErrorBoundary';
-import LoadingSpinner from '../components/LoadingSpinner';
+import { useCertificate } from '../hooks/useCertificate.js';
+import PageLayout from '../layouts/PageLayout.js';
+import CertificateView from '../components/VerifyCertificate.js';
+import { logger } from '../utils/logger.js';
+import { usePageTracking } from '../hooks/usePageTracking.js';
+import ErrorBoundary from '../components/ErrorBoundary.js';
+import LoadingSpinner from '../components/LoadingSpinner.js';
 
 const CertificatePage = () => {
   const { id } = useParams();
@@ -39,3 +39,4 @@ const CertificatePage = () => {
 };
 
 export default React.memo(CertificatePage);
+
