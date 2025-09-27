@@ -3,13 +3,13 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
-import App from './App.js';
+import App from './App.js'; // === CRITICAL FIX: ADDED .js EXTENSION
 import initSentry from './utils/sentry'; 
 import './i18n/config';
 import './assets/styles/global.css';
 
 // === CRITICAL FIX: IMPORT YOUR CONTEXT PROVIDERS ===
-// You MUST import the files that define your application's global state.
+// These imports are confirmed by the files you provided.
 import { AuthProvider } from './contexts/AuthContext'; 
 import { ThemeProvider } from './contexts/ThemeContext';
 // =================================================
@@ -33,7 +33,7 @@ root.render(
           }}
         >
           {/* === CRITICAL FIX: WRAP APP IN DATA PROVIDERS === */}
-          {/* Components inside App (Navbar, ProfilePage, etc.) depend on these. */}
+          {/* ThemeProvider and AuthProvider are correctly imported and nested. */}
           <ThemeProvider>
             <AuthProvider> 
               <App />
@@ -45,4 +45,3 @@ root.render(
     </HelmetProvider>
   </React.StrictMode>
 );
-
