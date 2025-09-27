@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
-import PageLayout from '../layouts/PageLayout';
-import { logger } from '../utils/logger';
-import { usePageTracking } from '../hooks/usePageTracking';
-import HeroSection from '../components/home/HeroSection';
-import ProgramsSection from '../components/home/ProgramsSection';
-import FeaturesSection from '../components/home/FeaturesSection';
-import TestimonialsSection from '../components/home/TestimonialsSection';
-import CtaSection from '../components/home/CtaSection';
-import ErrorBoundary from '../components/ErrorBoundary';
+import PageLayout from '../layouts/PageLayout.js';
+import { logger } from '../utils/logger.js';
+import { usePageTracking } from '../hooks/usePageTracking.js';
+import HeroSection from '../components/home/HeroSection.js';
+import ProgramsSection from '../components/home/ProgramsSection.js';
+import FeaturesSection from '../components/home/FeaturesSection.js';
+import TestimonialsSection from '../components/home/TestimonialsSection.js';
+import CtaSection from '../components/home/CtaSection.js';
+import ErrorBoundary from '../components/ErrorBoundary.js';
 
 const HomePage = () => {
   usePageTracking();
@@ -45,3 +45,4 @@ const HomePage = () => {
 };
 
 export default React.memo(HomePage);
+
