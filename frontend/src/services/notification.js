@@ -1,4 +1,4 @@
-import api from './api';
+import api from './api.js';
 
 export const sendNotification = async (userId, message) => {
   try {
@@ -9,3 +9,4 @@ export const sendNotification = async (userId, message) => {
     throw new Error(error.response?.data?.message || 'Failed to send notification');
   }
 };
+
