@@ -8,7 +8,7 @@ import {
   getUserLevel,
   completeChallenge,
   getAvailableChallenges
-} from '../services/gamificationService';
+} from '../services/gamificationService.js';
 
 export const useGamification = (userId) => {
   const [points, setPoints] = useState(0);
