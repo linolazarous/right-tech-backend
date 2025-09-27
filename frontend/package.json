@@ -6,9 +6,9 @@
   "private": true,
   "main": "src/index.js",
   "scripts": {
-    "start": "react-app-rewired start",
-    "build": "CI=false react-app-rewired build",
-    "test": "react-app-rewired test",
+    "start": "react-scripts start",
+    "build": "CI=false react-scripts build",
+    "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint src --ext .js,.jsx",
     "audit:fix": "npm audit fix --force"
@@ -40,10 +40,7 @@
     "react-scripts": "5.0.1",
     "tailwindcss": "^3.3.6",
     "autoprefixer": "^10.4.16",
-    "postcss": "^8.4.32",
-    "customize-cra": "^1.0.0", 
-    "react-app-rewired": "^2.2.1",
-    "node-polyfill-webpack-plugin": "^2.0.1"
+    "postcss": "^8.4.32"
   },
   "devDependencies": {
     "eslint": "^8.57.0",
