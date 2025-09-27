@@ -1,4 +1,4 @@
-import api from './api';
+import api from './api.js';
 
 const ANALYTICS_ENDPOINTS = {
   STUDENT_PROGRESS: (userId) => `/api/analytics/student-progress/${userId}`,
