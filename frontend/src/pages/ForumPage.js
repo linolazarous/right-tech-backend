@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
-import PageLayout from '../layouts/PageLayout';
-import ForumPostList from '../components/community/ForumPostList';
-import { useForumPosts } from '../hooks/useForumPosts';
-import { logger } from '../utils/logger';
-import { usePageTracking } from '../hooks/usePageTracking';
-import ErrorBoundary from '../components/ErrorBoundary';
-import LoadingSpinner from '../components/LoadingSpinner';
+import PageLayout from '../layouts/PageLayout.js';
+import ForumPostList from '../components/community/ForumPostList.js';
+import { useForumPosts } from '../hooks/useForumPosts.js';
+import { logger } from '../utils/logger.js';
+import { usePageTracking } from '../hooks/usePageTracking.js';
+import ErrorBoundary from '../components/ErrorBoundary.js';
+import LoadingSpinner from '../components/LoadingSpinner.js';
 
 const ForumPage = () => {
   const { posts, loading, error, refetch } = useForumPosts();
@@ -43,3 +43,4 @@ const ForumPage = () => {
 };
 
 export default React.memo(ForumPage);
+
