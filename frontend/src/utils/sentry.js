@@ -1,5 +1,6 @@
 import * as Sentry from '@sentry/react';
-import { BrowserTracing } from '@sentry/tracing'; // Correct import
+// FIX: Import BrowserTracing from the main @sentry/react package if using modern SDK
+import { BrowserTracing } from '@sentry/react'; 
 
 const initSentry = () => {
   const dsn = process.env.REACT_APP_SENTRY_DSN;
@@ -14,7 +15,8 @@ const initSentry = () => {
           // Tracing integration for performance monitoring
           tracePropagationTargets: [
             'localhost',
-            /^https:\/\/righttechcentre-iyysq\.ondigitalocean\.app/,
+            // CRITICAL FIX: Ensure regex matches the backend URL base
+            /https:\/\/righttechcentre-kn5oq.ondigitalocean.app/ 
           ],
         }),
         new Sentry.Replay({
@@ -25,7 +27,6 @@ const initSentry = () => {
       ],
       
       // Set tracesSampleRate to 1.0 to capture 100%
-      // of transactions for performance monitoring.
       tracesSampleRate: process.env.NODE_ENV === 'production' ? 0.2 : 1.0,
       
       // Session Replay
@@ -48,14 +49,18 @@ const initSentry = () => {
           
           // Filter URL parameters
           if (event.request.url) {
-            const url = new URL(event.request.url);
-            const sensitiveParams = ['password', 'token', 'secret', 'key'];
-            sensitiveParams.forEach(param => {
-              if (url.searchParams.has(param)) {
-                url.searchParams.set(param, '[Filtered]');
-              }
-            });
-            event.request.url = url.toString();
+            try {
+                const url = new URL(event.request.url);
+                const sensitiveParams = ['password', 'token', 'secret', 'key'];
+                sensitiveParams.forEach(param => {
+                if (url.searchParams.has(param)) {
+                    url.searchParams.set(param, '[Filtered]');
+                }
+                });
+                event.request.url = url.toString();
+            } catch (e) {
+                // Ignore if URL parsing fails
+            }
           }
         }
         
