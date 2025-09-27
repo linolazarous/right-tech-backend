@@ -1,13 +1,13 @@
 import React, { Suspense, useState, useEffect } from 'react';
-import { useAuth } from '../contexts/AuthContext';
-import PageLayout from '../layouts/PageLayout';
-import VRDeviceChecker from '../components/vr/VRDeviceChecker';
-import VRErrorBoundary from '../components/vr/VRErrorBoundary';
-import VRLoading from '../components/vr/VRLoading';
-import { logger } from '../utils/logger';
-import { usePageTracking } from '../hooks/usePageTracking';
+import { useAuth } from '../contexts/AuthContext.js';
+import PageLayout from '../layouts/PageLayout.js';
+import VRDeviceChecker from '../components/vr/VRDeviceChecker.js';
+import VRErrorBoundary from '../components/vr/VRErrorBoundary.js';
+import VRLoading from '../components/vr/VRLoading.js';
+import { logger } from '../utils/logger.js';
+import { usePageTracking } from '../hooks/usePageTracking.js';
 
-const VRLabComponent = React.lazy(() => import('../components/vr/VRLabComponent'));
+const VRLabComponent = React.lazy(() => import('../components/vr/VRLabComponent.js'));
 
 const VRLabPage = () => {
   const { currentUser } = useAuth();
@@ -72,3 +72,4 @@ const DeviceNotSupported = ({ status }) => (
 );
 
 export default React.memo(VRLabPage);
+
