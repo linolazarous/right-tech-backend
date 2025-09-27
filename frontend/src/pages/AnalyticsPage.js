@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
-import { useAuth } from '../contexts/AuthContext';
-import AnalyticsDashboard from '../components/AnalyticsDashboard';
-import PageLayout from '../layouts/PageLayout';
-import { logger } from '../utils/logger';
-import ErrorBoundary from '../components/ErrorBoundary';
-import LoadingSpinner from '../components/LoadingSpinner';
-import { usePageTracking } from '../hooks/usePageTracking';
+import { useAuth } from '../contexts/AuthContext.js';
+import AnalyticsDashboard from '../components/AnalyticsDashboard.js';
+import PageLayout from '../layouts/PageLayout.js';
+import { logger } from '../utils/logger.js';
+import ErrorBoundary from '../components/ErrorBoundary.js';
+import LoadingSpinner from '../components/LoadingSpinner.js';
+import { usePageTracking } from '../hooks/usePageTracking.js';
 
 const AnalyticsPage = () => {
   const { currentUser, loading: authLoading } = useAuth();
@@ -43,3 +43,4 @@ const AnalyticsPage = () => {
 };
 
 export default React.memo(AnalyticsPage);
+
