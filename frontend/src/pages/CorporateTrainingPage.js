@@ -1,8 +1,8 @@
 import React from 'react';
-import CorporateTrainingForm from '../components/CorporateTrainingForm';
-import PageLayout from '../layouts/PageLayout';
-import { usePageTracking } from '../hooks/usePageTracking';
-import ErrorBoundary from '../components/ErrorBoundary';
+import CorporateTrainingForm from '../components/CorporateTrainingForm.js';
+import PageLayout from '../layouts/PageLayout.js';
+import { usePageTracking } from '../hooks/usePageTracking.js';
+import ErrorBoundary from '../components/ErrorBoundary.js';
 
 const CorporateTrainingPage = () => {
   usePageTracking();
@@ -31,3 +31,4 @@ const CorporateTrainingPage = () => {
 };
 
 export default React.memo(CorporateTrainingPage);
+
