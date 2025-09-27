@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { logger } from '../utils/logger';
-import { GA_TRACKING_ID, isProduction, HOTJAR_ID, SEGMENT_KEY, SENTRY_ENABLED } from '../utils/constants';
+import { logger } from '../utils/logger.js';
+import { GA_TRACKING_ID, isProduction, HOTJAR_ID, SEGMENT_KEY, SENTRY_ENABLED } from '../utils/constants.js';
 
 /**
  * Custom hook for tracking page views and analytics
