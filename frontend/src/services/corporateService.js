@@ -1,4 +1,4 @@
-import api from './api';
+import api from './api.js';
 
 export const createTraining = async (trainingData) => {
   try {
@@ -9,3 +9,4 @@ export const createTraining = async (trainingData) => {
     throw new Error(error.response?.data?.message || 'Failed to create training');
   }
 };
+
