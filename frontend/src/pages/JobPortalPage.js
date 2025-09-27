@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { useAuth } from '../contexts/AuthContext';
-import { getJobRecommendations } from '../services/jobService';
-import PageLayout from '../layouts/PageLayout';
-import JobFilters from '../components/JobFilters';
-import JobList from '../components/JobList';
-import LoadingSpinner from '../components/LoadingSpinner';
-import { logger } from '../utils/logger';
-import { usePageTracking } from '../hooks/usePageTracking';
-import ErrorBoundary from '../components/ErrorBoundary';
-import ErrorAlert from '../components/ui/ErrorAlert';
+import { useAuth } from '../contexts/AuthContext.js';
+import { getJobRecommendations } from '../services/jobService.js';
+import PageLayout from '../layouts/PageLayout.js';
+import JobFilters from '../components/JobFilters.js';
+import JobList from '../components/JobList.js';
+import LoadingSpinner from '../components/LoadingSpinner.js';
+import { logger } from '../utils/logger.js';
+import { usePageTracking } from '../hooks/usePageTracking.js';
+import ErrorBoundary from '../components/ErrorBoundary.js';
+import ErrorAlert from '../components/ui/ErrorAlert.js';
 
 const JobPortalPage = () => {
   const { currentUser } = useAuth();
@@ -86,3 +86,4 @@ const JobPortalPage = () => {
 };
 
 export default React.memo(JobPortalPage);
+
