@@ -1,8 +1,8 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import { useTheme } from '../contexts/ThemeContext';
-import { logger } from '../utils/logger';
-import { MAINTENANCE_ESTIMATE } from '../utils/constants';
+import { useTheme } from '../contexts/ThemeContext.js';
+import { logger } from '../utils/logger.js';
+import { MAINTENANCE_ESTIMATE } from '../utils/constants.js';
 
 const MaintenancePage = () => {
   const { theme } = useTheme();
