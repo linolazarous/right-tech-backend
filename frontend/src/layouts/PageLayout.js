@@ -1,20 +1,20 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { useLocation, Navigate } from 'react-router-dom';
-import { useAuth } from '../contexts/AuthContext';
-import { usePageTracking } from '../hooks/usePageTracking';
-import { useTheme } from '../contexts/ThemeContext';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
-import LoadingSpinner from '../components/LoadingSpinner';
-import ErrorBoundary from '../components/ErrorBoundary';
-import { logger } from '../utils/logger';
-import { MAINTENANCE_MODE } from '../utils/constants';
-import MaintenancePage from '../pages/MaintenancePage';
-import Seo from '../components/Seo';
-import Breadcrumbs from '../components/Breadcrumbs';
-import BackToTop from '../components/BackToTop';
-import CustomErrorPage from '../pages/CustomErrorPage';
+import { useAuth } from '../contexts/AuthContext.js';
+import { usePageTracking } from '../hooks/usePageTracking.js';
+import { useTheme } from '../contexts/ThemeContext.js';
+import Navbar from '../components/Navbar.js';
+import Footer from '../components/Footer.js';
+import LoadingSpinner from '../components/LoadingSpinner.js';
+import ErrorBoundary from '../components/ErrorBoundary.js';
+import { logger } from '../utils/logger.js';
+import { MAINTENANCE_MODE } from '../utils/constants.js';
+import MaintenancePage from '../pages/MaintenancePage.js';
+import Seo from '../components/Seo.js';
+import Breadcrumbs from '../components/Breadcrumbs.js';
+import BackToTop from '../components/BackToTop.js';
+import CustomErrorPage from '../pages/CustomErrorPage.js';
 
 const PageLayout = ({ 
   children, 
