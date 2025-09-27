@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import { useAuth } from '../contexts/AuthContext';
-import { createARLesson } from '../services/arService';
-import PageLayout from '../layouts/PageLayout';
-import ARLessonForm from '../components/ARLessonForm';
+import { useAuth } from '../contexts/AuthContext.js';
+import { createARLesson } from '../services/arService.js';
+import PageLayout from '../layouts/PageLayout.js';
+import ARLessonForm from '../components/ARLessonForm.js';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
-import { logger } from '../utils/logger';
-import ErrorBoundary from '../components/ErrorBoundary';
-import LoadingSpinner from '../components/LoadingSpinner';
-import usePageTracking from '../hooks/usePageTracking';
+import { logger } from '../utils/logger.js';
+import ErrorBoundary from '../components/ErrorBoundary.js';
+import LoadingSpinner from '../components/LoadingSpinner.js';
+import usePageTracking from '../hooks/usePageTracking.js';
 
 const ARLearningPage = () => {
   const { currentUser } = useAuth();
@@ -56,6 +56,7 @@ const ARLearningPage = () => {
 };
 
 export default React.memo(ARLearningPage);
+
 
 
 
