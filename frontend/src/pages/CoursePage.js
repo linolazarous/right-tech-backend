@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { fetchCourses } from '../services/courseService';
-import PageLayout from '../layouts/PageLayout';
-import CourseCard from '../components/courses/CourseCard';
-import LoadingSkeleton from '../components/ui/LoadingSkeleton';
-import ErrorAlert from '../components/ui/ErrorAlert';
+import { fetchCourses } from '../services/courseService.js';
+import PageLayout from '../layouts/PageLayout.js';
+import CourseCard from '../components/courses/CourseCard.js';
+import LoadingSkeleton from '../components/ui/LoadingSkeleton.js';
+import ErrorAlert from '../components/ui/ErrorAlert.js';
 
 const CoursePage = () => {
   const [courses, setCourses] = useState([]);
@@ -102,3 +102,4 @@ const CoursePage = () => {
 };
 
 export default CoursePage;
+
