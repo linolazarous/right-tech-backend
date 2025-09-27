@@ -6,7 +6,7 @@ import {
   updateUserProfile,
   requestPasswordReset,
   resetPassword
-} from './api';
+} from './api.js';
 
 const userService = {
   login: loginUser,
