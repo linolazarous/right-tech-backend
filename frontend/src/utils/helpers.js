@@ -1,4 +1,4 @@
-import { DEFAULT_PAGE_SIZE } from './constants';
+import { DEFAULT_PAGE_SIZE } from './constants.js';
 
 /**
  * Collection of utility functions for common operations
@@ -103,3 +103,4 @@ export const throttle = (func, limit = 300) => {
     }
   };
 };
+
