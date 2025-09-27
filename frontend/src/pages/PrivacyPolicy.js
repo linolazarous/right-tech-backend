@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
-import PageLayout from '../layouts/PageLayout';
-import privacyContent from '../content/privacy';
-import { logger } from '../utils/logger';
-import { usePageTracking } from '../hooks/usePageTracking';
+import PageLayout from '../layouts/PageLayout.js';
+import privacyContent from '../content/privacy.js';
+import { logger } from '../utils/logger.js';
+import { usePageTracking } from '../hooks/usePageTracking.js';
 
 const PrivacyPolicyPage = () => {
   usePageTracking();
@@ -39,3 +39,4 @@ const PrivacyPolicyPage = () => {
 };
 
 export default React.memo(PrivacyPolicyPage);
+
