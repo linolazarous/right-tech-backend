@@ -1,4 +1,4 @@
-import api from './api';
+import api from './api.js';
 
 export const jobService = {
   async getJobListings(filters = {}) {
@@ -57,3 +57,4 @@ export const jobService = {
 };
 
 export default jobService;
+
