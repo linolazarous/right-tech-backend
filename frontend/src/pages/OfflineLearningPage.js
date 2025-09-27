@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
-import PageLayout from '../layouts/PageLayout';
-import OfflineContentManager from '../components/learning/OfflineContentManager';
-import { logger } from '../utils/logger';
-import { usePageTracking } from '../hooks/usePageTracking';
-import ErrorBoundary from '../components/ErrorBoundary';
-import { useAuth } from '../contexts/AuthContext';
+import PageLayout from '../layouts/PageLayout.js';
+import OfflineContentManager from '../components/learning/OfflineContentManager.js';
+import { logger } from '../utils/logger.js';
+import { usePageTracking } from '../hooks/usePageTracking.js';
+import ErrorBoundary from '../components/ErrorBoundary.js';
+import { useAuth } from '../contexts/AuthContext.js';
 
 const OfflinePage = () => {
   const { currentUser } = useAuth();
@@ -38,3 +38,4 @@ const OfflinePage = () => {
 };
 
 export default React.memo(OfflinePage);
+
