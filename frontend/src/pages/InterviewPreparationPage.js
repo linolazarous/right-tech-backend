@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
-import PageLayout from '../layouts/PageLayout';
-import InterviewPreparation from '../components/InterviewPreparation';
-import { logger } from '../utils/logger';
-import { usePageTracking } from '../hooks/usePageTracking';
-import ErrorBoundary from '../components/ErrorBoundary';
-import { useAuth } from '../contexts/AuthContext';
-import LoadingSpinner from '../components/LoadingSpinner';
+import PageLayout from '../layouts/PageLayout.js';
+import InterviewPreparation from '../components/InterviewPreparation.js';
+import { logger } from '../utils/logger.js';
+import { usePageTracking } from '../hooks/usePageTracking.js';
+import ErrorBoundary from '../components/ErrorBoundary.js';
+import { useAuth } from '../contexts/AuthContext.js';
+import LoadingSpinner from '../components/LoadingSpinner.js';
 
 const InterviewPreparationPage = () => {
   const { currentUser } = useAuth();
@@ -38,3 +38,4 @@ const InterviewPreparationPage = () => {
 };
 
 export default React.memo(InterviewPreparationPage);
+
