@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
-import { useAuth } from '../contexts/AuthContext';
-import PageLayout from '../layouts/PageLayout';
-import StudyGroupList from '../components/community/StudyGroupList';
-import { useStudyGroups } from '../hooks/useStudyGroups';
-import { logger } from '../utils/logger';
-import { usePageTracking } from '../hooks/usePageTracking';
-import ErrorBoundary from '../components/ErrorBoundary';
-import LoadingSpinner from '../components/LoadingSpinner';
-import ErrorAlert from '../components/ui/ErrorAlert';
+import { useAuth } from '../contexts/AuthContext.js';
+import PageLayout from '../layouts/PageLayout.js';
+import StudyGroupList from '../components/community/StudyGroupList.js';
+import { useStudyGroups } from '../hooks/useStudyGroups.js';
+import { logger } from '../utils/logger.js';
+import { usePageTracking } from '../hooks/usePageTracking.js';
+import ErrorBoundary from '../components/ErrorBoundary.js';
+import LoadingSpinner from '../components/LoadingSpinner.js';
+import ErrorAlert from '../components/ui/ErrorAlert.js';
 
 const StudyGroupPage = () => {
   const { currentUser } = useAuth();
@@ -57,3 +57,4 @@ const StudyGroupPage = () => {
 };
 
 export default React.memo(StudyGroupPage);
+
