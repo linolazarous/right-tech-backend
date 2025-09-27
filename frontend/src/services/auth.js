@@ -1,4 +1,4 @@
-import api from './api';
+import api from './api.js';
 
 export const login = async (email, password) => {
   try {
@@ -19,3 +19,4 @@ export const register = async (name, email, password) => {
     throw new Error(error.response?.data?.message || 'Registration failed');
   }
 };
+
