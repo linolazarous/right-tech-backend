@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useRouteError } from 'react-router-dom';
 import { FaExclamationTriangle, FaHome, FaRedo } from 'react-icons/fa';
-import PageLayout from '../layouts/PageLayout';
+import PageLayout from '../layouts/PageLayout.js';
 
 const CustomErrorPage = () => {
   const error = useRouteError();
