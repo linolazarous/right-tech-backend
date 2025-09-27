@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { useAuth } from '../contexts/AuthContext';
-import { createVRLesson } from '../services/vrService';
-import PageLayout from '../layouts/PageLayout';
-import VRLessonForm from '../components/VRLessonForm';
+import { useAuth } from '../contexts/AuthContext.js';
+import { createVRLesson } from '../services/vrService.js';
+import PageLayout from '../layouts/PageLayout.js';
+import VRLessonForm from '../components/VRLessonForm.js';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
-import { logger } from '../utils/logger';
-import { usePageTracking } from '../hooks/usePageTracking';
-import ErrorBoundary from '../components/ErrorBoundary';
-import LoadingSpinner from '../components/LoadingSpinner';
+import { logger } from '../utils/logger.js';
+import { usePageTracking } from '../hooks/usePageTracking.js';
+import ErrorBoundary from '../components/ErrorBoundary.js';
+import LoadingSpinner from '../components/LoadingSpinner.js';
 
 const VRLearningPage = () => {
   const { currentUser } = useAuth();
@@ -68,3 +68,4 @@ const VRLearningPage = () => {
 };
 
 export default React.memo(VRLearningPage);
+
