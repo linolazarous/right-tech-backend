@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
-import { useAuth } from '../contexts/AuthContext';
-import PageLayout from '../layouts/PageLayout';
-import SkillAssessment from '../components/SkillAssessment';
-import { logger } from '../utils/logger';
-import { usePageTracking } from '../hooks/usePageTracking';
-import ErrorBoundary from '../components/ErrorBoundary';
-import LoadingSpinner from '../components/LoadingSpinner';
+import { useAuth } from '../contexts/AuthContext.js';
+import PageLayout from '../layouts/PageLayout.js';
+import SkillAssessment from '../components/SkillAssessment.js';
+import { logger } from '../utils/logger.js';
+import { usePageTracking } from '../hooks/usePageTracking.js';
+import ErrorBoundary from '../components/ErrorBoundary.js';
+import LoadingSpinner from '../components/LoadingSpinner.js';
 
 const SkillAssessmentPage = () => {
   const { currentUser } = useAuth();
@@ -41,3 +41,4 @@ const SkillAssessmentPage = () => {
 };
 
 export default React.memo(SkillAssessmentPage);
+
