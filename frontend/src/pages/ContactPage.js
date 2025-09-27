@@ -3,11 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import axios from 'axios';
 import toast from 'react-hot-toast';
-import PageLayout from '../layouts/PageLayout';
-import useFormValidation from '../hooks/useFormValidation';
-import { logger } from '../utils/logger';
-import { usePageTracking } from '../hooks/usePageTracking';
-import ErrorBoundary from '../components/ErrorBoundary';
+import PageLayout from '../layouts/PageLayout.js';
+import useFormValidation from '../hooks/useFormValidation.js';
+import { logger } from '../utils/logger.js';
+import { usePageTracking } from '../hooks/usePageTracking.js';
+import ErrorBoundary from '../components/ErrorBoundary.js';
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
