@@ -1,21 +1,11 @@
 import React from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
-import HomePage from './pages/HomePage';
-import CoursePage from './pages/CoursePage';
-import ProfilePage from './pages/ProfilePage';
-import LiveClass from './pages/LiveClass';
-import ForumPage from './pages/ForumPage';
-import PrivacyPolicy from './pages/PrivacyPolicy';
-import TermsOfService from './pages/TermsOfService';
-import ContactPage from './pages/ContactPage';
-import FormSuccess from './pages/FormSuccess';
-import APITest from './components/APITest';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
-import { Toaster } from 'react-hot-toast';
-import { setUserContext, clearUserContext } from './utils/sentry';
-import SentryErrorBoundary from './components/SentryErrorBoundary';
-import AdminPage from './pages/AdminPage'; // <-- 1. IMPORT THE NEW ADMIN PAGE
+import HomePage from './pages/HomePage.js'; // Added .js
+import CoursePage from './pages/CoursePage.js'; // Added .js
+// ... (All other local imports need .js extension)
+import { setUserContext, clearUserContext } from './utils/sentry.js'; // Added .js
+import SentryErrorBoundary from './components/SentryErrorBoundary.js'; // Added .js
+import AdminPage from './pages/AdminPage.js'; // Added .js
 
 // A simple component for your 404 page
 function NotFound() {
@@ -81,4 +71,5 @@ function App() {
 }
 
 export default App;
+
 
