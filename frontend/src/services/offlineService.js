@@ -1,4 +1,4 @@
-import api from './api';
+import api from './api.js';
 
 export const downloadCourse = async (courseId) => {
   try {
@@ -11,3 +11,4 @@ export const downloadCourse = async (courseId) => {
     throw new Error(error.response?.data?.message || 'Failed to download course');
   }
 };
+
