@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
-import { useAuth } from '../contexts/AuthContext';
-import ResumeBuilder from '../components/career/ResumeBuilder';
-import PageLayout from '../layouts/PageLayout';
-import { logger } from '../utils/logger';
-import { usePageTracking } from '../hooks/usePageTracking';
-import ErrorBoundary from '../components/ErrorBoundary';
-import LoadingSpinner from '../components/LoadingSpinner';
+import { useAuth } from '../contexts/AuthContext.js';
+import ResumeBuilder from '../components/career/ResumeBuilder.js';
+import PageLayout from '../layouts/PageLayout.js';
+import { logger } from '../utils/logger.js';
+import { usePageTracking } from '../hooks/usePageTracking.js';
+import ErrorBoundary from '../components/ErrorBoundary.js';
+import LoadingSpinner from '../components/LoadingSpinner.js';
 
 const ResumeBuilderPage = () => {
   const { currentUser } = useAuth();
@@ -41,3 +41,4 @@ const ResumeBuilderPage = () => {
 };
 
 export default React.memo(ResumeBuilderPage);
+
