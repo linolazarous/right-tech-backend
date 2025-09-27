@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { loadVRContent } from '../services/vrService';
+import { loadVRContent } from '../services/vrService.js';
 
 const ARVRIntegration = ({ userId }) => {
     const [isLoading, setIsLoading] = useState(true);
@@ -61,3 +61,4 @@ ARVRIntegration.propTypes = {
 };
 
 export default ARVRIntegration;
+
