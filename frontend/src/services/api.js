@@ -3,7 +3,7 @@ import { getAuthHeader } from '../utils/auth';
 
 const API_BASE_URL = process.env.REACT_APP_BACKEND_URL || 
   (process.env.NODE_ENV === 'development' 
-    ? 'http://localhost:8080' 
+    ? 'http://localhost:5000' 
     : 'https://righttechcentre-kn5oq.ondigitalocean.app'); 
 
 // Create axios instance with default config
@@ -257,5 +257,6 @@ export const resetPassword = async (token, passwordData) => {
 };
 
 export default api;
+
 
 
