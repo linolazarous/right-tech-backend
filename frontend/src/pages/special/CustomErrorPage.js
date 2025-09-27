@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
-import { Button } from '../components/ui/Button';
-import { logger } from '../utils/logger';
-import { isProduction } from '../utils/constants';
+import { Button } from '../components/ui/Button.js';
+import { logger } from '../utils/logger.js';
+import { isProduction } from '../utils/constants.js';
 
 const errorMessages = {
   404: {
