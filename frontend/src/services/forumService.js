@@ -1,4 +1,4 @@
-import api from './api';
+import api from './api.js';
 
 export const createPost = async (postData) => {
   try {
@@ -19,3 +19,4 @@ export const getPosts = async () => {
     throw new Error(error.response?.data?.message || 'Failed to load posts');
   }
 };
+
