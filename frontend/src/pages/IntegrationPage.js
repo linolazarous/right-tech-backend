@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { useAuth } from '../contexts/AuthContext';
-import PageLayout from '../layouts/PageLayout';
-import IntegrationCard from '../components/integrations/IntegrationCard';
-import { checkIntegrationHealth } from '../services/integrationService';
-import IntegrationSkeleton from '../components/integrations/IntegrationSkeleton';
+import { useAuth } from '../contexts/AuthContext.js';
+import PageLayout from '../layouts/PageLayout.js';
+import IntegrationCard from '../components/integrations/IntegrationCard.js';
+import { checkIntegrationHealth } from '../services/integrationService.js';
+import IntegrationSkeleton from '../components/integrations/IntegrationSkeleton.js';
 import { logger } from '../utils/logger';
-import { usePageTracking } from '../hooks/usePageTracking';
-import ErrorBoundary from '../components/ErrorBoundary';
-import ErrorAlert from '../components/ui/ErrorAlert';
+import { usePageTracking } from '../hooks/usePageTracking.js';
+import ErrorBoundary from '../components/ErrorBoundary.js';
+import ErrorAlert from '../components/ui/ErrorAlert.js';
 
 const IntegrationPage = () => {
   const { currentUser } = useAuth();
@@ -85,3 +85,4 @@ const IntegrationPage = () => {
 };
 
 export default React.memo(IntegrationPage);
+
