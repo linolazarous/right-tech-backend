@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { useAuth } from '../contexts/AuthContext';
-import { fetchUserProfile } from '../services/userService';
-import PageLayout from '../layouts/PageLayout';
-import ProfileSection from '../components/profile/ProfileSection';
-import EnrolledCourses from '../components/profile/EnrolledCourses';
-import LoadingSpinner from '../components/ui/LoadingSpinner';
-import ErrorAlert from '../components/ui/ErrorAlert';
-import { logger } from '../utils/logger';
-import { usePageTracking } from '../hooks/usePageTracking';
-import ErrorBoundary from '../components/ErrorBoundary';
+import { useAuth } from '../contexts/AuthContext.js';
+import { fetchUserProfile } from '../services/userService.js';
+import PageLayout from '../layouts/PageLayout.js';
+import ProfileSection from '../components/profile/ProfileSection.js';
+import EnrolledCourses from '../components/profile/EnrolledCourses.js';
+import LoadingSpinner from '../components/ui/LoadingSpinner.js';
+import ErrorAlert from '../components/ui/ErrorAlert.js';
+import { logger } from '../utils/logger.js';
+import { usePageTracking } from '../hooks/usePageTracking.js';
+import ErrorBoundary from '../components/ErrorBoundary.js';
 
 const ProfilePage = () => {
   const { currentUser } = useAuth();
@@ -76,3 +76,4 @@ const ProfilePage = () => {
 };
 
 export default React.memo(ProfilePage);
+
