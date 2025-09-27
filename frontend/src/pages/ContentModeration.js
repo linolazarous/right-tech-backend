@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { useAuth } from '../contexts/AuthContext';
-import PageLayout from '../layouts/PageLayout';
-import { logger } from '../utils/logger';
-import { usePageTracking } from '../hooks/usePageTracking';
-import ErrorBoundary from '../components/ErrorBoundary';
-import LoadingSpinner from '../components/LoadingSpinner';
-import { submitContentModeration } from '../services/moderationService';
+import { useAuth } from '../contexts/AuthContext.js';
+import PageLayout from '../layouts/PageLayout.js';
+import { logger } from '../utils/logger.js';
+import { usePageTracking } from '../hooks/usePageTracking.js';
+import ErrorBoundary from '../components/ErrorBoundary.js';
+import LoadingSpinner from '../components/LoadingSpinner.js';
+import { submitContentModeration } from '../services/moderationService.js';
 import { toast } from 'react-hot-toast';
 
 const ContentModeration = () => {
@@ -89,3 +89,4 @@ const ContentModeration = () => {
 };
 
 export default React.memo(ContentModeration);
+
