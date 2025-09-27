@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
-import PageLayout from '../layouts/PageLayout';
-import { usePageTracking } from '../hooks/usePageTracking';
-import ARVRIntegration from '../components/ARVRIntegration';
-import { logger } from '../utils/logger';
-import ErrorBoundary from '../components/ErrorBoundary';
+import PageLayout from '../layouts/PageLayout.js';
+import { usePageTracking } from '../hooks/usePageTracking.js';
+import ARVRIntegration from '../components/ARVRIntegration.js';
+import { logger } from '../utils/logger.js';
+import ErrorBoundary from '../components/ErrorBoundary.js';
 
 const ARVRPage = () => {
   usePageTracking();
@@ -67,5 +67,6 @@ const ARVRPage = () => {
 };
 
 export default React.memo(ARVRPage);
+
 
 
