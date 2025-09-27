@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
-import { useAuth } from '../contexts/AuthContext';
-import CareerCoaching from '../components/career/CareerCoaching';
-import PageLayout from '../layouts/PageLayout';
-import { logger } from '../utils/logger';
-import { usePageTracking } from '../hooks/usePageTracking';
-import ErrorBoundary from '../components/ErrorBoundary';
-import LoadingSpinner from '../components/LoadingSpinner';
+import { useAuth } from '../contexts/AuthContext.js';
+import CareerCoaching from '../components/CareerCoaching.js';
+import PageLayout from '../layouts/PageLayout.js';
+import { logger } from '../utils/logger.js';
+import { usePageTracking } from '../hooks/usePageTracking.js';
+import ErrorBoundary from '../components/ErrorBoundary.js';
+import LoadingSpinner from '../components/LoadingSpinner.js';
 
 const CareerCoachingPage = () => {
   const { currentUser, loading: authLoading } = useAuth();
@@ -43,3 +43,4 @@ const CareerCoachingPage = () => {
 };
 
 export default React.memo(CareerCoachingPage);
+
