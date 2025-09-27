@@ -1,13 +1,13 @@
 import React, { Suspense, useState, useEffect } from 'react';
-import { useAuth } from '../contexts/AuthContext';
-import PageLayout from '../layouts/PageLayout';
-import WebGLChecker from '../components/virtual-lab/WebGLChecker';
-import LabLoading from '../components/virtual-lab/LabLoading';
-import ErrorBoundary from '../components/ErrorBoundary';
-import { logger } from '../utils/logger';
-import { usePageTracking } from '../hooks/usePageTracking';
+import { useAuth } from '../contexts/AuthContext.js';
+import PageLayout from '../layouts/PageLayout.js';
+import WebGLChecker from '../components/virtual-lab/WebGLChecker.js';
+import LabLoading from '../components/virtual-lab/LabLoading.js';
+import ErrorBoundary from '../components/ErrorBoundary.js';
+import { logger } from '../utils/logger.js';
+import { usePageTracking } from '../hooks/usePageTracking.js';
 
-const VirtualLabView = React.lazy(() => import('../components/virtual-lab/VirtualLabView'));
+const VirtualLabView = React.lazy(() => import('../components/virtual-lab/VirtualLabView.js'));
 
 const VirtualLabPage = () => {
   const { currentUser } = useAuth();
@@ -82,3 +82,4 @@ const LabErrorScreen = () => (
 );
 
 export default React.memo(VirtualLabPage);
+
