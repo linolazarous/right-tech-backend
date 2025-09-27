@@ -1,6 +1,6 @@
 import { useEffect, useState, useCallback, useRef } from 'react';
 import PropTypes from 'prop-types';
-import { fetchLiveClasses } from '../services/liveClassService';
+import { fetchLiveClasses } from '../services/liveClassService.js';
 
 // Cache class with expiration
 class LiveClassCache {
