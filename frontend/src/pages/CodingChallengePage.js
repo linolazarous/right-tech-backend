@@ -1,6 +1,6 @@
 import React from 'react';
 import CodingChallenge from '../components/CodingChallenge.js';
-import PageLayout from '../layouts/PageLayout';
+import PageLayout from '../layouts/PageLayout.js';
 import { usePageTracking } from '../hooks/usePageTracking.js';
 import ErrorBoundary from '../components/ErrorBoundary.js';
 import { useAuth } from '../contexts/AuthContext.js';
@@ -24,4 +24,5 @@ const CodingChallengePage = () => {
 };
 
 export default React.memo(CodingChallengePage);
+
 
