@@ -1,9 +1,9 @@
 import React from 'react';
-import CodingChallenge from '../components/CodingChallenge';
+import CodingChallenge from '../components/CodingChallenge.js';
 import PageLayout from '../layouts/PageLayout';
-import { usePageTracking } from '../hooks/usePageTracking';
-import ErrorBoundary from '../components/ErrorBoundary';
-import { useAuth } from '../contexts/AuthContext';
+import { usePageTracking } from '../hooks/usePageTracking.js';
+import ErrorBoundary from '../components/ErrorBoundary.js';
+import { useAuth } from '../contexts/AuthContext.js';
 
 const CodingChallengePage = () => {
   const { currentUser } = useAuth();
@@ -24,3 +24,4 @@ const CodingChallengePage = () => {
 };
 
 export default React.memo(CodingChallengePage);
+
