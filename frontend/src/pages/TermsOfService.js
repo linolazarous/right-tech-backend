@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
-import PageLayout from '../layouts/PageLayout';
-import termsContent from '../content/terms';
-import { logger } from '../utils/logger';
-import { usePageTracking } from '../hooks/usePageTracking';
+import PageLayout from '../layouts/PageLayout.js';
+import termsContent from '../content/terms.js';
+import { logger } from '../utils/logger.js';
+import { usePageTracking } from '../hooks/usePageTracking.js';
 
 const TermsOfService = () => {
   usePageTracking();
@@ -43,3 +43,4 @@ const TermsOfService = () => {
 };
 
 export default React.memo(TermsOfService);
+
