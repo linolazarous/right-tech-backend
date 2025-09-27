@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
-import PageLayout from '../layouts/PageLayout';
-import LiveQA from '../components/LiveQA';
-import { logger } from '../utils/logger';
-import { usePageTracking } from '../hooks/usePageTracking';
-import ErrorBoundary from '../components/ErrorBoundary';
-import { useAuth } from '../contexts/AuthContext';
-import LoadingSpinner from '../components/LoadingSpinner';
+import PageLayout from '../layouts/PageLayout.js';
+import LiveQA from '../components/LiveQA.js;
+import { logger } from '../utils/logger.js';
+import { usePageTracking } from '../hooks/usePageTracking.js';
+import ErrorBoundary from '../components/ErrorBoundary.js';
+import { useAuth } from '../contexts/AuthContext.js';
+import LoadingSpinner from '../components/LoadingSpinner.js';
 
 const LiveQAPage = () => {
   const { currentUser } = useAuth();
@@ -38,3 +38,4 @@ const LiveQAPage = () => {
 };
 
 export default React.memo(LiveQAPage);
+
