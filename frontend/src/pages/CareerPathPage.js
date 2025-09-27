@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import { useAuth } from '../contexts/AuthContext.jd';
-import CareerPathRecommendation from '../components/CareerPathRecommendation';
+import { useAuth } from '../contexts/AuthContext.js';
+import CareerPathRecommendation from '../components/CareerPathRecommendation.js';
 import PageLayout from '../layouts/PageLayout.js';
 import { logger } from '../utils/logger.js';
 import { usePageTracking } from '../hooks/usePageTracking.js';
@@ -31,4 +31,5 @@ const CareerPathPage = () => {
 };
 
 export default React.memo(CareerPathPage);
+
 
