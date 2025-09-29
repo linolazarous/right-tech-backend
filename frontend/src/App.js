@@ -4,7 +4,7 @@ import HomePage from './pages/HomePage.js'; // Added .js
 import CoursePage from './pages/CoursePage.js'; // Added .js
 // ... (All other local imports need .js extension)
 import { setUserContext, clearUserContext } from './utils/sentry.js'; // Added .js
-import SentryErrorBoundary from './components/SentryErrorBoundary.js'; // Added .js
+import SentryErrorBoundary from './components/ErrorBoundary.js'; // Added .js
 import AdminPage from './pages/AdminPage.js'; // Added .js
 
 // A simple component for your 404 page
@@ -71,5 +71,6 @@ function App() {
 }
 
 export default App;
+
 
 
