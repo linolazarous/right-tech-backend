@@ -8,13 +8,32 @@ const authReducer = (state, action) => {
     case 'LOGIN_START':
       return { ...state, loading: true, error: null };
     case 'LOGIN_SUCCESS':
-      return { ...state, loading: false, user: action.payload, isAuthenticated: true, error: null };
+      return { 
+        ...state, 
+        loading: false, 
+        user: action.payload, 
+        isAuthenticated: true, 
+        error: null 
+      };
     case 'LOGIN_FAILURE':
-      return { ...state, loading: false, error: action.payload, isAuthenticated: false };
+      return { 
+        ...state, 
+        loading: false, 
+        error: action.payload, 
+        isAuthenticated: false 
+      };
     case 'LOGOUT':
-      return { ...state, user: null, isAuthenticated: false, error: null };
+      return { 
+        ...state, 
+        user: null, 
+        isAuthenticated: false, 
+        error: null 
+      };
     case 'UPDATE_USER':
-      return { ...state, user: { ...state.user, ...action.payload } };
+      return { 
+        ...state, 
+        user: { ...state.user, ...action.payload } 
+      };
     case 'CLEAR_ERROR':
       return { ...state, error: null };
     default:
@@ -33,11 +52,20 @@ export const AuthProvider = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, initialState);
 
   useEffect(() => {
-    const token = userService.getToken();
-    const user = userService.getCurrentUser();
-    if (token && user) {
-      dispatch({ type: 'LOGIN_SUCCESS', payload: user });
-    }
+    const initializeAuth = async () => {
+      try {
+        const token = userService.getToken();
+        const user = userService.getCurrentUser();
+        if (token && user) {
+          dispatch({ type: 'LOGIN_SUCCESS', payload: user });
+        }
+      } catch (error) {
+        console.error('Auth initialization error:', error);
+        dispatch({ type: 'LOGOUT' });
+      }
+    };
+
+    initializeAuth();
   }, []);
 
   const login = async (credentials) => {
@@ -47,7 +75,8 @@ export const AuthProvider = ({ children }) => {
       dispatch({ type: 'LOGIN_SUCCESS', payload: response.user });
       return response;
     } catch (error) {
-      dispatch({ type: 'LOGIN_FAILURE', payload: error.message });
+      const errorMessage = error.response?.data?.message || error.message || 'Login failed';
+      dispatch({ type: 'LOGIN_FAILURE', payload: errorMessage });
       throw error;
     }
   };
@@ -70,19 +99,25 @@ export const AuthProvider = ({ children }) => {
     dispatch({ type: 'CLEAR_ERROR' });
   };
 
+  const value = {
+    user: state.user,
+    isAuthenticated: state.isAuthenticated,
+    loading: state.loading,
+    error: state.error,
+    login,
+    logout,
+    updateUser,
+    clearError
+  };
+
   return (
-    <AuthContext.Provider value={{
-      ...state,
-      login,
-      logout,
-      updateUser,
-      clearError
-    }}>
+    <AuthContext.Provider value={value}>
       {children}
     </AuthContext.Provider>
   );
 };
 
+// Enhanced useAuth hook with better error handling
 export const useAuth = () => {
   const context = useContext(AuthContext);
   if (!context) {
