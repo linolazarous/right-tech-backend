@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { fetchCourses } from '../services/courseService';
 import PageLayout from '../layouts/PageLayout';
-import CourseCard from '../components/courses/CourseCard';
+import CourseCard from '../components/CourseCard';
 import LoadingSkeleton from '../components/ui/LoadingSkeleton';
 import ErrorAlert from '../components/ui/ErrorAlert';
 
@@ -102,3 +102,4 @@ const CoursePage = () => {
 };
 
 export default CoursePage;
+
