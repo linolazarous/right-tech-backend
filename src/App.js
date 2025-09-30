@@ -13,7 +13,7 @@ import APITest from './components/APITest';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import { Toaster } from 'react-hot-toast';
-import SentryErrorBoundary from './components/SentryErrorBoundary';
+import ErrorBoundary from './components/ErrorBoundary';
 import AdminPage from './pages/AdminPage'; // <-- 1. IMPORT THE NEW ADMIN PAGE
 
 // A simple component for your 404 page
@@ -72,10 +72,10 @@ function AppContent() {
 
 function App() {
   return (
-    <SentryErrorBoundary>
+    <ErrorBoundary>
       <Toaster position="top-center" reverseOrder={false} />
       <AppContent />
-    </SentryErrorBoundary>
+    </ErrorBoundary>
   );
 }
 
