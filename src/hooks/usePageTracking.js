@@ -47,7 +47,6 @@ const usePageTracking = () => {
       // Sentry (if configured)
       if (SENTRY_ENABLED && typeof window.Sentry !== 'undefined') {
         try {
-          window.Sentry.configureScope((scope) => {
             scope.setTag('page.path', pagePath);
           });
         } catch (error) {
