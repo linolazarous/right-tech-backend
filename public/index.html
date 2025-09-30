@@ -1,1 +1,63 @@
-<meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' 'unsafe-eval';">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Right Tech Centre | Affordable Tech Certifications, Diplomas & Degrees</title>
+    
+    <!-- REMOVED STRICT CSP FOR NOW -->
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; 
+        script-src 'self' 'unsafe-eval' https://unpkg.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; 
+        style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; 
+        img-src 'self' data: https:; 
+        font-src 'self' https://fonts.gstatic.com; 
+        connect-src 'self' https://righttechcentre-kn5oq.ondigitalocean.app; 
+        frame-src 'none'; 
+        object-src 'none';"> -->
+    
+    <!-- BASIC META TAGS -->
+    <meta name="description" content="Right Tech Centre - Premier online tech education offering certifications, diplomas & degrees">
+    <meta name="keywords" content="tech education, programming courses, cybersecurity certification, AI diploma">
+    <meta name="author" content="Right Tech Centre">
+    
+    <!-- FAVICON -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    
+    <!-- FONT LINKS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <noscript>
+        <div style="background: yellow; padding: 20px; text-align: center;">
+            <strong>JavaScript is required to run this application.</strong>
+            Please enable JavaScript in your browser settings.
+        </div>
+    </noscript>
+
+    <!-- REACT MOUNT POINT -->
+    <div id="root">
+        <div style="text-align: center; padding: 50px; font-family: Arial, sans-serif;">
+            <h1>Loading Right Tech Centre...</h1>
+            <p>If this message persists, there may be an issue with the application.</p>
+        </div>
+    </div>
+
+    <!-- SIMPLE SCRIPT TO SHOW IF JAVASCRIPT IS WORKING -->
+    <script>
+        // Simple check to see if JS is loading
+        console.log('Right Tech Centre - JavaScript loaded successfully');
+        
+        // Remove loading message once React loads
+        setTimeout(function() {
+            var loadingDiv = document.querySelector('#root > div');
+            if (loadingDiv && loadingDiv.textContent.includes('Loading')) {
+                console.warn('React app taking longer than expected to load');
+            }
+        }, 3000);
+    </script>
+</body>
+</html>
