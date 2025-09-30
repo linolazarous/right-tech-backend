@@ -44,13 +44,10 @@ const usePageTracking = () => {
         }
       }
 
-      // Sentry (if configured)
-      if (SENTRY_ENABLED && typeof window.Sentry !== 'undefined') {
         try {
             scope.setTag('page.path', pagePath);
           });
         } catch (error) {
-          console.warn('Sentry context setting failed:', error);
         }
       }
 
