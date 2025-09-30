@@ -5,7 +5,8 @@ import HomePage from './pages/HomePage';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import { AuthProvider } from './contexts/AuthContext';
-import { ThemeProvider } from './contexts/ThemeContext'; // Import ThemeProvider
+import { ThemeProvider } from './contexts/ThemeContext';
+import { Toaster } from 'react-hot-toast';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
                 </Routes>
               </main>
               <Footer />
+              <Toaster position="top-center" reverseOrder={false} />
             </div>
           </Router>
         </AuthProvider>
