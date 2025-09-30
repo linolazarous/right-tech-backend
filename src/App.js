@@ -13,7 +13,6 @@ import APITest from './components/APITest';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import { Toaster } from 'react-hot-toast';
-import { setUserContext, clearUserContext } from './utils/sentry';
 import SentryErrorBoundary from './components/SentryErrorBoundary';
 import AdminPage from './pages/AdminPage'; // <-- 1. IMPORT THE NEW ADMIN PAGE
 

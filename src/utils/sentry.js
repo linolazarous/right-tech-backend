@@ -1,4 +1,3 @@
-import * as Sentry from '@sentry/react';
 
 const initSentry = () => {
   const dsn = process.env.REACT_APP_SENTRY_DSN;

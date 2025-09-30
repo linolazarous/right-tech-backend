@@ -1,5 +1,4 @@
 import React from 'react';
-import * as Sentry from '@sentry/react';
 import ErrorBoundary from './ErrorBoundary';
 
 const SentryErrorBoundary = ({ children }) => {

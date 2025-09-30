@@ -2,7 +2,6 @@
  * Application monitoring and error tracking integration
  */
 
-import * as Sentry from '@sentry/react';
 import { isProduction, SENTRY_DSN } from './constants';
 import { logger } from './logger'; // Use named import
 
