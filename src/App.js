@@ -1,180 +1,167 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import HomePage from './pages/HomePage';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
 import { Toaster } from 'react-hot-toast';
 
-// Create contexts
+// Simple safe providers
 const AuthContext = React.createContext();
 const ThemeContext = React.createContext();
 
-// Safe hooks that won't crash if provider is missing
 export const useAuth = () => {
   const context = React.useContext(AuthContext);
-  if (!context) {
-    // Return default values instead of throwing error
-    return {
-      user: null,
-      isAuthenticated: false,
-      loading: false,
-      login: () => {},
-      logout: () => {},
-      updateUser: () => {}
-    };
-  }
-  return context;
+  return context || { user: null, isAuthenticated: false, loading: false };
 };
 
 export const useTheme = () => {
   const context = React.useContext(ThemeContext);
-  if (!context) {
-    // Return default values instead of throwing error
-    return {
-      theme: 'light',
-      toggleTheme: () => {},
-      isDark: false
-    };
-  }
-  return context;
+  return context || { theme: 'light', toggleTheme: () => {} };
 };
 
 function SimpleAuthProvider({ children }) {
-  const [user, setUser] = React.useState(null);
-  const [loading, setLoading] = React.useState(true);
-
-  React.useEffect(() => {
-    // Simulate loading user data
-    const timer = setTimeout(() => {
-      try {
-        const userData = localStorage.getItem('userData');
-        if (userData) {
-          setUser(JSON.parse(userData));
-        }
-      } catch (error) {
-        console.error('Error loading user data:', error);
-      } finally {
-        setLoading(false);
-      }
-    }, 100);
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  const login = (userData) => {
-    setUser(userData);
-    localStorage.setItem('userData', JSON.stringify(userData));
-  };
-
-  const logout = () => {
-    setUser(null);
-    localStorage.removeItem('userData');
-  };
-
-  const value = {
-    user,
-    loading,
-    isAuthenticated: !!user,
-    login,
-    logout,
-    updateUser: setUser
-  };
-
-  return (
-    <AuthContext.Provider value={value}>
-      {children}
-    </AuthContext.Provider>
-  );
+  const [user] = React.useState(null);
+  const value = { user, isAuthenticated: false, loading: false };
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
 
 function SimpleThemeProvider({ children }) {
-  const [theme, setTheme] = React.useState('light');
-  const [loading, setLoading] = React.useState(true);
-
-  React.useEffect(() => {
-    // Load theme from localStorage
-    try {
-      const savedTheme = localStorage.getItem('righttech-theme');
-      if (savedTheme === 'light' || savedTheme === 'dark') {
-        setTheme(savedTheme);
-      }
-    } catch (error) {
-      console.error('Error loading theme:', error);
-    } finally {
-      setLoading(false);
-    }
-  }, []);
-
-  React.useEffect(() => {
-    // Apply theme to document
-    try {
-      document.documentElement.classList.remove('light', 'dark');
-      document.documentElement.classList.add(theme);
-      localStorage.setItem('righttech-theme', theme);
-    } catch (error) {
-      console.error('Error applying theme:', error);
-    }
-  }, [theme]);
-
-  const toggleTheme = () => {
-    setTheme(prev => prev === 'light' ? 'dark' : 'light');
-  };
-
-  const value = {
-    theme,
-    toggleTheme,
-    isDark: theme === 'dark',
-    loading
-  };
-
-  return (
-    <ThemeContext.Provider value={value}>
-      {children}
-    </ThemeContext.Provider>
-  );
+  const [theme] = React.useState('light');
+  const value = { theme, toggleTheme: () => {} };
+  return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
 }
 
-// Loading component
-function LoadingScreen() {
+// Test components to isolate the issue
+function TestHome() {
+  console.log('HomePage rendering');
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50">
-      <div className="text-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600 mx-auto"></div>
-        <p className="mt-4 text-gray-600">Loading Right Tech Centre...</p>
-      </div>
+    <div style={{ padding: '20px', textAlign: 'center' }}>
+      <h1>Home Page - Testing</h1>
+      <p>If you see this, HomePage works</p>
     </div>
   );
 }
 
-function AppContent() {
-  const { loading: authLoading } = useAuth();
-  const { loading: themeLoading } = useTheme();
+function TestNavbar() {
+  console.log('Navbar rendering');
+  return (
+    <nav style={{ padding: '1rem', background: '#4f46e5', color: 'white' }}>
+      <div>Test Navbar</div>
+    </nav>
+  );
+}
 
-  // Show loading screen while contexts are initializing
-  if (authLoading || themeLoading) {
-    return <LoadingScreen />;
+function TestFooter() {
+  console.log('Footer rendering');
+  return (
+    <footer style={{ padding: '2rem', background: '#f3f4f6', textAlign: 'center' }}>
+      <p>Test Footer</p>
+    </footer>
+  );
+}
+
+// Error boundary to catch crashes
+class CrashCatcher extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false, error: null };
   }
 
-  return (
-    <div className="flex flex-col min-h-screen">
-      <Navbar />
-      <main className="flex-grow">
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-        </Routes>
-      </main>
-      <Footer />
-      <Toaster position="top-center" reverseOrder={false} />
-    </div>
-  );
+  static getDerivedStateFromError(error) {
+    return { hasError: true, error };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    console.error('COMPONENT CRASHED:', error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div style={{ padding: '20px', background: 'red', color: 'white' }}>
+          <h2>Component Crashed!</h2>
+          <p>Error: {this.state.error?.message}</p>
+          <button onClick={() => this.setState({ hasError: false })}>
+            Try Again
+          </button>
+        </div>
+      );
+    }
+
+    return this.props.children;
+  }
 }
 
 function App() {
+  const [step, setStep] = React.useState(1);
+
+  const renderStep = () => {
+    switch(step) {
+      case 1:
+        return (
+          <CrashCatcher>
+            <TestHome />
+          </CrashCatcher>
+        );
+      case 2:
+        return (
+          <CrashCatcher>
+            <TestNavbar />
+            <TestHome />
+          </CrashCatcher>
+        );
+      case 3:
+        return (
+          <CrashCatcher>
+            <TestNavbar />
+            <TestHome />
+            <TestFooter />
+          </CrashCatcher>
+        );
+      case 4:
+        // Test with actual components
+        try {
+          const Navbar = require('./components/Navbar').default;
+          const HomePage = require('./pages/HomePage').default;
+          const Footer = require('./components/Footer').default;
+          
+          return (
+            <CrashCatcher>
+              <Navbar />
+              <HomePage />
+              <Footer />
+            </CrashCatcher>
+          );
+        } catch (error) {
+          return (
+            <div style={{ padding: '20px', background: 'orange', color: 'white' }}>
+              <h2>Import Error!</h2>
+              <p>{error.message}</p>
+            </div>
+          );
+        }
+      default:
+        return <TestHome />;
+    }
+  };
+
   return (
     <SimpleThemeProvider>
       <SimpleAuthProvider>
         <Router>
-          <AppContent />
+          <div style={{ padding: '20px' }}>
+            <div style={{ marginBottom: '20px', background: '#f0f0f0', padding: '10px' }}>
+              <h3>Debug Steps:</h3>
+              <button onClick={() => setStep(1)}>Step 1: Test Home Only</button>
+              <button onClick={() => setStep(2)}>Step 2: + Navbar</button>
+              <button onClick={() => setStep(3)}>Step 3: + Footer</button>
+              <button onClick={() => setStep(4)}>Step 4: Real Components</button>
+              <span style={{ marginLeft: '20px' }}>Current: Step {step}</span>
+            </div>
+            
+            <Routes>
+              <Route path="/" element={renderStep()} />
+            </Routes>
+            
+            <Toaster position="top-center" reverseOrder={false} />
+          </div>
         </Router>
       </SimpleAuthProvider>
     </SimpleThemeProvider>
