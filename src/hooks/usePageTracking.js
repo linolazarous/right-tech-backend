@@ -18,14 +18,6 @@ const usePageTracking = (pageName = '') => {
         // Log page view
         logEvent('page_view', pageData);
 
-        // Google Analytics (if available)
-        if (typeof gtag !== 'undefined') {
-          gtag('config', process.env.REACT_APP_GA_TRACKING_ID, {
-            page_path: location.pathname,
-            page_title: pageName
-          });
-        }
-
         console.log('Page tracked:', pageData);
       } catch (error) {
         console.error('Page tracking error:', error);
@@ -34,6 +26,10 @@ const usePageTracking = (pageName = '') => {
 
     trackPageView();
   }, [location, pageName]);
+
+  return null; // Hook doesn't return anything
 };
 
+// Export both named and default
+export { usePageTracking };
 export default usePageTracking;
