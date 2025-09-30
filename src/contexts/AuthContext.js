@@ -4,6 +4,10 @@ const AuthContext = createContext();
 
 const authReducer = (state, action) => {
   switch (action.type) {
+    case 'INIT_START':
+      return { ...state, loading: true };
+    case 'INIT_COMPLETE':
+      return { ...state, loading: false, user: action.payload, isAuthenticated: !!action.payload };
     case 'LOGIN_START':
       return { ...state, loading: true, error: null };
     case 'LOGIN_SUCCESS':
@@ -43,39 +47,42 @@ const authReducer = (state, action) => {
 const initialState = {
   user: null,
   isAuthenticated: false,
-  loading: true, // Start with loading true
+  loading: false, // Start with false to avoid initial loading flash
   error: null
 };
 
 export const AuthProvider = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, initialState);
+  const initializedRef = React.useRef(false);
 
   useEffect(() => {
-    const initializeAuth = async () => {
+    // Prevent double initialization
+    if (initializedRef.current) return;
+    initializedRef.current = true;
+
+    const initializeAuth = () => {
       try {
-        // Simulate checking for existing auth
-        await new Promise(resolve => setTimeout(resolve, 500));
         const userData = localStorage.getItem('userData');
         if (userData) {
           const user = JSON.parse(userData);
-          dispatch({ type: 'LOGIN_SUCCESS', payload: user });
+          dispatch({ type: 'INIT_COMPLETE', payload: user });
         } else {
-          dispatch({ type: 'LOGOUT' });
+          dispatch({ type: 'INIT_COMPLETE', payload: null });
         }
       } catch (error) {
         console.error('Auth initialization error:', error);
-        dispatch({ type: 'LOGOUT' });
+        dispatch({ type: 'INIT_COMPLETE', payload: null });
       }
     };
 
-    initializeAuth();
+    // Small delay to ensure React is ready
+    setTimeout(initializeAuth, 0);
   }, []);
 
   const login = async (credentials) => {
     dispatch({ type: 'LOGIN_START' });
     try {
       // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
       const mockUser = {
         id: 1,
         email: credentials.email,
@@ -104,7 +111,7 @@ export const AuthProvider = ({ children }) => {
     dispatch({ type: 'CLEAR_ERROR' });
   };
 
-  const value = {
+  const value = React.useMemo(() => ({
     user: state.user,
     isAuthenticated: state.isAuthenticated,
     loading: state.loading,
@@ -113,7 +120,7 @@ export const AuthProvider = ({ children }) => {
     logout,
     updateUser,
     clearError
-  };
+  }), [state.user, state.isAuthenticated, state.loading, state.error]);
 
   return (
     <AuthContext.Provider value={value}>
@@ -122,21 +129,26 @@ export const AuthProvider = ({ children }) => {
   );
 };
 
-// SAFE HOOK - returns defaults instead of throwing errors
+// ULTRA SAFE HOOK - Never throws errors
 export const useAuth = () => {
-  const context = useContext(AuthContext);
-  // Return default values if no provider found
-  if (!context) {
-    return {
-      user: null,
-      isAuthenticated: false,
-      loading: false,
-      error: null,
-      login: () => console.warn('AuthProvider not available'),
-      logout: () => console.warn('AuthProvider not available'),
-      updateUser: () => console.warn('AuthProvider not available'),
-      clearError: () => console.warn('AuthProvider not available')
-    };
+  try {
+    const context = useContext(AuthContext);
+    if (context) {
+      return context;
+    }
+  } catch (error) {
+    console.warn('AuthContext error:', error);
   }
-  return context;
+  
+  // Fallback values
+  return {
+    user: null,
+    isAuthenticated: false,
+    loading: false,
+    error: null,
+    login: () => Promise.resolve(),
+    logout: () => {},
+    updateUser: () => {},
+    clearError: () => {}
+  };
 };
