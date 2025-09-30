@@ -4,15 +4,26 @@ import SimpleErrorBoundary from './components/SimpleErrorBoundary';
 import HomePage from './pages/HomePage';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import { AuthProvider } from './contexts/AuthContext'; // Import AuthProvider
 
 function App() {
   return (
     <SimpleErrorBoundary>
-      <Router>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-        </Routes>
-      </Router>
+      <AuthProvider>
+        <Router>
+          <div className="flex flex-col min-h-screen">
+            <Navbar />
+            <main className="flex-grow">
+              <Routes>
+                <Route path="/" element={<HomePage />} />
+              </Routes>
+            </main>
+            <Footer />
+          </div>
+        </Router>
+      </AuthProvider>
     </SimpleErrorBoundary>
   );
 }
+
+export default App;
