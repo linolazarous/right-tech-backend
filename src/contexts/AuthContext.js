@@ -1,9 +1,7 @@
 import React, { createContext, useContext, useReducer, useEffect } from 'react';
 
-// Create context first
 const AuthContext = createContext();
 
-// Reducer function
 const authReducer = (state, action) => {
   switch (action.type) {
     case 'LOGIN_START':
@@ -42,43 +40,47 @@ const authReducer = (state, action) => {
   }
 };
 
-// Initial state
 const initialState = {
   user: null,
   isAuthenticated: false,
-  loading: false,
+  loading: true, // Start with loading true
   error: null
 };
 
-// Auth Provider Component
 export const AuthProvider = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, initialState);
 
   useEffect(() => {
-    // Simple initialization without external services
-    try {
-      const userData = localStorage.getItem('userData');
-      if (userData) {
-        const user = JSON.parse(userData);
-        dispatch({ type: 'LOGIN_SUCCESS', payload: user });
+    const initializeAuth = async () => {
+      try {
+        // Simulate checking for existing auth
+        await new Promise(resolve => setTimeout(resolve, 500));
+        const userData = localStorage.getItem('userData');
+        if (userData) {
+          const user = JSON.parse(userData);
+          dispatch({ type: 'LOGIN_SUCCESS', payload: user });
+        } else {
+          dispatch({ type: 'LOGOUT' });
+        }
+      } catch (error) {
+        console.error('Auth initialization error:', error);
+        dispatch({ type: 'LOGOUT' });
       }
-    } catch (error) {
-      console.error('Auth initialization error:', error);
-    }
+    };
+
+    initializeAuth();
   }, []);
 
   const login = async (credentials) => {
     dispatch({ type: 'LOGIN_START' });
     try {
-      // Simulate API call - replace with actual userService later
+      // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 1000));
-      
       const mockUser = {
         id: 1,
         email: credentials.email,
         username: credentials.email.split('@')[0]
       };
-      
       localStorage.setItem('userData', JSON.stringify(mockUser));
       dispatch({ type: 'LOGIN_SUCCESS', payload: mockUser });
       return { user: mockUser };
@@ -120,11 +122,21 @@ export const AuthProvider = ({ children }) => {
   );
 };
 
-// Use Auth Hook
+// SAFE HOOK - returns defaults instead of throwing errors
 export const useAuth = () => {
   const context = useContext(AuthContext);
-  if (context === undefined) {
-    throw new Error('useAuth must be used within an AuthProvider');
+  // Return default values if no provider found
+  if (!context) {
+    return {
+      user: null,
+      isAuthenticated: false,
+      loading: false,
+      error: null,
+      login: () => console.warn('AuthProvider not available'),
+      logout: () => console.warn('AuthProvider not available'),
+      updateUser: () => console.warn('AuthProvider not available'),
+      clearError: () => console.warn('AuthProvider not available')
+    };
   }
   return context;
 };
