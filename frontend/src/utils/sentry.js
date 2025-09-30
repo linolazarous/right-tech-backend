@@ -1,5 +1,4 @@
 import * as Sentry from '@sentry/react';
-import { BrowserTracing } from '@sentry/tracing'; // Correct import
 
 const initSentry = () => {
   const dsn = process.env.REACT_APP_SENTRY_DSN;

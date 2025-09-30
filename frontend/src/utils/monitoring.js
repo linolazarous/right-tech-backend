@@ -3,7 +3,6 @@
  */
 
 import * as Sentry from '@sentry/react';
-import { BrowserTracing } from '@sentry/tracing'; // Correct import
 import { isProduction, SENTRY_DSN } from './constants';
 import { logger } from './logger'; // Use named import
 
