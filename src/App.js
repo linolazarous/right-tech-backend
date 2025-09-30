@@ -9,18 +9,10 @@ function App() {
   return (
     <SimpleErrorBoundary>
       <Router>
-        <div className="flex flex-col min-h-screen">
-          <Navbar />
-          <main className="flex-grow">
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-            </Routes>
-          </main>
-          <Footer />
-        </div>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+        </Routes>
       </Router>
     </SimpleErrorBoundary>
   );
 }
-
-export default App;
