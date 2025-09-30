@@ -1,104 +1,39 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { logger } from '../utils/logger';
-import { GA_TRACKING_ID, isProduction, HOTJAR_ID, SEGMENT_KEY, SENTRY_ENABLED } from '../utils/constants';
+import { logEvent } from '../utils/monitoring';
 
-/**
- * Custom hook for tracking page views and analytics
- * Supports multiple analytics platforms: Google Analytics, Segment.io, Hotjar, and custom logging
- */
-const usePageTracking = () => {
+const usePageTracking = (pageName = '') => {
   const location = useLocation();
 
   useEffect(() => {
     const trackPageView = () => {
-      const pagePath = location.pathname + location.search + location.hash;
-      
-      // Google Analytics
-      if (isProduction && GA_TRACKING_ID && typeof window.gtag === 'function') {
-        try {
-          window.gtag('config', GA_TRACKING_ID, {
-            page_path: pagePath,
-            page_title: document.title,
-          });
-        } catch (error) {
-          console.warn('Google Analytics tracking failed:', error);
-        }
-      }
-
-      // Segment.io
-      if (isProduction && SEGMENT_KEY && typeof window.analytics?.page === 'function') {
-        try {
-          window.analytics.page();
-        } catch (error) {
-          console.warn('Segment.io tracking failed:', error);
-        }
-      }
-
-      // Hotjar
-      if (isProduction && HOTJAR_ID && typeof window.hj === 'function') {
-        try {
-          window.hj('stateChange', pagePath);
-        } catch (error) {
-          console.warn('Hotjar tracking failed:', error);
-        }
-      }
-
-        try {
-            scope.setTag('page.path', pagePath);
-          });
-        } catch (error) {
-        }
-      }
-
-      // Custom logging
       try {
-        logger.info('PageView', {
+        const pageData = {
           path: location.pathname,
           search: location.search,
-          hash: location.hash,
-          title: document.title,
-          timestamp: new Date().toISOString(),
-        });
+          title: pageName || document.title,
+          timestamp: new Date().toISOString()
+        };
+
+        // Log page view
+        logEvent('page_view', pageData);
+
+        // Google Analytics (if available)
+        if (typeof gtag !== 'undefined') {
+          gtag('config', process.env.REACT_APP_GA_TRACKING_ID, {
+            page_path: location.pathname,
+            page_title: pageName
+          });
+        }
+
+        console.log('Page tracked:', pageData);
       } catch (error) {
-        console.warn('Custom logging failed:', error);
+        console.error('Page tracking error:', error);
       }
     };
 
-    // Add a small delay to ensure the page is fully loaded
-    const timer = setTimeout(trackPageView, 100);
-    
-    return () => clearTimeout(timer);
-  }, [location]);
-
-  // Optional: Return tracking functions if needed by components
-  const trackEvent = (category, action, label, value) => {
-    if (isProduction && GA_TRACKING_ID && typeof window.gtag === 'function') {
-      window.gtag('event', action, {
-        event_category: category,
-        event_label: label,
-        value: value,
-      });
-    }
-  };
-
-  const trackConversion = (conversionId, conversionLabel) => {
-    if (isProduction && GA_TRACKING_ID && typeof window.gtag === 'function') {
-      window.gtag('event', 'conversion', {
-        send_to: `${GA_TRACKING_ID}/${conversionId}${conversionLabel ? `/${conversionLabel}` : ''}`,
-      });
-    }
-  };
-
-  // Return tracking functions if components need to manually trigger events
-  return {
-    trackEvent,
-    trackConversion,
-  };
+    trackPageView();
+  }, [location, pageName]);
 };
 
-// Named export for flexibility
-export { usePageTracking };
-
-// Default export for backward compatibility
 export default usePageTracking;
