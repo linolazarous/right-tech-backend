@@ -1,8 +1,9 @@
 import React, { createContext, useContext, useReducer, useEffect } from 'react';
-import userService from '../services/userService';
 
+// Create context first
 const AuthContext = createContext();
 
+// Reducer function
 const authReducer = (state, action) => {
   switch (action.type) {
     case 'LOGIN_START':
@@ -24,9 +25,9 @@ const authReducer = (state, action) => {
       };
     case 'LOGOUT':
       return { 
-        ...state, 
         user: null, 
         isAuthenticated: false, 
+        loading: false,
         error: null 
       };
     case 'UPDATE_USER':
@@ -41,6 +42,7 @@ const authReducer = (state, action) => {
   }
 };
 
+// Initial state
 const initialState = {
   user: null,
   isAuthenticated: false,
@@ -48,47 +50,48 @@ const initialState = {
   error: null
 };
 
+// Auth Provider Component
 export const AuthProvider = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, initialState);
 
   useEffect(() => {
-    const initializeAuth = async () => {
-      try {
-        const token = userService.getToken();
-        const user = userService.getCurrentUser();
-        if (token && user) {
-          dispatch({ type: 'LOGIN_SUCCESS', payload: user });
-        }
-      } catch (error) {
-        console.error('Auth initialization error:', error);
-        dispatch({ type: 'LOGOUT' });
+    // Simple initialization without external services
+    try {
+      const userData = localStorage.getItem('userData');
+      if (userData) {
+        const user = JSON.parse(userData);
+        dispatch({ type: 'LOGIN_SUCCESS', payload: user });
       }
-    };
-
-    initializeAuth();
+    } catch (error) {
+      console.error('Auth initialization error:', error);
+    }
   }, []);
 
   const login = async (credentials) => {
     dispatch({ type: 'LOGIN_START' });
     try {
-      const response = await userService.login(credentials);
-      dispatch({ type: 'LOGIN_SUCCESS', payload: response.user });
-      return response;
+      // Simulate API call - replace with actual userService later
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      const mockUser = {
+        id: 1,
+        email: credentials.email,
+        username: credentials.email.split('@')[0]
+      };
+      
+      localStorage.setItem('userData', JSON.stringify(mockUser));
+      dispatch({ type: 'LOGIN_SUCCESS', payload: mockUser });
+      return { user: mockUser };
     } catch (error) {
-      const errorMessage = error.response?.data?.message || error.message || 'Login failed';
+      const errorMessage = error.message || 'Login failed';
       dispatch({ type: 'LOGIN_FAILURE', payload: errorMessage });
       throw error;
     }
   };
 
-  const logout = async () => {
-    try {
-      await userService.logout();
-    } catch (error) {
-      console.error('Logout error:', error);
-    } finally {
-      dispatch({ type: 'LOGOUT' });
-    }
+  const logout = () => {
+    localStorage.removeItem('userData');
+    dispatch({ type: 'LOGOUT' });
   };
 
   const updateUser = (updates) => {
@@ -117,10 +120,10 @@ export const AuthProvider = ({ children }) => {
   );
 };
 
-// Enhanced useAuth hook with better error handling
+// Use Auth Hook
 export const useAuth = () => {
   const context = useContext(AuthContext);
-  if (!context) {
+  if (context === undefined) {
     throw new Error('useAuth must be used within an AuthProvider');
   }
   return context;
