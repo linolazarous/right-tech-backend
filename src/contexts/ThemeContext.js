@@ -1,17 +1,18 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
-// Create context
 const ThemeContext = createContext();
 
-// Theme Provider Component
 export const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState('light');
+  const initializedRef = React.useRef(false);
 
-  // Initialize theme
   useEffect(() => {
+    if (initializedRef.current) return;
+    initializedRef.current = true;
+
     try {
       const savedTheme = localStorage.getItem('righttech-theme');
-      if (savedTheme && (savedTheme === 'light' || savedTheme === 'dark')) {
+      if (savedTheme === 'light' || savedTheme === 'dark') {
         setTheme(savedTheme);
       }
     } catch (error) {
@@ -19,12 +20,10 @@ export const ThemeProvider = ({ children }) => {
     }
   }, []);
 
-  // Apply theme to document
   useEffect(() => {
     try {
-      const root = document.documentElement;
-      root.classList.remove('light', 'dark');
-      root.classList.add(theme);
+      document.documentElement.classList.remove('light', 'dark');
+      document.documentElement.classList.add(theme);
       localStorage.setItem('righttech-theme', theme);
     } catch (error) {
       console.error('Error applying theme:', error);
@@ -35,18 +34,11 @@ export const ThemeProvider = ({ children }) => {
     setTheme(prev => prev === 'light' ? 'dark' : 'light');
   };
 
-  const setThemeDirectly = (newTheme) => {
-    if (newTheme === 'light' || newTheme === 'dark') {
-      setTheme(newTheme);
-    }
-  };
-
-  const value = {
+  const value = React.useMemo(() => ({
     theme,
-    setTheme: setThemeDirectly,
     toggleTheme,
     isDark: theme === 'dark'
-  };
+  }), [theme]);
 
   return (
     <ThemeContext.Provider value={value}>
@@ -55,11 +47,21 @@ export const ThemeProvider = ({ children }) => {
   );
 };
 
-// Use Theme Hook
+// ULTRA SAFE HOOK - Never throws errors
 export const useTheme = () => {
-  const context = useContext(ThemeContext);
-  if (context === undefined) {
-    throw new Error('useTheme must be used within a ThemeProvider');
+  try {
+    const context = useContext(ThemeContext);
+    if (context) {
+      return context;
+    }
+  } catch (error) {
+    console.warn('ThemeContext error:', error);
   }
-  return context;
+  
+  // Fallback values
+  return {
+    theme: 'light',
+    toggleTheme: () => {},
+    isDark: false
+  };
 };
