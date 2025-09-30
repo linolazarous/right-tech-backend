@@ -4,7 +4,9 @@ import HomePage from './pages/HomePage';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import { Toaster } from 'react-hot-toast';
+import { ThemeProvider } from './contexts/ThemeContext';
 
+// Replace SimpleThemeProvider with your actual ThemeProvider
 // Keep the simple providers for now
 const AuthContext = React.createContext();
 const ThemeContext = React.createContext();
@@ -63,3 +65,4 @@ function App() {
 }
 
 export default App;
+
