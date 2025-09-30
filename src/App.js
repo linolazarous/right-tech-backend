@@ -1,12 +1,16 @@
-import React, { createContext, useContext, useState } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import { Toaster } from 'react-hot-toast';
 
-// Super simple contexts directly in App.js
-const AuthContext = createContext();
-const ThemeContext = createContext();
+// Keep the simple providers for now
+const AuthContext = React.createContext();
+const ThemeContext = React.createContext();
 
 function SimpleAuthProvider({ children }) {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = React.useState(null);
   
   const value = {
     user,
@@ -23,7 +27,7 @@ function SimpleAuthProvider({ children }) {
 }
 
 function SimpleThemeProvider({ children }) {
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = React.useState('light');
   
   const value = {
     theme,
@@ -37,23 +41,21 @@ function SimpleThemeProvider({ children }) {
   );
 }
 
-function SimpleHome() {
-  return (
-    <div style={{ padding: '20px', textAlign: 'center' }}>
-      <h1>Right Tech Centre - Working!</h1>
-      <p>React is now working with contexts!</p>
-    </div>
-  );
-}
-
 function App() {
   return (
     <SimpleThemeProvider>
       <SimpleAuthProvider>
         <Router>
-          <Routes>
-            <Route path="/" element={<SimpleHome />} />
-          </Routes>
+          <div className="flex flex-col min-h-screen">
+            <Navbar />
+            <main className="flex-grow">
+              <Routes>
+                <Route path="/" element={<HomePage />} />
+              </Routes>
+            </main>
+            <Footer />
+            <Toaster position="top-center" reverseOrder={false} />
+          </div>
         </Router>
       </SimpleAuthProvider>
     </SimpleThemeProvider>
