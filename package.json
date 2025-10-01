@@ -9,7 +9,8 @@
     "build": "CI=false react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint src --ext .js,.jsx"
+    "lint": "eslint src --ext .js,.jsx",
+    "audit:fix": "npm audit fix --force"
   },
   "keywords": [
     "react",
@@ -19,6 +20,7 @@
   "author": "Right Tech Centre",
   "license": "MIT",
   "dependencies": {
+    "@sentry/react": "^8.0.0",
     "aos": "^2.3.4",
     "axios": "^1.6.0",
     "i18next": "^23.7.6",
@@ -45,6 +47,9 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "web-vitals": "^3.5.0"
   },
+  "engines": {
+    "node": "22.x"
+  },
   "browserslist": {
     "production": [
       ">0.2%",
@@ -58,3 +63,4 @@
     ]
   }
 }
+
