@@ -60,21 +60,32 @@ export const AdminAuthProvider = ({ children }) => {
     const initializeAdminAuth = async () => {
       try {
         const adminToken = localStorage.getItem('adminToken');
-        if (adminToken) {
-          // Verify admin token with backend
-          const response = await fetch(`${API_BASE_URL}/admin/me`, {
-            headers: {
-              'Authorization': `Bearer ${adminToken}`
+        const adminData = localStorage.getItem('adminData');
+        
+        if (adminToken && adminData) {
+          // Verify token with backend
+          try {
+            const response = await fetch(`${API_BASE_URL}/admin/me`, {
+              headers: {
+                'Authorization': `Bearer ${adminToken}`,
+                'Content-Type': 'application/json'
+              }
+            });
+            
+            if (response.ok) {
+              const admin = await response.json();
+              dispatch({ type: 'INIT_COMPLETE', payload: admin });
+            } else {
+              // Token invalid, clear storage
+              localStorage.removeItem('adminToken');
+              localStorage.removeItem('adminData');
+              dispatch({ type: 'INIT_COMPLETE', payload: null });
             }
-          });
-          
-          if (response.ok) {
-            const admin = await response.json();
+          } catch (error) {
+            console.warn('Admin token verification failed:', error);
+            // Fallback to local storage data
+            const admin = JSON.parse(adminData);
             dispatch({ type: 'INIT_COMPLETE', payload: admin });
-          } else {
-            localStorage.removeItem('adminToken');
-            localStorage.removeItem('adminData');
-            dispatch({ type: 'INIT_COMPLETE', payload: null });
           }
         } else {
           dispatch({ type: 'INIT_COMPLETE', payload: null });
@@ -91,7 +102,7 @@ export const AdminAuthProvider = ({ children }) => {
   const login = async (credentials) => {
     dispatch({ type: 'LOGIN_START' });
     try {
-      // Admin login API call
+      // Real API call to your DigitalOcean backend
       const response = await fetch(`${API_BASE_URL}/admin/login`, {
         method: 'POST',
         headers: {
@@ -106,14 +117,18 @@ export const AdminAuthProvider = ({ children }) => {
         throw new Error(data.message || 'Admin login failed');
       }
 
-      // Store admin token and data separately
-      localStorage.setItem('adminToken', data.token);
-      localStorage.setItem('adminData', JSON.stringify(data.admin));
+      if (!data.success) {
+        throw new Error(data.message || 'Admin authentication failed');
+      }
+
+      // Store admin token and data separately from student data
+      localStorage.setItem('adminToken', data.token || data.accessToken);
+      localStorage.setItem('adminData', JSON.stringify(data.admin || data.user));
       
-      dispatch({ type: 'LOGIN_SUCCESS', payload: data.admin });
-      return { admin: data.admin };
+      dispatch({ type: 'LOGIN_SUCCESS', payload: data.admin || data.user });
+      return { admin: data.admin || data.user };
     } catch (error) {
-      const errorMessage = error.message || 'Admin login failed';
+      const errorMessage = error.message || 'Admin login failed. Please check your credentials.';
       dispatch({ type: 'LOGIN_FAILURE', payload: errorMessage });
       throw error;
     }
