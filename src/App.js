@@ -16,12 +16,12 @@ import Navbar from './components/Navbar.js';
 import Footer from './components/Footer.js';
 import ErrorBoundary from './components/ErrorBoundary.js';
 import AdminPage from './pages/AdminPage.js';
-import AdminLogin from './pages/AdminLogin.js'; // Add this import
-import StudentLogin from './pages/StudentLogin.js'; // Add this import
+import AdminLogin from './pages/AdminLogin.js'; // Make sure this file exists
+import StudentLogin from './pages/StudentLogin.js';
 import { AuthProvider } from './contexts/AuthContext.js';
-import { AdminAuthProvider } from './contexts/AdminAuthContext.js'; // Add this import
+import { AdminAuthProvider } from './contexts/AdminAuthContext.js'; // Make sure this exists
 import { ThemeProvider } from './contexts/ThemeContext.js';
-import AdminRoute from './components/AdminRoute.js'; // Add this import
+import AdminRoute from './components/AdminRoute.js'; // Make sure this exists
 
 // A simple component for your 404 page
 function NotFound() {
@@ -61,8 +61,8 @@ function AppContent() {
 
   return (
     <ThemeProvider>
-      <AuthProvider> {/* For students */}
-        <AdminAuthProvider> {/* For admin */}
+      <AuthProvider>
+        <AdminAuthProvider>
           <div className="flex flex-col min-h-screen">
             <Navbar />
             <main className="flex-grow">
@@ -70,6 +70,7 @@ function AppContent() {
                 {/* Public Routes */}
                 <Route path="/" element={<HomePage />} />
                 <Route path="/courses" element={<CoursePage />} />
+                <Route path="/profile" element={<ProfilePage />} />
                 <Route path="/live-class" element={<LiveClass />} />
                 <Route path="/forum" element={<ForumPage />} />
                 <Route path="/privacy-policy" element={<PrivacyPolicy />} />
@@ -78,11 +79,10 @@ function AppContent() {
                 <Route path="/success" element={<FormSuccess />} />
                 <Route path="/api-test" element={<APITest />} />
                 
-                {/* Student Auth Routes */}
+                {/* Student Auth */}
                 <Route path="/login" element={<StudentLogin />} />
-                <Route path="/profile" element={<ProfilePage />} />
                 
-                {/* Admin Auth Routes */}
+                {/* Admin Routes */}
                 <Route path="/admin/login" element={<AdminLogin />} />
                 <Route 
                   path="/admin/dashboard" 
@@ -92,6 +92,9 @@ function AppContent() {
                     </AdminRoute>
                   } 
                 />
+                
+                {/* Fallback to old admin route for compatibility */}
+                <Route path="/admin" element={<AdminPage />} />
                 
                 {/* 404 Route */}
                 <Route path="*" element={<NotFound />} />
