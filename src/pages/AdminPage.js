@@ -200,10 +200,10 @@ const AdminPage = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
-          <FiLoader className="animate-spin h-12 w-12 text-blue-600 mx-auto" />
-          <p className="mt-4 text-gray-600">Verifying admin access...</p>
+          <FiLoader className="animate-spin h-12 w-12 text-blue-600 mx-auto mb-4" />
+          <p className="text-gray-600 text-lg">Verifying admin access...</p>
         </div>
       </div>
     );
@@ -213,75 +213,97 @@ const AdminPage = () => {
     return null;
   }
 
-  if (error) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <div className="text-center">
-          <div className="bg-red-100 text-red-600 p-4 rounded-lg">
-            <p>{error}</p>
+  return (
+    <div className="min-h-screen bg-gray-50">
+      {/* Header */}
+      <div className="bg-white shadow-sm border-b">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+          <div className="flex items-center justify-between">
+            <div>
+              <h1 className="text-2xl font-bold text-gray-900">Admin Dashboard</h1>
+              <p className="mt-1 text-sm text-gray-600">
+                Welcome back! Manage your platform and monitor performance.
+              </p>
+            </div>
+            <div className="flex items-center space-x-3">
+              <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
+                Admin
+              </span>
+            </div>
           </div>
         </div>
       </div>
-    );
-  }
 
-  return (
-    <div className="min-h-screen bg-gray-50 py-8">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">Admin Dashboard</h1>
-          <p className="mt-2 text-gray-600">
-            Welcome back! Manage your platform and monitor performance.
-          </p>
-        </div>
+      {/* Main Content */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {error && (
+          <div className="mb-6 bg-red-50 border border-red-200 rounded-lg p-4">
+            <div className="flex items-center">
+              <div className="flex-shrink-0">
+                <FiShield className="h-5 w-5 text-red-400" />
+              </div>
+              <div className="ml-3">
+                <h3 className="text-sm font-medium text-red-800">Error</h3>
+                <p className="text-sm text-red-700 mt-1">{error}</p>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Stats Overview */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          <div className="bg-white rounded-lg shadow p-6">
+          <div className="bg-white rounded-lg shadow-sm border p-6">
             <div className="flex items-center">
-              <div className="p-3 bg-blue-100 rounded-full">
-                <FiUsers className="w-6 h-6 text-blue-600" />
+              <div className="flex-shrink-0">
+                <div className="p-3 bg-blue-100 rounded-lg">
+                  <FiUsers className="w-6 h-6 text-blue-600" />
+                </div>
               </div>
               <div className="ml-4">
                 <p className="text-sm font-medium text-gray-600">Total Users</p>
-                <p className="text-2xl font-bold text-gray-900">{stats?.totalUsers || 0}</p>
+                <p className="text-2xl font-semibold text-gray-900">{stats?.totalUsers || 0}</p>
               </div>
             </div>
           </div>
 
-          <div className="bg-white rounded-lg shadow p-6">
+          <div className="bg-white rounded-lg shadow-sm border p-6">
             <div className="flex items-center">
-              <div className="p-3 bg-green-100 rounded-full">
-                <FiBook className="w-6 h-6 text-green-600" />
+              <div className="flex-shrink-0">
+                <div className="p-3 bg-green-100 rounded-lg">
+                  <FiBook className="w-6 h-6 text-green-600" />
+                </div>
               </div>
               <div className="ml-4">
                 <p className="text-sm font-medium text-gray-600">Total Courses</p>
-                <p className="text-2xl font-bold text-gray-900">{stats?.totalCourses || 0}</p>
+                <p className="text-2xl font-semibold text-gray-900">{stats?.totalCourses || 0}</p>
               </div>
             </div>
           </div>
 
-          <div className="bg-white rounded-lg shadow p-6">
+          <div className="bg-white rounded-lg shadow-sm border p-6">
             <div className="flex items-center">
-              <div className="p-3 bg-purple-100 rounded-full">
-                <FiVideo className="w-6 h-6 text-purple-600" />
+              <div className="flex-shrink-0">
+                <div className="p-3 bg-purple-100 rounded-lg">
+                  <FiVideo className="w-6 h-6 text-purple-600" />
+                </div>
               </div>
               <div className="ml-4">
                 <p className="text-sm font-medium text-gray-600">Live Classes</p>
-                <p className="text-2xl font-bold text-gray-900">{stats?.liveClasses || 0}</p>
+                <p className="text-2xl font-semibold text-gray-900">{stats?.liveClasses || 0}</p>
               </div>
             </div>
           </div>
 
-          <div className="bg-white rounded-lg shadow p-6">
+          <div className="bg-white rounded-lg shadow-sm border p-6">
             <div className="flex items-center">
-              <div className="p-3 bg-yellow-100 rounded-full">
-                <FiDollarSign className="w-6 h-6 text-yellow-600" />
+              <div className="flex-shrink-0">
+                <div className="p-3 bg-yellow-100 rounded-lg">
+                  <FiDollarSign className="w-6 h-6 text-yellow-600" />
+                </div>
               </div>
               <div className="ml-4">
                 <p className="text-sm font-medium text-gray-600">Revenue</p>
-                <p className="text-2xl font-bold text-gray-900">${stats?.revenue || 0}</p>
+                <p className="text-2xl font-semibold text-gray-900">${stats?.revenue?.toLocaleString() || 0}</p>
               </div>
             </div>
           </div>
@@ -289,65 +311,87 @@ const AdminPage = () => {
 
         {/* Quick Actions */}
         <div className="mb-8">
-          <h2 className="text-xl font-semibold text-gray-900 mb-4">Quick Actions</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <h2 className="text-lg font-semibold text-gray-900 mb-4">Quick Actions</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <button
               onClick={() => toast.success('Create course functionality coming soon!')}
-              className="flex items-center p-4 bg-white rounded-lg shadow hover:shadow-md transition-shadow w-full text-left"
+              className="flex items-center p-4 bg-white rounded-lg border border-gray-200 hover:border-blue-300 hover:shadow-sm transition-all duration-200 w-full text-left group"
             >
-              <FiPlusCircle className="w-6 h-6 text-green-600 mr-3" />
-              <span>Create New Course</span>
+              <FiPlusCircle className="w-5 h-5 text-green-600 mr-3 flex-shrink-0" />
+              <div>
+                <span className="text-sm font-medium text-gray-900 group-hover:text-blue-600">
+                  Create New Course
+                </span>
+              </div>
             </button>
             
             <button
               onClick={() => toast.success('Schedule class functionality coming soon!')}
-              className="flex items-center p-4 bg-white rounded-lg shadow hover:shadow-md transition-shadow w-full text-left"
+              className="flex items-center p-4 bg-white rounded-lg border border-gray-200 hover:border-purple-300 hover:shadow-sm transition-all duration-200 w-full text-left group"
             >
-              <FiVideo className="w-6 h-6 text-purple-600 mr-3" />
-              <span>Schedule Live Class</span>
+              <FiVideo className="w-5 h-5 text-purple-600 mr-3 flex-shrink-0" />
+              <div>
+                <span className="text-sm font-medium text-gray-900 group-hover:text-purple-600">
+                  Schedule Live Class
+                </span>
+              </div>
             </button>
             
             <button
               onClick={() => toast.success('Invite user functionality coming soon!')}
-              className="flex items-center p-4 bg-white rounded-lg shadow hover:shadow-md transition-shadow w-full text-left"
+              className="flex items-center p-4 bg-white rounded-lg border border-gray-200 hover:border-blue-300 hover:shadow-sm transition-all duration-200 w-full text-left group"
             >
-              <FiUsers className="w-6 h-6 text-blue-600 mr-3" />
-              <span>Invite New User</span>
+              <FiUsers className="w-5 h-5 text-blue-600 mr-3 flex-shrink-0" />
+              <div>
+                <span className="text-sm font-medium text-gray-900 group-hover:text-blue-600">
+                  Invite New User
+                </span>
+              </div>
             </button>
           </div>
         </div>
 
-        {/* Admin Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {adminCards.map((card, index) => {
-            const Icon = card.icon;
-            return (
-              <div
-                key={index}
-                onClick={() => toast.success(`${card.title} functionality coming soon!`)}
-                className="bg-white rounded-lg shadow p-6 cursor-pointer hover:shadow-lg transition-shadow transform hover:-translate-y-1 duration-200"
-              >
-                <div className="flex items-center mb-4">
-                  <div className={`p-3 ${card.bgColor} rounded-full`}>
-                    <Icon className={`w-6 h-6 ${card.color}`} />
+        {/* Admin Management Cards */}
+        <div className="mb-8">
+          <h2 className="text-lg font-semibold text-gray-900 mb-4">Management Sections</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {adminCards.map((card, index) => {
+              const Icon = card.icon;
+              return (
+                <div
+                  key={index}
+                  onClick={() => toast.success(`${card.title} functionality coming soon!`)}
+                  className="bg-white rounded-lg border border-gray-200 p-6 cursor-pointer hover:shadow-md transition-all duration-200 hover:border-gray-300 group"
+                >
+                  <div className="flex items-start mb-4">
+                    <div className={`p-3 ${card.bgColor} rounded-lg flex-shrink-0`}>
+                      <Icon className={`w-6 h-6 ${card.color}`} />
+                    </div>
+                    <div className="ml-4">
+                      <h3 className="text-base font-semibold text-gray-900 group-hover:text-blue-600">
+                        {card.title}
+                      </h3>
+                      <p className="text-sm text-gray-600 mt-1">{card.description}</p>
+                    </div>
                   </div>
-                  <h3 className="ml-4 text-lg font-semibold text-gray-900">{card.title}</h3>
+                  <div className="flex justify-between items-center mt-4">
+                    <span className={`text-sm font-medium ${card.color}`}>
+                      Manage Section
+                    </span>
+                    <span className="text-gray-400 group-hover:text-gray-600 transition-colors">
+                      →
+                    </span>
+                  </div>
                 </div>
-                <p className="text-gray-600 text-sm">{card.description}</p>
-                <div className="mt-4 flex justify-end">
-                  <span className={`${card.color} text-sm font-medium`}>
-                    Manage →
-                  </span>
-                </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
 
         {/* Security Notice */}
-        <div className="mt-8 bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+        <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
           <div className="flex">
-            <FiShield className="w-5 h-5 text-yellow-600 mr-3" />
+            <FiShield className="w-5 h-5 text-yellow-600 mr-3 flex-shrink-0 mt-0.5" />
             <div>
               <h4 className="text-sm font-medium text-yellow-800">Security Notice</h4>
               <p className="text-sm text-yellow-700 mt-1">
@@ -360,12 +404,13 @@ const AdminPage = () => {
 
         {/* Debug Info (remove in production) */}
         {process.env.NODE_ENV === 'development' && (
-          <div className="mt-8 bg-gray-100 p-4 rounded-lg">
-            <h4 className="text-sm font-medium text-gray-800">Debug Info</h4>
-            <p className="text-xs text-gray-600 mt-1">
-              Backend URL: {BACKEND_URL}<br />
-              User Role: {localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).role : 'Unknown'}
-            </p>
+          <div className="mt-6 bg-gray-50 border border-gray-200 rounded-lg p-4">
+            <h4 className="text-sm font-medium text-gray-800 mb-2">Debug Info</h4>
+            <div className="text-xs text-gray-600 space-y-1">
+              <div>Backend URL: {BACKEND_URL}</div>
+              <div>User Role: {localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).role : 'Unknown'}</div>
+              <div>Stats Loaded: {stats ? 'Yes' : 'No'}</div>
+            </div>
           </div>
         )}
       </div>
