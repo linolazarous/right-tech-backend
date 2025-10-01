@@ -2,7 +2,6 @@
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <!-- MANDATORY: Ensure mobile responsiveness -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Right Tech Centre | Affordable Tech Certifications, Diplomas & Degrees</title>
     
@@ -20,60 +19,34 @@
     <!-- FONT AWESOME -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-    <!-- TAILWIND CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- REMOVED: Tailwind CSS CDN - Using built-in Tailwind from React build -->
     
-    <!-- Tailwind Configuration -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                    colors: {
-                        primary: {
-                            50: '#eef2ff',
-                            100: '#e0e7ff',
-                            200: '#c7d2fe',
-                            300: '#a5b4fc',
-                            400: '#818cf8',
-                            500: '#6366f1',
-                            600: '#4f46e5',
-                            700: '#4338ca',
-                            800: '#3730a3',
-                            900: '#312e81',
-                        }
-                    },
-                    animation: {
-                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                    }
-                }
-            }
-        }
-    </script>
-
     <style>
         /* Apply Inter font family and background color globally */
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #0d1117; /* Dark background for modern look */
+            background-color: #0d1117;
+            margin: 0;
+            padding: 0;
         }
+        
         /* Style for the loading/noscript message */
         .loading-container {
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #d1d5db; /* Light gray text */
+            color: #d1d5db;
         }
         
-        /* Custom styles that work with Tailwind */
-        .gradient-text {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        /* Ensure proper loading animation */
+        .animate-bounce {
+            animation: bounce 1s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(-25%); animation-timing-function: cubic-bezier(0.8,0,1,1); }
+            50% { transform: none; animation-timing-function: cubic-bezier(0,0,0.2,1); }
         }
     </style>
 </head>
@@ -91,21 +64,18 @@
             <div class="text-center">
                 <h1 class="text-2xl font-bold text-white mb-4">Loading Right Tech Centre...</h1>
                 <div class="flex justify-center space-x-2">
-                    <div class="w-3 h-3 bg-primary-500 rounded-full animate-bounce"></div>
-                    <div class="w-3 h-3 bg-primary-500 rounded-full animate-bounce" style="animation-delay: 0.1s"></div>
-                    <div class="w-3 h-3 bg-primary-500 rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
+                    <div class="w-3 h-3 bg-blue-500 rounded-full animate-bounce"></div>
+                    <div class="w-3 h-3 bg-blue-500 rounded-full animate-bounce" style="animation-delay: 0.1s"></div>
+                    <div class="w-3 h-3 bg-blue-500 rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        // Simple script to remove the loading message once the React app initializes
         document.addEventListener('DOMContentLoaded', () => {
             const root = document.getElementById('root');
-            // Observer to wait for React content to be replaced
             const observer = new MutationObserver((mutationsList, observer) => {
-                // If the root's first child is not the loading div, React has taken over.
                 if (root.children.length > 0 && !root.querySelector('.loading-container')) {
                     console.log('React app loaded successfully.');
                     observer.disconnect();
@@ -113,7 +83,6 @@
             });
 
             observer.observe(root, { childList: true, subtree: true });
-            
             console.log('Right Tech Centre - JavaScript loaded successfully');
         });
     </script>
