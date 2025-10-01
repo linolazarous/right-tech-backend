@@ -1,4 +1,17 @@
+<<<<<<< HEAD
 import React from 'react';
+=======
+import React, { useEffect } from 'react';
+import PageLayout from '../layouts/PageLayout';
+import { logger } from '../utils/logger';
+import usePageTracking from '../hooks/usePageTracking';
+import HeroSection from '../components/home/HeroSection';
+import ProgramsSection from '../components/home/ProgramsSection';
+import FeaturesSection from '../components/home/FeaturesSection';
+import TestimonialsSection from '../components/home/TestimonialsSection';
+import CtaSection from '../components/home/CtaSection';
+import ErrorBoundary from '../components/ErrorBoundary';
+>>>>>>> 3635da0 (fix: activate all home components and fix runtime issues)
 
 const HomePage = () => {
   console.log('🏠 HomePage rendering...');

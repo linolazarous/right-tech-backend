@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import PageLayout from '../layouts/PageLayout';
 import InterviewPreparation from '../components/InterviewPreparation';
 import { logger } from '../utils/logger';
-import { usePageTracking } from '../hooks/usePageTracking';
+import usePageTracking from '../hooks/usePageTracking';
 import ErrorBoundary from '../components/ErrorBoundary';
 import { useAuth } from '../contexts/AuthContext';
 import LoadingSpinner from '../components/LoadingSpinner';

@@ -3,7 +3,7 @@ import { useAuth } from '../contexts/AuthContext';
 import CareerPathRecommendation from '../components/CareerPathRecommendation';
 import PageLayout from '../layouts/PageLayout';
 import { logger } from '../utils/logger';
-import { usePageTracking } from '../hooks/usePageTracking';
+import usePageTracking from '../hooks/usePageTracking';
 import ErrorBoundary from '../components/ErrorBoundary';
 
 const CareerPathPage = () => {

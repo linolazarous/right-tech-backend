@@ -7,7 +7,7 @@ import EnrolledCourses from '../components/profile/EnrolledCourses';
 import LoadingSpinner from '../components/ui/LoadingSpinner';
 import ErrorAlert from '../components/ui/ErrorAlert';
 import { logger } from '../utils/logger';
-import { usePageTracking } from '../hooks/usePageTracking';
+import usePageTracking from '../hooks/usePageTracking';
 import ErrorBoundary from '../components/ErrorBoundary';
 
 const ProfilePage = () => {

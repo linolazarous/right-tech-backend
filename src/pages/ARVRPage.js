@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import PageLayout from '../layouts/PageLayout';
-import { usePageTracking } from '../hooks/usePageTracking';
+import usePageTracking from '../hooks/usePageTracking';
 import ARVRIntegration from '../components/ARVRIntegration';
 import { logger } from '../utils/logger';
 import ErrorBoundary from '../components/ErrorBoundary';

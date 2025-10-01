@@ -3,7 +3,7 @@ import { useAuth } from '../contexts/AuthContext';
 import PageLayout from '../layouts/PageLayout';
 import LocalizationManager from '../components/content/LocalizationManager';
 import { logger } from '../utils/logger';
-import { usePageTracking } from '../hooks/usePageTracking';
+import usePageTracking from '../hooks/usePageTracking';
 import ErrorBoundary from '../components/ErrorBoundary';
 import LoadingSpinner from '../components/LoadingSpinner';
 

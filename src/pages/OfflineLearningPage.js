@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import PageLayout from '../layouts/PageLayout';
 import OfflineContentManager from '../components/learning/OfflineContentManager';
 import { logger } from '../utils/logger';
-import { usePageTracking } from '../hooks/usePageTracking';
+import usePageTracking from '../hooks/usePageTracking';
 import ErrorBoundary from '../components/ErrorBoundary';
 import { useAuth } from '../contexts/AuthContext';
 

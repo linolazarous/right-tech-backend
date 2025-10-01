@@ -1,7 +1,7 @@
 import React from 'react';
 import CorporateTrainingForm from '../components/CorporateTrainingForm';
 import PageLayout from '../layouts/PageLayout';
-import { usePageTracking } from '../hooks/usePageTracking';
+import usePageTracking from '../hooks/usePageTracking';
 import ErrorBoundary from '../components/ErrorBoundary';
 
 const CorporateTrainingPage = () => {

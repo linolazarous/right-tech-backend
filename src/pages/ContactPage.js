@@ -6,7 +6,7 @@ import toast from 'react-hot-toast';
 import PageLayout from '../layouts/PageLayout';
 import useFormValidation from '../hooks/useFormValidation';
 import { logger } from '../utils/logger';
-import { usePageTracking } from '../hooks/usePageTracking';
+import usePageTracking from '../hooks/usePageTracking';
 import ErrorBoundary from '../components/ErrorBoundary';
 
 const ContactPage = () => {

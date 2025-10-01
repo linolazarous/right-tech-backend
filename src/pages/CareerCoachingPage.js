@@ -3,7 +3,7 @@ import { useAuth } from '../contexts/AuthContext';
 import CareerCoaching from '../components/career/CareerCoaching';
 import PageLayout from '../layouts/PageLayout';
 import { logger } from '../utils/logger';
-import { usePageTracking } from '../hooks/usePageTracking';
+import usePageTracking from '../hooks/usePageTracking';
 import ErrorBoundary from '../components/ErrorBoundary';
 import LoadingSpinner from '../components/LoadingSpinner';
 

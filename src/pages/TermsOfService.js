@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import PageLayout from '../layouts/PageLayout';
 import termsContent from '../content/terms';
 import { logger } from '../utils/logger';
-import { usePageTracking } from '../hooks/usePageTracking';
+import usePageTracking from '../hooks/usePageTracking';
 
 const TermsOfService = () => {
   usePageTracking();
