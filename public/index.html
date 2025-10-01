@@ -20,6 +20,39 @@
     <!-- FONT AWESOME -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
+    <!-- TAILWIND CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            200: '#c7d2fe',
+                            300: '#a5b4fc',
+                            400: '#818cf8',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                            800: '#3730a3',
+                            900: '#312e81',
+                        }
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                }
+            }
+        }
+    </script>
+
     <style>
         /* Apply Inter font family and background color globally */
         body {
@@ -34,6 +67,14 @@
             justify-content: center;
             color: #d1d5db; /* Light gray text */
         }
+        
+        /* Custom styles that work with Tailwind */
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
     </style>
 </head>
 <body class="bg-gray-900">
@@ -47,7 +88,14 @@
     <!-- REACT MOUNT POINT -->
     <div id="root">
         <div class="loading-container">
-            <h1 class="text-xl font-semibold animate-pulse">Loading Right Tech Centre...</h1>
+            <div class="text-center">
+                <h1 class="text-2xl font-bold text-white mb-4">Loading Right Tech Centre...</h1>
+                <div class="flex justify-center space-x-2">
+                    <div class="w-3 h-3 bg-primary-500 rounded-full animate-bounce"></div>
+                    <div class="w-3 h-3 bg-primary-500 rounded-full animate-bounce" style="animation-delay: 0.1s"></div>
+                    <div class="w-3 h-3 bg-primary-500 rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -71,5 +119,3 @@
     </script>
 </body>
 </html>
-
-
