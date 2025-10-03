@@ -7,7 +7,7 @@ const ProgramsSection = () => {
       description: 'Industry-recognized credentials in AI, Cybersecurity, and Cloud Computing. Complete in 3–6 months.',
       price: '$300–$1,500',
       monthly: '$49–$99/month',
-      icon: 'fas fa-certificate',
+      icon: '📜', // Certificate emoji
       color: 'pink',
       tabId: 'certification-tab'
     },
@@ -16,7 +16,7 @@ const ProgramsSection = () => {
       description: '60 credit hours (15 modules) in Web Dev, AI, or Cybersecurity. Complete in 12–18 months.',
       price: '$2,000–$7,000',
       monthly: '$99–$199/month',
-      icon: 'fas fa-graduation-cap',
+      icon: '🎓', // Graduation cap emoji
       color: 'indigo',
       tabId: 'diploma-tab'
     },
@@ -25,7 +25,7 @@ const ProgramsSection = () => {
       description: '120 credit hours (30 modules) in Computer Science or AI. Complete in 24 months.',
       price: '$10,000–$25,000',
       monthly: '$199–$299/month',
-      icon: 'fas fa-university',
+      icon: '🏛️', // University emoji
       color: 'purple',
       tabId: 'degree-tab'
     }
@@ -74,7 +74,7 @@ const ProgramsSection = () => {
                   <div className="-mt-6">
                     <div>
                       <span className={`inline-flex items-center justify-center p-3 ${color.bg} rounded-md shadow-lg`}>
-                        <i className={`${program.icon} text-white text-xl`} aria-hidden="true"></i>
+                        <span className="text-white text-xl" aria-hidden="true">{program.icon}</span>
                       </span>
                     </div>
                     <h3 className="mt-8 text-lg font-medium text-gray-900 dark:text-white tracking-tight">
