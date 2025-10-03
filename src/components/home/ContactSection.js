@@ -39,7 +39,7 @@ const ContactSection = () => {
     <section id="contact" className="py-16 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="lg:grid lg:grid-cols-2 lg:gap-12">
-          <div data-aos="fade-right">
+          <div>
             <h2 className="text-3xl font-extrabold text-gray-900 dark:text-white sm:text-4xl">
               Get In Touch
             </h2>
@@ -49,14 +49,16 @@ const ContactSection = () => {
             
             <div className="mt-8 space-y-6">
               <div className="flex">
-                <i className="fas fa-map-marker-alt text-indigo-600 dark:text-indigo-400 mt-1 fa-2x" aria-hidden="true"></i>
+                <div className="bg-indigo-100 dark:bg-indigo-900 p-3 rounded-lg h-12 w-12 flex items-center justify-center">
+                  <span className="text-indigo-600 dark:text-indigo-400 text-xl">📍</span>
+                </div>
                 <div className="ml-4">
                   <p className="text-lg font-medium text-gray-900 dark:text-white">Our Location</p>
                   <a 
                     href="https://maps.app.goo.gl/9QZ82aV4YVzFwBqA8" 
                     target="_blank" 
                     rel="noopener noreferrer" 
-                    className="mt-1 text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400"
+                    className="mt-1 text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
                   >
                     VGFM+98, North Gudele<br />Juba, South Sudan
                   </a>
@@ -64,12 +66,14 @@ const ContactSection = () => {
               </div>
               
               <div className="flex">
-                <i className="fas fa-phone-alt text-indigo-600 dark:text-indigo-400 mt-1 fa-2x" aria-hidden="true"></i>
+                <div className="bg-indigo-100 dark:bg-indigo-900 p-3 rounded-lg h-12 w-12 flex items-center justify-center">
+                  <span className="text-indigo-600 dark:text-indigo-400 text-xl">📞</span>
+                </div>
                 <div className="ml-4">
                   <p className="text-lg font-medium text-gray-900 dark:text-white">Call Us</p>
                   <a 
                     href="tel:+211925522700" 
-                    className="mt-1 text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400"
+                    className="mt-1 text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
                   >
                     +211 925 522 700
                   </a>
@@ -77,12 +81,14 @@ const ContactSection = () => {
               </div>
               
               <div className="flex">
-                <i className="fas fa-envelope text-indigo-600 dark:text-indigo-400 mt-1 fa-2x" aria-hidden="true"></i>
+                <div className="bg-indigo-100 dark:bg-indigo-900 p-3 rounded-lg h-12 w-12 flex items-center justify-center">
+                  <span className="text-indigo-600 dark:text-indigo-400 text-xl">✉️</span>
+                </div>
                 <div className="ml-4">
                   <p className="text-lg font-medium text-gray-900 dark:text-white">Email Us</p>
                   <a 
                     href="mailto:righttechcentre@gmail.com" 
-                    className="mt-1 text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400"
+                    className="mt-1 text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
                   >
                     righttechcentre@gmail.com
                   </a>
@@ -91,7 +97,7 @@ const ContactSection = () => {
             </div>
           </div>
           
-          <div className="mt-12 lg:mt-0" data-aos="fade-left">
+          <div className="mt-12 lg:mt-0">
             <div className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700">
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
                 Admissions Inquiry Form
@@ -109,7 +115,7 @@ const ContactSection = () => {
                     value={formData.firstName}
                     onChange={handleChange}
                     required
-                    className="mt-1 py-3 px-4 block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md"
+                    className="mt-1 py-3 px-4 block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md transition-colors"
                   />
                 </div>
                 
@@ -124,7 +130,7 @@ const ContactSection = () => {
                     value={formData.lastName}
                     onChange={handleChange}
                     required
-                    className="mt-1 py-3 px-4 block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md"
+                    className="mt-1 py-3 px-4 block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md transition-colors"
                   />
                 </div>
                 
@@ -139,7 +145,7 @@ const ContactSection = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="mt-1 py-3 px-4 block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md"
+                    className="mt-1 py-3 px-4 block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md transition-colors"
                   />
                 </div>
                 
@@ -154,7 +160,7 @@ const ContactSection = () => {
                     value={formData.phone}
                     onChange={handleChange}
                     required
-                    className="mt-1 py-3 px-4 block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md"
+                    className="mt-1 py-3 px-4 block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md transition-colors"
                   />
                 </div>
                 
@@ -168,7 +174,7 @@ const ContactSection = () => {
                     value={formData.program}
                     onChange={handleChange}
                     required
-                    className="mt-1 py-3 px-4 block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md"
+                    className="mt-1 py-3 px-4 block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md transition-colors"
                   >
                     <option value="">-- Select a program --</option>
                     <optgroup label="Certifications">
@@ -191,19 +197,16 @@ const ContactSection = () => {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 disabled:opacity-50"
+                    className="w-full inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 disabled:opacity-50 transition-all duration-300"
                   >
                     {isSubmitting ? (
                       <>
-                        <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                        </svg>
+                        <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-3"></div>
                         Processing...
                       </>
                     ) : (
                       <>
-                        <i className="fas fa-paper-plane mr-2" aria-hidden="true"></i>
+                        <span className="mr-2">📨</span>
                         Submit Inquiry
                       </>
                     )}
