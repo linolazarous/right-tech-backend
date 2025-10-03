@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 const ProgramsSection = () => {
   const programs = [
@@ -10,7 +9,7 @@ const ProgramsSection = () => {
       monthly: '$49–$99/month',
       icon: 'fas fa-certificate',
       color: 'pink',
-      link: '#certification-tab'
+      tabId: 'certification-tab'
     },
     {
       title: 'Diploma Programs', 
@@ -19,7 +18,7 @@ const ProgramsSection = () => {
       monthly: '$99–$199/month',
       icon: 'fas fa-graduation-cap',
       color: 'indigo',
-      link: '#diploma-tab'
+      tabId: 'diploma-tab'
     },
     {
       title: 'Bachelor Degrees',
@@ -28,7 +27,7 @@ const ProgramsSection = () => {
       monthly: '$199–$299/month',
       icon: 'fas fa-university',
       color: 'purple',
-      link: '#degree-tab'
+      tabId: 'degree-tab'
     }
   ];
 
@@ -93,12 +92,13 @@ const ProgramsSection = () => {
                       </span>
                     </div>
                     <div className="mt-6">
-                      <Link 
-                        to={program.link}
-                        className={`font-medium text-sm ${color.text} hover:opacity-80 transition-colors`}
+                      <a 
+                        href={`#${program.tabId}`}
+                        className={`tab-link font-medium text-sm ${color.text} hover:opacity-80 transition-colors`}
+                        data-tab={program.tabId}
                       >
                         View Details →
-                      </Link>
+                      </a>
                     </div>
                   </div>
                 </div>
