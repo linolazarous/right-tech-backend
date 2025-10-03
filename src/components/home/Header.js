@@ -31,7 +31,7 @@ const Header = () => {
               <a href="#programs" className="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium transition-colors">
                 Programs
               </a>
-              <a href="#courses" className="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium transition-colors">
+              <a href="#courses" className="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium transition-colors courses-trigger">
                 Courses
               </a>
               <a href="#structure" className="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium transition-colors">
@@ -39,7 +39,7 @@ const Header = () => {
               </a>
               <a 
                 href="#login" 
-                className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-2 rounded-md text-sm font-medium hover:shadow-lg transition-all duration-300"
+                className="login-trigger bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-2 rounded-md text-sm font-medium hover:shadow-lg transition-all duration-300"
               >
                 <i className="fas fa-sign-in-alt mr-2" aria-hidden="true"></i>
                 Login / Sign Up
@@ -85,7 +85,7 @@ const Header = () => {
           </a>
           <a 
             href="#courses" 
-            className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-indigo-800 transition-colors"
+            className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-indigo-800 transition-colors courses-trigger"
             onClick={() => setIsMobileMenuOpen(false)}
           >
             Courses
@@ -99,7 +99,7 @@ const Header = () => {
           </a>
           <a 
             href="#login" 
-            className="block px-3 py-2 rounded-md text-base font-medium text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 transition-all"
+            className="login-trigger block px-3 py-2 rounded-md text-base font-medium text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 transition-all"
             onClick={() => setIsMobileMenuOpen(false)}
           >
             Login / Sign Up
