@@ -27,7 +27,7 @@ const HeroSection = () => {
             
             {/* Tech Badges */}
             <div className="mt-6 flex flex-wrap gap-2">
-              {['AI & ML', 'Blockchain', 'Cybersecurity', 'Cloud Computing'].map((tech) => (
+              {['🤖 AI & ML', '⛓️ Blockchain', '🛡️ Cybersecurity', '☁️ Cloud Computing'].map((tech) => (
                 <span 
                   key={tech}
                   className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-indigo-800 bg-opacity-60 text-indigo-100"
@@ -51,14 +51,14 @@ const HeroSection = () => {
                 to="/courses" 
                 className="flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-indigo-900 bg-white hover:bg-gray-50 md:py-4 md:text-lg transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg"
               >
-                <i className="fas fa-laptop-code mr-2" aria-hidden="true"></i> 
+                <span className="mr-2">💻</span> 
                 Explore Courses
               </Link>
               <Link 
                 to="/login" 
                 className="flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 md:py-4 md:text-lg transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg"
               >
-                <i className="fas fa-rocket mr-2" aria-hidden="true"></i> 
+                <span className="mr-2">🚀</span> 
                 Get Started
               </Link>
             </div>
