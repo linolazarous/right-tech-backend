@@ -26,14 +26,14 @@ const CtaSection = () => {
                   to="/courses" 
                   className="flex items-center justify-center px-6 py-4 border border-transparent text-lg font-medium rounded-lg shadow-sm text-indigo-900 bg-white hover:bg-indigo-50 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg"
                 >
-                  <i className="fas fa-search mr-3" aria-hidden="true"></i> 
+                  <span className="mr-3">🔍</span> 
                   Explore Programs
                 </Link>
                 <Link 
                   to="/register" 
                   className="flex items-center justify-center px-6 py-4 border border-transparent text-lg font-medium rounded-lg shadow-sm text-white bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg"
                 >
-                  <i className="fas fa-user-graduate mr-3" aria-hidden="true"></i> 
+                  <span className="mr-3">🎓</span> 
                   Apply Now
                 </Link>
               </div>
