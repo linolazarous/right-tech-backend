@@ -39,7 +39,7 @@ const TestimonialsSection = () => {
           {testimonials.map((testimonial, index) => (
             <div key={index} className="bg-white dark:bg-gray-700 p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
               <blockquote className="text-gray-600 dark:text-gray-200">
-                <i className="fas fa-quote-left text-indigo-200 dark:text-indigo-400 text-3xl" aria-hidden="true"></i>
+                <span className="text-indigo-200 dark:text-indigo-400 text-3xl" aria-hidden="true">❝</span>
                 <p className="mt-4 text-lg">"{testimonial.text}"</p>
               </blockquote>
               <figcaption className="mt-6 flex items-center">
