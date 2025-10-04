@@ -39,9 +39,9 @@ const Header = () => {
               </a>
               <a 
                 href="#login" 
-                className="login-trigger bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-2 rounded-md text-sm font-medium hover:shadow-lg transition-all duration-300"
+                className="login-trigger bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-2 rounded-md text-sm font-medium hover:shadow-lg transition-all duration-300 flex items-center"
               >
-                <i className="fas fa-sign-in-alt mr-2" aria-hidden="true"></i>
+                <span className="mr-2">🔐</span>
                 Login / Sign Up
               </a>
             </div>
@@ -99,9 +99,10 @@ const Header = () => {
           </a>
           <a 
             href="#login" 
-            className="login-trigger block px-3 py-2 rounded-md text-base font-medium text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 transition-all"
+            className="login-trigger block px-3 py-2 rounded-md text-base font-medium text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 transition-all flex items-center justify-center"
             onClick={() => setIsMobileMenuOpen(false)}
           >
+            <span className="mr-2">🔐</span>
             Login / Sign Up
           </a>
         </nav>
