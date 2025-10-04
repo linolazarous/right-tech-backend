@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { processPayment } from '../services/paymentService';
-import { FaCreditCard, FaSpinner } from 'react-icons/fa';
+;
 
 const Payment = ({ userId, amount, onPaymentSuccess }) => {
   const [paymentData, setPaymentData] = useState({
@@ -55,7 +55,7 @@ const Payment = ({ userId, amount, onPaymentSuccess }) => {
   return (
     <div className="payment-container">
       <h1 className="payment-header">
-        <FaCreditCard /> Payment
+         Payment
       </h1>
       <p className="payment-amount">Total: ${amount.toFixed(2)}</p>
 
@@ -163,7 +163,7 @@ const Payment = ({ userId, amount, onPaymentSuccess }) => {
           >
             {isProcessing ? (
               <>
-                <FaSpinner className="spinner" /> Processing...
+                 Processing...
               </>
             ) : (
               `Pay $${amount.toFixed(2)}`

@@ -6,7 +6,7 @@ import JobFilters from '../components/JobFilters';
 import JobList from '../components/JobList';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { logger } from '../utils/logger';
-import usePageTracking from '../hooks/usePageTracking';
+import { usePageTracking } from '../hooks/usePageTracking';
 import ErrorBoundary from '../components/ErrorBoundary';
 import ErrorAlert from '../components/ui/ErrorAlert';
 

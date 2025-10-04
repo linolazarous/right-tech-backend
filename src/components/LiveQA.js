@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { scheduleLiveQA } from '../services/liveQAService';
 import PropTypes from 'prop-types';
-import { FaCalendarAlt, FaChalkboardTeacher } from 'react-icons/fa';
+;
 
 const LiveQA = ({ userId }) => {
   const [sessionData, setSessionData] = useState({
@@ -57,7 +57,7 @@ const LiveQA = ({ userId }) => {
   return (
     <div className="live-qa-container">
       <h1 className="live-qa-title">
-        <FaChalkboardTeacher /> Schedule Live Q&A Session
+         Schedule Live Q&A Session
       </h1>
       
       {submitStatus.message && (
@@ -83,7 +83,7 @@ const LiveQA = ({ userId }) => {
         <div className="form-row">
           <div className="form-group">
             <label htmlFor="date">
-              <FaCalendarAlt /> Date & Time
+               Date & Time
             </label>
             <input
               type="datetime-local"

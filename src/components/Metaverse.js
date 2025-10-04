@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
-import { FaUniversity, FaSpinner } from 'react-icons/fa';
+;
 
 const Metaverse = ({ userId }) => {
   const [formData, setFormData] = useState({
@@ -48,7 +48,7 @@ const Metaverse = ({ userId }) => {
   return (
     <div className="metaverse-container">
       <h1 className="metaverse-title">
-        <FaUniversity /> Virtual Campus Builder
+         Virtual Campus Builder
       </h1>
 
       {error && <div className="error-message">{error}</div>}
@@ -124,7 +124,7 @@ const Metaverse = ({ userId }) => {
           >
             {isCreating ? (
               <>
-                <FaSpinner className="spinner" /> Creating...
+                 Creating...
               </>
             ) : 'Create Virtual Campus'}
           </button>

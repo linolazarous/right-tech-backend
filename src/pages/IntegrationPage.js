@@ -5,7 +5,7 @@ import IntegrationCard from '../components/integrations/IntegrationCard';
 import { checkIntegrationHealth } from '../services/integrationService';
 import IntegrationSkeleton from '../components/integrations/IntegrationSkeleton';
 import { logger } from '../utils/logger';
-import usePageTracking from '../hooks/usePageTracking';
+import { usePageTracking } from '../hooks/usePageTracking';
 import ErrorBoundary from '../components/ErrorBoundary';
 import ErrorAlert from '../components/ui/ErrorAlert';
 

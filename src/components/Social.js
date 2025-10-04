@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { getSocialFeed, getSuggestedConnections } from '../services/socialService';
 import SocialPost from './SocialPost';
 import ConnectionCard from './ConnectionCard';
-import { FaUsers, FaComment, FaUserPlus, FaBell } from 'react-icons/fa';
+;
 
 const Social = ({ userId }) => {
   const [feed, setFeed] = useState([]);
@@ -41,7 +41,7 @@ const Social = ({ userId }) => {
     <div className="social-container">
       <div className="social-header">
         <h1>
-          <FaUsers /> Social Hub
+           Social Hub
         </h1>
         <p className="subheader">
           Connect with peers, share insights, and grow together
@@ -53,19 +53,19 @@ const Social = ({ userId }) => {
           className={`tab-button ${activeTab === 'feed' ? 'active' : ''}`}
           onClick={() => setActiveTab('feed')}
         >
-          <FaComment /> Community Feed
+           Community Feed
         </button>
         <button
           className={`tab-button ${activeTab === 'connect' ? 'active' : ''}`}
           onClick={() => setActiveTab('connect')}
         >
-          <FaUserPlus /> Connect
+           Connect
         </button>
         <button
           className={`tab-button ${activeTab === 'notifications' ? 'active' : ''}`}
           onClick={() => setActiveTab('notifications')}
         >
-          <FaBell /> Notifications
+           Notifications
         </button>
       </div>
 

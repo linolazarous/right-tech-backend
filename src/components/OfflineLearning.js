@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { getDownloadableCourses, downloadCourse } from '../services/offlineService';
-import { FaDownload, FaCheckCircle, FaWifi } from 'react-icons/fa';
+;
 
 const OfflineLearning = ({ userId }) => {
   const [courses, setCourses] = useState([]);
@@ -45,7 +45,7 @@ const OfflineLearning = ({ userId }) => {
   return (
     <div className="offline-learning">
       <h1 className="offline-header">
-        <FaWifi /> Offline Learning
+         Offline Learning
       </h1>
       <p className="offline-subtitle">
         Download courses for offline access when you don't have internet connection
@@ -75,7 +75,7 @@ const OfflineLearning = ({ userId }) => {
               <div className="download-action">
                 {course.downloaded ? (
                   <span className="downloaded">
-                    <FaCheckCircle /> Downloaded
+                     Downloaded
                   </span>
                 ) : (
                   <button
@@ -87,7 +87,7 @@ const OfflineLearning = ({ userId }) => {
                       'Downloading...'
                     ) : (
                       <>
-                        <FaDownload /> Download
+                         Download
                       </>
                     )}
                   </button>

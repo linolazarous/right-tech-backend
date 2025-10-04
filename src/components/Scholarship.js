@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { getAvailableScholarships, applyForScholarship } from '../services/scholarshipService';
 import ScholarshipCard from './ScholarshipCard';
-import { FaGraduationCap, FaSearch, FaMoneyBillWave } from 'react-icons/fa';
+;
 
 const Scholarship = ({ userId }) => {
   const [scholarships, setScholarships] = useState([]);
@@ -65,7 +65,7 @@ const Scholarship = ({ userId }) => {
     <div className="scholarship-container">
       <div className="scholarship-header">
         <h1>
-          <FaGraduationCap /> Scholarship Opportunities
+           Scholarship Opportunities
         </h1>
         <p className="subheader">
           Financial support for your education journey
@@ -90,7 +90,7 @@ const Scholarship = ({ userId }) => {
       {activeTab === 'available' && (
         <div className="available-scholarships">
           <div className="search-bar">
-            <FaSearch className="search-icon" />
+            
             <input
               type="text"
               placeholder="Search scholarships..."
@@ -122,7 +122,7 @@ const Scholarship = ({ userId }) => {
         <div className="applied-scholarships">
           {appliedScholarships.length === 0 ? (
             <div className="no-applications">
-              <FaMoneyBillWave className="icon" />
+              
               <p>You haven't applied for any scholarships yet</p>
               <button onClick={() => setActiveTab('available')}>
                 Browse Available Scholarships

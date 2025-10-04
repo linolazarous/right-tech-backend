@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FaTrophy, FaMedal, FaUser } from 'react-icons/fa';
+;
 
 const Leaderboard = ({ leaderboard, isLoading, error, className }) => {
   const getRankIcon = (index) => {
     switch(index) {
-      case 0: return <FaTrophy className="gold" />;
-      case 1: return <FaMedal className="silver" />;
-      case 2: return <FaMedal className="bronze" />;
+      case 0: return ;
+      case 1: return ;
+      case 2: return ;
       default: return <span className="rank">{index + 1}</span>;
     }
   };
@@ -19,7 +19,7 @@ const Leaderboard = ({ leaderboard, isLoading, error, className }) => {
   return (
     <div className={`leaderboard ${className}`}>
       <h2 className="leaderboard-title">
-        <FaTrophy /> Top Performers
+         Top Performers
       </h2>
       
       <ul className="leaderboard-list">
@@ -34,7 +34,7 @@ const Leaderboard = ({ leaderboard, isLoading, error, className }) => {
                 {entry.avatar ? (
                   <img src={entry.avatar} alt={entry.name} />
                 ) : (
-                  <FaUser className="default-avatar" />
+                  
                 )}
               </div>
               <span className="user-name">{entry.name}</span>

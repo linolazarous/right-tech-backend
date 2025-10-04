@@ -5,7 +5,7 @@ import VRDeviceChecker from '../components/vr/VRDeviceChecker';
 import VRErrorBoundary from '../components/vr/VRErrorBoundary';
 import VRLoading from '../components/vr/VRLoading';
 import { logger } from '../utils/logger';
-import usePageTracking from '../hooks/usePageTracking';
+import { usePageTracking } from '../hooks/usePageTracking';
 
 const VRLabComponent = React.lazy(() => import('../components/vr/VRLabComponent'));
 

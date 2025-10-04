@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { getVRLearningModules } from '../services/vrLearningService';
-import { FaVrCardboard, FaBookOpen, FaUserGraduate, FaFilter, FaArrowLeft } from 'react-icons/fa';
+;
 
 const VRLearning = ({ userId }) => {
   const [modules, setModules] = useState([]);
@@ -172,12 +172,12 @@ const VRLearning = ({ userId }) => {
     return (
       <div style={containerStyle}>
         <button onClick={handleBackToList} style={backButtonStyle}>
-          <FaArrowLeft /> Back to modules
+           Back to modules
         </button>
         <div style={detailContainerStyle}>
           <h2 style={{ color: '#2c3e50', marginBottom: '15px' }}>{selectedModule.title}</h2>
           <div style={vrPlaceholderStyle}>
-            <FaVrCardboard size={64} style={{ color: '#3498db' }} />
+            
             <p style={{ fontSize: '1.2rem', margin: '15px 0' }}>VR Experience: {selectedModule.title}</p>
             <button 
               style={{
@@ -207,13 +207,13 @@ const VRLearning = ({ userId }) => {
     <div style={containerStyle}>
       <header style={headerStyle}>
         <h1>
-          <FaVrCardboard style={headerIconStyle} /> Immersive VR Learning
+           Immersive VR Learning
         </h1>
         <p style={subtitleStyle}>Explore interactive virtual reality experiences</p>
       </header>
 
       <div style={filterContainerStyle}>
-        <FaFilter style={{ color: '#7f8c8d' }} />
+        
         <select
           value={activeCategory}
           onChange={(e) => setActiveCategory(e.target.value)}
@@ -236,7 +236,7 @@ const VRLearning = ({ userId }) => {
               onClick={() => handleModuleSelect(module)}
             >
               <div style={cardIconStyle}>
-                {module.category === 'education' ? <FaBookOpen /> : <FaUserGraduate />}
+                {module.category === 'education' ?  : }
               </div>
               <h3 style={{ margin: '10px 0', color: '#2c3e50' }}>{module.title}</h3>
               <p style={{ color: '#7f8c8d', marginBottom: '15px' }}>{module.shortDescription}</p>

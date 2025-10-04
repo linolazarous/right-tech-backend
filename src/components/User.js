@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { getUserProfile, updateUserProfile } from '../services/userService';
-import { FaUser, FaEdit, FaSave, FaCamera } from 'react-icons/fa';
+;
 
 const User = ({ userId }) => {
   const [profile, setProfile] = useState(null);
@@ -76,7 +76,7 @@ const User = ({ userId }) => {
   return (
     <div className="user-profile-container">
       <h1 className="profile-header">
-        <FaUser /> User Profile
+         User Profile
       </h1>
 
       <div className="profile-content">
@@ -90,7 +90,7 @@ const User = ({ userId }) => {
                   className="avatar"
                 />
                 <label className="avatar-upload">
-                  <FaCamera /> Change Photo
+                   Change Photo
                   <input
                     type="file"
                     accept="image/*"
@@ -113,7 +113,7 @@ const User = ({ userId }) => {
               onClick={() => setIsEditing(true)}
               className="edit-button"
             >
-              <FaEdit /> Edit Profile
+               Edit Profile
             </button>
           )}
         </div>
@@ -171,11 +171,11 @@ const User = ({ userId }) => {
                 >
                   {isLoading ? (
                     <>
-                      <FaSpinner className="spinner" /> Saving...
+                       Saving...
                     </>
                   ) : (
                     <>
-                      <FaSave /> Save Changes
+                       Save Changes
                     </>
                   )}
                 </button>

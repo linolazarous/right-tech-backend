@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { getSubscriptions, cancelSubscription, upgradeSubscription } from '../services/subscriptionService';
-import { FaCreditCard, FaSyncAlt, FaTimesCircle } from 'react-icons/fa';
+;
 
 const Subscription = ({ userId }) => {
   const [subscriptions, setSubscriptions] = useState([]);
@@ -66,7 +66,7 @@ const Subscription = ({ userId }) => {
   return (
     <div className="subscription-container">
       <h1 className="subscription-header">
-        <FaCreditCard /> Subscription Management
+         Subscription Management
       </h1>
 
       <div className="subscription-tabs">
@@ -110,13 +110,13 @@ const Subscription = ({ userId }) => {
                     className="upgrade-button"
                     disabled={sub.planName === 'Premium'}
                   >
-                    <FaSyncAlt /> Upgrade Plan
+                     Upgrade Plan
                   </button>
                   <button
                     onClick={() => handleCancel(sub.id)}
                     className="cancel-button"
                   >
-                    <FaTimesCircle /> Cancel
+                     Cancel
                   </button>
                 </div>
               </div>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import MicroLessonCard from './MicroLessonCard';
-import { FaFilter, FaSearch, FaClock } from 'react-icons/fa';
+;
 
 const MicroLearning = ({ userId }) => {
   const [lessons, setLessons] = useState([]);
@@ -51,7 +51,7 @@ const MicroLearning = ({ userId }) => {
 
       <div className="lesson-controls">
         <div className="search-bar">
-          <FaSearch className="search-icon" />
+          
           <input
             type="text"
             placeholder="Search lessons..."
@@ -61,7 +61,7 @@ const MicroLearning = ({ userId }) => {
         </div>
 
         <div className="duration-filter">
-          <FaFilter className="filter-icon" />
+          
           <select
             value={durationFilter}
             onChange={(e) => setDurationFilter(e.target.value)}

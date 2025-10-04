@@ -6,7 +6,7 @@ import toast from 'react-hot-toast';
 import PageLayout from '../layouts/PageLayout';
 import useFormValidation from '../hooks/useFormValidation';
 import { logger } from '../utils/logger';
-import usePageTracking from '../hooks/usePageTracking';
+import { usePageTracking } from '../hooks/usePageTracking';
 import ErrorBoundary from '../components/ErrorBoundary';
 
 const ContactPage = () => {
@@ -121,7 +121,7 @@ const ContactPage = () => {
               
               <div className="mt-8 space-y-6">
                 <div className="flex">
-                  <i className="fas fa-map-marker-alt text-indigo-600 mt-1 text-xl" aria-hidden="true"></i>
+                  
                   <div className="ml-4">
                     <p className="text-lg font-medium text-gray-900">Our Location</p>
                     <a 
@@ -136,7 +136,7 @@ const ContactPage = () => {
                 </div>
                 
                 <div className="flex">
-                  <i className="fas fa-phone-alt text-indigo-600 mt-1 text-xl" aria-hidden="true"></i>
+                  
                   <div className="ml-4">
                     <p className="text-lg font-medium text-gray-900">Call Us</p>
                     <a href="tel:+211925522700" className="mt-1 text-gray-600 hover:text-indigo-600">
@@ -146,7 +146,7 @@ const ContactPage = () => {
                 </div>
                 
                 <div className="flex">
-                  <i className="fas fa-envelope text-indigo-600 mt-1 text-xl" aria-hidden="true"></i>
+                  
                   <div className="ml-4">
                     <p className="text-lg font-medium text-gray-900">Email Us</p>
                     <a href="mailto:righttechcentre@gmail.com" className="mt-1 text-gray-600 hover:text-indigo-600">
@@ -310,12 +310,12 @@ const ContactPage = () => {
                     >
                       {submitting ? (
                         <>
-                          <i className="fas fa-spinner fa-spin mr-2" aria-hidden="true"></i>
+                          
                           Processing...
                         </>
                       ) : (
                         <>
-                          <i className="fas fa-paper-plane mr-2" aria-hidden="true"></i>
+                          
                           Submit Application
                         </>
                       )}

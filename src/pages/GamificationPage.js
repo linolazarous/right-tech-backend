@@ -5,7 +5,7 @@ import Leaderboard from '../components/gamification/Leaderboard';
 import AchievementTracker from '../components/gamification/AchievementTracker';
 import useGamification from '../hooks/useGamification';
 import { logger } from '../utils/logger';
-import usePageTracking from '../hooks/usePageTracking';
+import { usePageTracking } from '../hooks/usePageTracking';
 import ErrorBoundary from '../components/ErrorBoundary';
 import LoadingSkeleton from '../components/gamification/LoadingSkeleton';
 import GamificationError from '../components/gamification/GamificationError';

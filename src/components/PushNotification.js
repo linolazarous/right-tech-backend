@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { getNotificationSettings, updateNotificationSettings } from '../services/notificationService';
-import { FaBell, FaBellSlash, FaSave } from 'react-icons/fa';
+;
 
 const PushNotification = ({ userId }) => {
   const [settings, setSettings] = useState({
@@ -73,7 +73,7 @@ const PushNotification = ({ userId }) => {
   return (
     <div className="notification-settings">
       <h1 className="notification-header">
-        <FaBell /> Notification Settings
+         Notification Settings
       </h1>
 
       {saveStatus.message && (
@@ -99,9 +99,9 @@ const PushNotification = ({ userId }) => {
             </label>
             <p className="section-description">
               {settings.enabled ? (
-                <><FaBell /> Notifications are enabled</>
+                <> Notifications are enabled</>
               ) : (
-                <><FaBellSlash /> Notifications are disabled</>
+                <> Notifications are disabled</>
               )}
             </p>
           </div>
@@ -206,11 +206,11 @@ const PushNotification = ({ userId }) => {
         >
           {isSaving ? (
             <>
-              <FaSpinner className="spinner" /> Saving...
+               Saving...
             </>
           ) : (
             <>
-              <FaSave /> Save Settings
+               Save Settings
             </>
           )}
         </button>

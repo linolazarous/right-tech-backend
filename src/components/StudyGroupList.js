@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { getStudyGroups, createStudyGroup } from '../services/socialService';
 import StudyGroupCard from './StudyGroupCard';
-import { FaUsers, FaSearch, FaPlus } from 'react-icons/fa';
+;
 
 const StudyGroupList = ({ userId }) => {
   const [groups, setGroups] = useState([]);
@@ -90,7 +90,7 @@ const StudyGroupList = ({ userId }) => {
     <div className="study-group-container">
       <div className="study-group-header">
         <h1>
-          <FaUsers /> Study Groups
+           Study Groups
         </h1>
         <p className="subheader">
           Collaborate with peers to enhance your learning experience
@@ -99,7 +99,7 @@ const StudyGroupList = ({ userId }) => {
 
       <div className="group-controls">
         <div className="search-bar">
-          <FaSearch className="search-icon" />
+          
           <input
             type="text"
             placeholder="Search groups..."
@@ -111,7 +111,7 @@ const StudyGroupList = ({ userId }) => {
           onClick={() => setShowCreateForm(true)}
           className="create-button"
         >
-          <FaPlus /> Create New Group
+           Create New Group
         </button>
       </div>
 

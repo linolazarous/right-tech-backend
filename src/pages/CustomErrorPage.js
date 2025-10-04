@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useRouteError } from 'react-router-dom';
-import { FaExclamationTriangle, FaHome, FaRedo } from 'react-icons/fa';
+;
 import PageLayout from '../layouts/PageLayout';
 
 const CustomErrorPage = () => {
@@ -39,7 +39,7 @@ const CustomErrorPage = () => {
         <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 border border-gray-200 dark:border-gray-700">
           {/* Error Icon */}
           <div className="mx-auto flex items-center justify-center h-20 w-20 rounded-full bg-red-100 dark:bg-red-900/20">
-            <FaExclamationTriangle className="h-10 w-10 text-red-600 dark:text-red-400" />
+            
           </div>
 
           {/* Error Content */}
@@ -66,7 +66,7 @@ const CustomErrorPage = () => {
                 to="/"
                 className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               >
-                <FaHome className="mr-2 h-4 w-4" />
+                
                 Go Home
               </Link>
               
@@ -74,7 +74,7 @@ const CustomErrorPage = () => {
                 onClick={() => window.location.reload()}
                 className="inline-flex items-center justify-center px-6 py-3 border border-gray-300 dark:border-gray-600 text-base font-medium rounded-md text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               >
-                <FaRedo className="mr-2 h-4 w-4" />
+                
                 Try Again
               </button>
             </div>

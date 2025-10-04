@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { getSocialMediaIntegrations, connectSocialAccount } from '../services/socialMediaService';
-import { FaTwitter, FaLinkedin, FaFacebook, FaCheckCircle } from 'react-icons/fa';
+;
 
 const SocialMedia = ({ userId }) => {
   const [integrations, setIntegrations] = useState([]);
@@ -44,9 +44,9 @@ const SocialMedia = ({ userId }) => {
 
   const getPlatformIcon = (platform) => {
     switch (platform.toLowerCase()) {
-      case 'twitter': return <FaTwitter />;
-      case 'linkedin': return <FaLinkedin />;
-      case 'facebook': return <FaFacebook />;
+      case 'twitter': return ;
+      case 'linkedin': return ;
+      case 'facebook': return ;
       default: return null;
     }
   };
@@ -71,7 +71,7 @@ const SocialMedia = ({ userId }) => {
 
             {integration.connected ? (
               <div className="connection-status connected">
-                <FaCheckCircle /> Connected
+                 Connected
                 <p className="connection-details">
                   Connected as: {integration.username}
                 </p>

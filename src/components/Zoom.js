@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { FaVideo, FaCalendarAlt, FaSearch, FaTimes } from 'react-icons/fa';
+;
 
 const Zoom = ({ userId }) => {
   const [meetingId, setMeetingId] = useState('');
@@ -101,7 +101,7 @@ const Zoom = ({ userId }) => {
     <div style={containerStyle}>
       <header style={headerStyle}>
         <h1>
-          <FaVideo style={headerIconStyle} /> Zoom Integration
+           Zoom Integration
         </h1>
         <p style={{ color: '#7f8c8d', fontSize: '1.1rem' }}>
           Seamlessly connect with your classes and meetings
@@ -132,7 +132,7 @@ const Zoom = ({ userId }) => {
       {activeTab === 'join' && (
         <div style={{ textAlign: 'center' }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <FaSearch style={{ marginRight: '10px', color: '#7f8c8d' }} />
+            
             <input
               type="text"
               placeholder="Enter Meeting ID or Personal Link Name"
@@ -150,7 +150,7 @@ const Zoom = ({ userId }) => {
       {activeTab === 'schedule' && (
         <div style={{ textAlign: 'center' }}>
           <button onClick={handleScheduleMeeting} style={buttonStyle}>
-            <FaCalendarAlt style={{ marginRight: '8px' }} /> Schedule New Meeting
+             Schedule New Meeting
           </button>
         </div>
       )}
@@ -176,7 +176,7 @@ const Zoom = ({ userId }) => {
                     }
                   }}
                 >
-                  <FaTimes /> Cancel
+                   Cancel
                 </button>
               </div>
             ))

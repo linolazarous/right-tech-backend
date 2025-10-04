@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { generateResume, saveResume, getResumeTemplates } from '../services/resumeBuilderService';
-import { FaFileDownload, FaEdit, FaSave, FaFileAlt } from 'react-icons/fa';
+;
 
 const ResumeBuilder = ({ userId }) => {
   const [resume, setResume] = useState(null);
@@ -81,7 +81,7 @@ const ResumeBuilder = ({ userId }) => {
     <div className="resume-builder">
       <div className="resume-header">
         <h1>
-          <FaFileAlt /> Resume Builder
+           Resume Builder
         </h1>
         <div className="resume-actions">
           {isEditing ? (
@@ -93,11 +93,11 @@ const ResumeBuilder = ({ userId }) => {
               >
                 {isLoading ? (
                   <>
-                    <FaSpinner className="spinner" /> Saving...
+                     Saving...
                   </>
                 ) : (
                   <>
-                    <FaSave /> Save Resume
+                     Save Resume
                   </>
                 )}
               </button>
@@ -114,10 +114,10 @@ const ResumeBuilder = ({ userId }) => {
                 onClick={() => setIsEditing(true)}
                 className="edit-button"
               >
-                <FaEdit /> Edit Resume
+                 Edit Resume
               </button>
               <button className="download-button">
-                <FaFileDownload /> Download PDF
+                 Download PDF
               </button>
             </>
           )}

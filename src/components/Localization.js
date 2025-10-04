@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
-import { FaGlobeAmericas } from 'react-icons/fa';
+;
 
 const Localization = ({ className }) => {
   const { i18n } = useTranslation();
@@ -33,7 +33,7 @@ const Localization = ({ className }) => {
 
   return (
     <div className={`localization-selector ${className}`}>
-      <FaGlobeAmericas className="language-icon" />
+      
       <select
         value={language}
         onChange={handleLanguageChange}

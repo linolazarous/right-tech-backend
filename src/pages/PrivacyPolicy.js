@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import PageLayout from '../layouts/PageLayout';
 import privacyContent from '../content/privacy';
 import { logger } from '../utils/logger';
-import usePageTracking from '../hooks/usePageTracking';
+import { usePageTracking } from '../hooks/usePageTracking';
 
 const PrivacyPolicyPage = () => {
   usePageTracking();

@@ -5,7 +5,7 @@ import WebGLChecker from '../components/virtual-lab/WebGLChecker';
 import LabLoading from '../components/virtual-lab/LabLoading';
 import ErrorBoundary from '../components/ErrorBoundary';
 import { logger } from '../utils/logger';
-import usePageTracking from '../hooks/usePageTracking';
+import { usePageTracking } from '../hooks/usePageTracking';
 
 const VirtualLabView = React.lazy(() => import('../components/virtual-lab/VirtualLabView'));
 

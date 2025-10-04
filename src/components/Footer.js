@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaLinkedin, FaTwitter, FaGithub, FaEnvelope } from 'react-icons/fa';
+;
 
 const Footer = () => {
     const currentYear = new Date().getFullYear();
@@ -39,16 +39,16 @@ const Footer = () => {
                         <h4 className="text-lg font-semibold mb-4">Connect With Us</h4>
                         <div className="flex space-x-4 mb-4">
                             <a href="https://linkedin.com/company" aria-label="LinkedIn" className="text-gray-400 hover:text-white">
-                                <FaLinkedin size={20} />
+                                
                             </a>
                             <a href="https://twitter.com" aria-label="Twitter" className="text-gray-400 hover:text-white">
-                                <FaTwitter size={20} />
+                                
                             </a>
                             <a href="https://github.com" aria-label="GitHub" className="text-gray-400 hover:text-white">
-                                <FaGithub size={20} />
+                                
                             </a>
                             <a href="mailto:contact@righttechcentre.com" aria-label="Email" className="text-gray-400 hover:text-white">
-                                <FaEnvelope size={20} />
+                                
                             </a>
                         </div>
                         <p className="text-gray-400">contact@righttechcentre.com</p>

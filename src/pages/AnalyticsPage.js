@@ -5,7 +5,7 @@ import PageLayout from '../layouts/PageLayout';
 import { logger } from '../utils/logger';
 import ErrorBoundary from '../components/ErrorBoundary';
 import LoadingSpinner from '../components/LoadingSpinner';
-import usePageTracking from '../hooks/usePageTracking';
+import { usePageTracking } from '../hooks/usePageTracking';
 
 const AnalyticsPage = () => {
   const { currentUser, loading: authLoading } = useAuth();

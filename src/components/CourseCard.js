@@ -80,7 +80,7 @@ const CourseCard = ({
           
           {course.duration && (
             <span className="inline-flex items-center text-xs text-gray-500">
-              <i className="far fa-clock mr-1" aria-hidden="true"></i>
+              
               {course.duration}
             </span>
           )}
@@ -109,12 +109,12 @@ const CourseCard = ({
           >
             {showProgress && progressPercentage > 0 ? (
               <>
-                <i className="fas fa-play mr-2" aria-hidden="true"></i>
+                
                 Continue
               </>
             ) : (
               <>
-                <i className="fas fa-book-open mr-2" aria-hidden="true"></i>
+                
                 View Details
               </>
             )}

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useAuth } from '../contexts/AuthContext';
 import PageLayout from '../layouts/PageLayout';
 import { logger } from '../utils/logger';
-import usePageTracking from '../hooks/usePageTracking';
+import { usePageTracking } from '../hooks/usePageTracking';
 import ErrorBoundary from '../components/ErrorBoundary';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { submitContentModeration } from '../services/moderationService';

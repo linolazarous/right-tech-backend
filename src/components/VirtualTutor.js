@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { askVirtualTutor, getTutorHistory } from '../services/virtualTutorService';
-import { FaRobot, FaPaperPlane, FaUser, FaSpinner } from 'react-icons/fa';
+;
 
 const VirtualTutor = ({ userId }) => {
   const [question, setQuestion] = useState('');
@@ -72,7 +72,7 @@ const VirtualTutor = ({ userId }) => {
   return (
     <div className="virtual-tutor-container">
       <h1 className="tutor-header">
-        <FaRobot /> Virtual Tutor
+         Virtual Tutor
       </h1>
       <p className="subheader">
         Get personalized help with your learning questions
@@ -100,9 +100,9 @@ const VirtualTutor = ({ userId }) => {
               >
                 <div className="message-header">
                   {msg.sender === 'user' ? (
-                    <FaUser className="user-icon" />
+                    
                   ) : (
-                    <FaRobot className="tutor-icon" />
+                    
                   )}
                   <span className="message-time">
                     {new Date(msg.timestamp).toLocaleTimeString()}
@@ -129,10 +129,10 @@ const VirtualTutor = ({ userId }) => {
           {isLoading && (
             <div className="message tutor">
               <div className="message-header">
-                <FaRobot className="tutor-icon" />
+                
               </div>
               <div className="message-content">
-                <FaSpinner className="spinner" /> Thinking...
+                 Thinking...
               </div>
             </div>
           )}
@@ -152,7 +152,7 @@ const VirtualTutor = ({ userId }) => {
             disabled={isLoading || !question.trim()}
             className="send-button"
           >
-            <FaPaperPlane />
+            
           </button>
         </form>
       </div>

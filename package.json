@@ -1,6 +1,7 @@
 {
   "name": "righttechcentre-frontend",
   "version": "1.0.0",
+  "type": "module",
   "description": "Right Tech Centre - React Frontend",
   "private": true,
   "main": "src/index.js",
@@ -20,7 +21,7 @@
   "author": "Right Tech Centre",
   "license": "MIT",
   "dependencies": {
-    "@sentry/react": "^8.0.0",
+    "@sentry/react": "^7.91.0",
     "aos": "^2.3.4",
     "axios": "^1.6.0",
     "i18next": "^23.7.6",
@@ -32,7 +33,6 @@
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.0",
     "react-i18next": "^13.5.0",
-    "react-icons": "^4.12.0",
     "react-google-recaptcha-v3": "^1.10.1",
     "react-router-dom": "^6.8.0",
     "react-helmet-async": "^1.3.0",
@@ -48,7 +48,8 @@
     "web-vitals": "^3.5.0"
   },
   "engines": {
-    "node": "22.x"
+    "node": ">=18.0.0 <=20.x",
+    "npm": ">=8.0.0"
   },
   "browserslist": {
     "production": [
@@ -63,4 +64,3 @@
     ]
   }
 }
-

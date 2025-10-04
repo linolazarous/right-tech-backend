@@ -4,7 +4,7 @@ import PageLayout from '../layouts/PageLayout';
 import StudyGroupList from '../components/community/StudyGroupList';
 import { useStudyGroups } from '../hooks/useStudyGroups';
 import { logger } from '../utils/logger';
-import usePageTracking from '../hooks/usePageTracking';
+import { usePageTracking } from '../hooks/usePageTracking';
 import ErrorBoundary from '../components/ErrorBoundary';
 import LoadingSpinner from '../components/LoadingSpinner';
 import ErrorAlert from '../components/ui/ErrorAlert';

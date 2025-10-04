@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { getVRLabs, joinVRLab } from '../services/vrLabService';
-import { FaVrCardboard, FaUserFriends, FaClock, FaDoorOpen } from 'react-icons/fa';
+;
 
 const VRLab = ({ userId }) => {
   const [labs, setLabs] = useState([]);
@@ -51,7 +51,7 @@ const VRLab = ({ userId }) => {
   return (
     <div className="vr-lab-container">
       <h1 className="vr-lab-header">
-        <FaVrCardboard /> VR Learning Labs
+         VR Learning Labs
       </h1>
       <p className="subheader">
         Immersive virtual reality learning experiences
@@ -89,10 +89,10 @@ const VRLab = ({ userId }) => {
                 <p className="vr-lab-description">{lab.description}</p>
                 <div className="vr-lab-meta">
                   <span className="meta-item">
-                    <FaClock /> {lab.duration} minutes
+                     {lab.duration} minutes
                   </span>
                   <span className="meta-item">
-                    <FaUserFriends /> {lab.participants}/{lab.capacity} spots
+                     {lab.participants}/{lab.capacity} spots
                   </span>
                 </div>
                 <div className="vr-lab-skills">
@@ -108,7 +108,7 @@ const VRLab = ({ userId }) => {
                   disabled={isLoading}
                   className="join-lab-button"
                 >
-                  <FaDoorOpen /> {activeTab === 'available' ? 'Join Lab' : 'Rejoin Lab'}
+                   {activeTab === 'available' ? 'Join Lab' : 'Rejoin Lab'}
                 </button>
               </div>
             </div>

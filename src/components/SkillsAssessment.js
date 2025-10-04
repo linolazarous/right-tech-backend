@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { assessSkill, getSkillCategories, getUserSkillHistory } from '../services/skillAssessmentService';
 import SkillRadarChart from './SkillRadarChart';
-import { FaChartLine, FaClipboardCheck, FaHistory } from 'react-icons/fa';
+;
 
 const SkillsAssessment = ({ userId }) => {
   const [skillCategories, setSkillCategories] = useState([]);
@@ -69,7 +69,7 @@ const SkillsAssessment = ({ userId }) => {
   return (
     <div className="skills-assessment-container">
       <h1 className="skills-header">
-        <FaClipboardCheck /> Skills Assessment
+         Skills Assessment
       </h1>
       <p className="subheader">
         Evaluate and track your technical skill proficiency
@@ -86,7 +86,7 @@ const SkillsAssessment = ({ userId }) => {
           className={`tab-button ${activeTab === 'history' ? 'active' : ''}`}
           onClick={() => setActiveTab('history')}
         >
-          <FaHistory /> Assessment History
+           Assessment History
         </button>
       </div>
 
@@ -182,7 +182,7 @@ const SkillsAssessment = ({ userId }) => {
             <>
               <div className="skills-chart">
                 <h3>
-                  <FaChartLine /> Your Skill Progression
+                   Your Skill Progression
                 </h3>
                 <SkillRadarChart data={skillHistory} />
               </div>

@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -19,22 +20,20 @@ const CtaSection = () => {
 
           {/* Right Content - CTA Buttons */}
           <div className="mt-12 lg:mt-0">
-            <div className="bg-white bg-opacity-10 backdrop-blur-sm rounded-xl p-8 border border-white border-opacity-20">
+            <div className="bg-white bg-opacity-10 backdrop-filter backdrop-blur-sm rounded-xl p-8 border border-white border-opacity-20">
               <h3 className="text-xl font-bold text-white">Start your journey</h3>
               <div className="mt-6 grid grid-cols-1 gap-4">
                 <Link 
                   to="/courses" 
                   className="flex items-center justify-center px-6 py-4 border border-transparent text-lg font-medium rounded-lg shadow-sm text-indigo-900 bg-white hover:bg-indigo-50 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg"
                 >
-                  <span className="mr-3">🔍</span> 
-                  Explore Programs
+                   🔍 Explore Programs
                 </Link>
                 <Link 
                   to="/register" 
                   className="flex items-center justify-center px-6 py-4 border border-transparent text-lg font-medium rounded-lg shadow-sm text-white bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg"
                 >
-                  <span className="mr-3">🎓</span> 
-                  Apply Now
+                   🎓 Apply Now
                 </Link>
               </div>
             </div>

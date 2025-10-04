@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { getVREvents, registerForEvent } from '../services/vrCareerService';
-import { FaCalendarAlt, FaUserFriends, FaMapMarkerAlt, FaTicketAlt } from 'react-icons/fa';
+;
 
 const VRCareerFair = ({ userId }) => {
   const [events, setEvents] = useState([]);
@@ -87,13 +87,13 @@ const VRCareerFair = ({ userId }) => {
                 <h3>{event.name}</h3>
                 <div className="event-meta">
                   <span className="meta-item">
-                    <FaCalendarAlt /> {new Date(event.date).toLocaleDateString()}
+                     {new Date(event.date).toLocaleDateString()}
                   </span>
                   <span className="meta-item">
-                    <FaUserFriends /> {event.attendees} attending
+                     {event.attendees} attending
                   </span>
                   <span className="meta-item">
-                    <FaMapMarkerAlt /> {event.location}
+                     {event.location}
                   </span>
                 </div>
                 <p className="event-description">{event.description}</p>
@@ -118,7 +118,7 @@ const VRCareerFair = ({ userId }) => {
                   >
                     {event.registered ? (
                       <>
-                        <FaTicketAlt /> Registered
+                         Registered
                       </>
                     ) : (
                       'Register Now'

@@ -1,7 +1,7 @@
 import React from 'react';
 import CodingChallenge from '../components/CodingChallenge';
 import PageLayout from '../layouts/PageLayout';
-import usePageTracking from '../hooks/usePageTracking';
+import { usePageTracking } from '../hooks/usePageTracking';
 import ErrorBoundary from '../components/ErrorBoundary';
 import { useAuth } from '../contexts/AuthContext';
 

@@ -4,7 +4,7 @@ import LearningPaths from '../components/learning/LearningPath';
 import PageLayout from '../layouts/PageLayout';
 import useLearningPaths from '../hooks/useLearningPaths';
 import { logger } from '../utils/logger';
-import usePageTracking from '../hooks/usePageTracking';
+import { usePageTracking } from '../hooks/usePageTracking';
 import ErrorBoundary from '../components/ErrorBoundary';
 import LoadingSpinner from '../components/LoadingSpinner';
 import ErrorAlert from '../components/ui/ErrorAlert';

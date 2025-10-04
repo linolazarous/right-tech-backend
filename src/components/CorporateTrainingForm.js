@@ -68,14 +68,14 @@ const CorporateTrainingForm = () => {
             
             {error && (
                 <div className="form-error" role="alert">
-                    <i className="fas fa-exclamation-circle" aria-hidden="true"></i>
+                    
                     {error}
                 </div>
             )}
 
             {success && (
                 <div className="form-success" role="status">
-                    <i className="fas fa-check-circle" aria-hidden="true"></i>
+                    
                     Training program created successfully!
                 </div>
             )}

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { getVirtualLabs, startVirtualLab } from '../services/virtualLabService';
-import { FaFlask, FaPlay, FaClock, FaUserFriends } from 'react-icons/fa';
+;
 
 const VirtualLab = ({ userId }) => {
   const [labs, setLabs] = useState([]);
@@ -48,7 +48,7 @@ const VirtualLab = ({ userId }) => {
   return (
     <div className="virtual-lab-container">
       <h1 className="lab-header">
-        <FaFlask /> Virtual Labs
+         Virtual Labs
       </h1>
       <p className="subheader">
         Hands-on learning in a simulated environment
@@ -74,10 +74,10 @@ const VirtualLab = ({ userId }) => {
               <p className="lab-description">{lab.description}</p>
               <div className="lab-meta">
                 <span className="meta-item">
-                  <FaClock /> {lab.duration} mins
+                   {lab.duration} mins
                 </span>
                 <span className="meta-item">
-                  <FaUserFriends /> {lab.difficulty}
+                   {lab.difficulty}
                 </span>
               </div>
               <div className="lab-skills">
@@ -93,7 +93,7 @@ const VirtualLab = ({ userId }) => {
                 disabled={isLoading}
                 className="start-lab-button"
               >
-                <FaPlay /> Start Lab
+                 Start Lab
               </button>
             </div>
           </div>

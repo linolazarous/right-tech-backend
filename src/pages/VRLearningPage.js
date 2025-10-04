@@ -6,7 +6,7 @@ import VRLessonForm from '../components/VRLessonForm';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 import { logger } from '../utils/logger';
-import usePageTracking from '../hooks/usePageTracking';
+import { usePageTracking } from '../hooks/usePageTracking';
 import ErrorBoundary from '../components/ErrorBoundary';
 import LoadingSpinner from '../components/LoadingSpinner';
 

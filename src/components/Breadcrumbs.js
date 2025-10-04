@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { FaHome, FaChevronRight } from 'react-icons/fa';
+;
 
 const Breadcrumbs = () => {
   const location = useLocation();
@@ -37,7 +37,7 @@ const Breadcrumbs = () => {
               to="/"
               className="text-gray-500 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
             >
-              <FaHome className="inline-block mr-1 h-4 w-4" />
+              
               Home
             </Link>
           </li>
@@ -49,7 +49,7 @@ const Breadcrumbs = () => {
 
             return (
               <li key={to} className="flex items-center">
-                <FaChevronRight className="h-3 w-3 text-gray-400 mx-2" />
+                
                 {isLast ? (
                   <span className="text-gray-700 dark:text-gray-300 font-medium">
                     {displayName}

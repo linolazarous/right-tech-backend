@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import PropTypes from 'prop-types';
-import { FaGlobe, FaChevronDown, FaCheck } from 'react-icons/fa';
+;
 
 const LanguageSwitcher = ({ className }) => {
   const { i18n } = useTranslation();
@@ -60,11 +60,11 @@ const LanguageSwitcher = ({ className }) => {
         aria-haspopup="true"
       >
         <div className="flex items-center space-x-2">
-          <FaGlobe className="h-4 w-4" />
+          
           <span>{currentLang.flag}</span>
           <span className="hidden sm:inline">{currentLang.name}</span>
         </div>
-        <FaChevronDown className={`ml-2 h-3 w-3 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+        
       </button>
 
       {isOpen && (
@@ -89,7 +89,7 @@ const LanguageSwitcher = ({ className }) => {
                   </div>
                 </div>
                 {currentLanguage === lang.code && (
-                  <FaCheck className="h-4 w-4 text-indigo-600 dark:text-indigo-400" />
+                  
                 )}
               </button>
             ))}

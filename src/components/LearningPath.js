@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { getLearningPath } from '../services/learningPathService';
 import PropTypes from 'prop-types';
 import CourseProgressCard from './CourseProgressCard';
-import { FaRoad, FaChartLine } from 'react-icons/fa';
+;
 
 const LearningPath = ({ userId }) => {
     const [courses, setCourses] = useState([]);
@@ -37,9 +37,9 @@ const LearningPath = ({ userId }) => {
     return (
         <div className="learning-path">
             <div className="learning-path-header">
-                <h1><FaRoad /> Your Learning Journey</h1>
+                <h1> Your Learning Journey</h1>
                 <div className="progress-summary">
-                    <FaChartLine />
+                    
                     <span>
                         {completedCourses.length} of {courses.length} courses completed
                         ({courses.length > 0 ? Math.round((completedCourses.length / courses.length) * 100) : 0}%)

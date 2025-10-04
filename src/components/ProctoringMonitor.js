@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { monitorExam, startProctoringSession } from '../services/proctoringService';
-import { FaUserCircle, FaExclamationTriangle, FaCheckCircle } from 'react-icons/fa';
+;
 
 const ProctoringMonitor = ({ examId, userId }) => {
   const [proctoringData, setProctoringData] = useState(null);
@@ -78,7 +78,7 @@ const ProctoringMonitor = ({ examId, userId }) => {
               </h3>
               {warnings > 0 && (
                 <div className="warning-count">
-                  <FaExclamationTriangle /> Warnings: {warnings}
+                   Warnings: {warnings}
                 </div>
               )}
             </div>
@@ -92,11 +92,11 @@ const ProctoringMonitor = ({ examId, userId }) => {
                 <span className={proctoringData.faceDetected ? 'success' : 'error'}>
                   {proctoringData.faceDetected ? (
                     <>
-                      <FaCheckCircle /> Detected
+                       Detected
                     </>
                   ) : (
                     <>
-                      <FaExclamationTriangle /> Not Detected
+                       Not Detected
                     </>
                   )}
                 </span>
@@ -126,7 +126,7 @@ const ProctoringMonitor = ({ examId, userId }) => {
 
       <div className="proctoring-footer">
         <p>
-          <FaUserCircle /> Your image and session data will be stored securely and deleted after grading
+           Your image and session data will be stored securely and deleted after grading
         </p>
       </div>
     </div>

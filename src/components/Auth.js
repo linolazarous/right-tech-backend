@@ -139,14 +139,14 @@ const Auth = ({ onAuthentication }) => {
         
         {error && (
           <div className="auth-error" role="alert">
-            <i className="fas fa-exclamation-circle mr-2" aria-hidden="true"></i>
+            
             {error}
           </div>
         )}
 
         {successMessage && (
           <div className="auth-success" role="status">
-            <i className="fas fa-check-circle mr-2" aria-hidden="true"></i>
+            
             {successMessage}
           </div>
         )}
@@ -213,7 +213,7 @@ const Auth = ({ onAuthentication }) => {
           >
             {isLoading ? (
               <>
-                <i className="fas fa-spinner fa-spin mr-2" aria-hidden="true"></i>
+                
                 Processing...
               </>
             ) : (

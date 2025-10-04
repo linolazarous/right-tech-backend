@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { integrateGoogleWorkspace, checkIntegrationStatus } from '../services/integrationService';
 import PropTypes from 'prop-types';
-import { FaGoogle, FaCheckCircle, FaExclamationTriangle } from 'react-icons/fa';
+;
 
 const Integration = ({ userId }) => {
     const [isLoading, setIsLoading] = useState(false);
@@ -44,11 +44,11 @@ const Integration = ({ userId }) => {
             
             <div className="integration-card">
                 <div className="integration-header">
-                    <FaGoogle className="text-blue-500 text-2xl" />
+                    
                     <h2 className="text-xl font-semibold">Google Workspace</h2>
                     {isIntegrated ? (
                         <span className="integration-status connected">
-                            <FaCheckCircle className="text-green-500" /> Connected
+                             Connected
                         </span>
                     ) : (
                         <span className="integration-status disconnected">
@@ -63,7 +63,7 @@ const Integration = ({ userId }) => {
                 
                 {error && (
                     <div className="integration-error">
-                        <FaExclamationTriangle /> {error}
+                         {error}
                     </div>
                 )}
                 

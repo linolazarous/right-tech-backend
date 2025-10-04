@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { translateText, getSupportedLanguages } from '../services/translationService';
-import { FaLanguage, FaExchangeAlt, FaCopy } from 'react-icons/fa';
+;
 
 const Translation = ({ userId }) => {
   const [text, setText] = useState('');
@@ -64,7 +64,7 @@ const Translation = ({ userId }) => {
   return (
     <div className="translation-container">
       <h1 className="translation-header">
-        <FaLanguage /> Translation Service
+         Translation Service
       </h1>
 
       {error && <div className="error">{error}</div>}
@@ -89,7 +89,7 @@ const Translation = ({ userId }) => {
           className="swap-button"
           aria-label="Swap languages"
         >
-          <FaExchangeAlt />
+          
         </button>
 
         <div className="language-selector">
@@ -120,7 +120,7 @@ const Translation = ({ userId }) => {
               className="copy-button"
               title="Copy text"
             >
-              <FaCopy />
+              
             </button>
           )}
         </div>
@@ -137,7 +137,7 @@ const Translation = ({ userId }) => {
               className="copy-button"
               title="Copy translation"
             >
-              <FaCopy />
+              
             </button>
           )}
         </div>

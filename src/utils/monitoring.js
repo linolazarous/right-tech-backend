@@ -1,51 +1,103 @@
-// Comprehensive monitoring utilities
+/**
+ * Application monitoring and error tracking integration
+ */
 
-export const logError = (error, context = {}) => {
-  console.error('🔴 Error:', error, 'Context:', context);
-  // Add error reporting service integration here if needed
-};
+import * as Sentry from '@sentry/react';
+import { BrowserTracing } from '@sentry/tracing'; // Correct import
+import { isProduction, SENTRY_DSN } from './constants';
+import { logger } from './logger'; // Use named import
 
-export const logWarning = (warning, context = {}) => {
-  console.warn('🟡 Warning:', warning, 'Context:', context);
-};
-
-export const logInfo = (info, context = {}) => {
-  console.log('🔵 Info:', info, 'Context:', context);
-};
-
-export const logEvent = (event, data = {}) => {
-  console.log('📊 Event:', event, 'Data:', data);
-};
-
-export const logDebug = (message, data = {}) => {
-  if (process.env.NODE_ENV === 'development') {
-    console.log('🐛 Debug:', message, 'Data:', data);
+// Initialize monitoring tools
+export const initMonitoring = () => {
+  if (isProduction && SENTRY_DSN) {
+    try {
+      Sentry.init({
+        dsn: SENTRY_DSN,
+        integrations: [
+          new BrowserTracing({
+            tracingOrigins: ['localhost', /\.righttechcentre\.com$/],
+          }),
+        ],
+        tracesSampleRate: parseFloat(process.env.REACT_APP_SENTRY_TRACE_RATE) || 0.2,
+        environment: process.env.REACT_APP_ENV || 'production',
+        release: process.env.REACT_APP_VERSION || 'unknown',
+        beforeSend(event) {
+          // Filter out sensitive information
+          if (event.request) {
+            event.request.headers = {};
+          }
+          return event;
+        }
+      });
+      
+      logger.info('Monitoring initialized');
+    } catch (error) {
+      logger.error('Failed to initialize monitoring', error);
+    }
   }
 };
 
-export const logPerformance = (operation, duration, context = {}) => {
-  console.log('⏱️ Performance:', operation, `${duration}ms`, 'Context:', context);
+// Error tracking
+export const logError = (error, context = {}) => {
+  if (!isProduction || !SENTRY_DSN) return;
+
+  try {
+    Sentry.withScope((scope) => {
+      if (context) {
+        Object.entries(context).forEach(([key, value]) => {
+          scope.setContext(key, value);
+        });
+      }
+      
+      if (error instanceof Error) {
+        Sentry.captureException(error);
+      } else {
+        Sentry.captureMessage(String(error));
+      }
+    });
+  } catch (monitoringError) {
+    logger.error('Failed to log error to monitoring', monitoringError);
+  }
 };
 
-export const initMonitoring = () => {
-  console.log('📈 Monitoring system initialized');
-  return {
-    logError,
-    logWarning,
-    logInfo,
-    logEvent,
-    logDebug,
-    logPerformance
-  };
+// Warning tracking
+export const logWarning = (message, context = {}) => {
+  if (!isProduction || !SENTRY_DSN) return;
+
+  try {
+    Sentry.withScope((scope) => {
+      if (context) {
+        Object.entries(context).forEach(([key, value]) => {
+          scope.setContext(key, value);
+        });
+      }
+      Sentry.captureMessage(message, 'warning'); // Updated severity level
+    });
+  } catch (error) {
+    logger.error('Failed to log warning to monitoring', error);
+  }
 };
 
-// Default export for convenience
-export default {
-  logError,
-  logWarning,
-  logInfo,
-  logEvent,
-  logDebug,
-  logPerformance,
-  initMonitoring
+// Performance metrics
+export const trackPerformance = (metric) => {
+  if (!isProduction) return;
+  
+  logger.info(`Performance Metric: ${metric.name}`, {
+    value: metric.value,
+    rating: metric.rating
+  });
+  
+  // Add additional monitoring integration here if needed
+};
+
+// User activity tracking
+export const trackUserActivity = (eventName, properties = {}) => {
+  if (!isProduction) return;
+  
+  logger.info(`User Activity: ${eventName}`, properties);
+  
+  // Example integration with analytics services:
+  // if (window.analytics) {
+  //   window.analytics.track(eventName, properties);
+  // }
 };

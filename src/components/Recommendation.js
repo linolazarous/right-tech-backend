@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { getRecommendations } from '../services/recommendationService';
 import RecommendationCard from './RecommendationCard';
-import { FaLightbulb, FaBook, FaChalkboardTeacher, FaUsers } from 'react-icons/fa';
+;
 
 const Recommendation = ({ userId }) => {
   const [recommendations, setRecommendations] = useState({
@@ -35,11 +35,11 @@ const Recommendation = ({ userId }) => {
 
   const getTabIcon = (tab) => {
     switch(tab) {
-      case 'courses': return <FaBook />;
-      case 'resources': return <FaLightbulb />;
-      case 'mentors': return <FaChalkboardTeacher />;
-      case 'studyGroups': return <FaUsers />;
-      default: return <FaLightbulb />;
+      case 'courses': return ;
+      case 'resources': return ;
+      case 'mentors': return ;
+      case 'studyGroups': return ;
+      default: return ;
     }
   };
 
@@ -49,7 +49,7 @@ const Recommendation = ({ userId }) => {
   return (
     <div className="recommendation-container">
       <h1 className="recommendation-header">
-        <FaLightbulb /> Personalized Recommendations
+         Personalized Recommendations
       </h1>
       <p className="recommendation-subheader">
         Based on your learning history and preferences
