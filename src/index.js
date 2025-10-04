@@ -4,8 +4,8 @@ import { BrowserRouter } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 import App from './App.js';
-import initSentry from './utils/sentry'; // Import Sentry initialization
-import './i18n/config'; // Import i18n configuration
+import initSentry from './utils/sentry.js'; // Import Sentry initialization
+import './i18n/config.js'; // Import i18n configuration
 import './assets/styles/global.css';
 
 // Initialize Sentry error tracking and performance monitoring
@@ -34,6 +34,7 @@ root.render(
     </HelmetProvider>
   </React.StrictMode>
 );
+
 
 
 
