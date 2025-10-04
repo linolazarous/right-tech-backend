@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
-import { FaUser, FaLock, FaEye, FaEyeSlash, FaArrowLeft, FaSignInAlt } from 'react-icons/fa';
+
 
 function StudentLogin() {
   const [email, setEmail] = useState('');
@@ -65,7 +65,7 @@ function StudentLogin() {
         {/* Header */}
         <div className="text-center">
           <div className="mx-auto h-20 w-20 bg-white rounded-full shadow-sm flex items-center justify-center">
-            <FaUser className="h-10 w-10 text-indigo-600" />
+            👤
           </div>
           <h2 className="mt-6 text-3xl font-extrabold text-gray-900">
             Student Login
@@ -117,7 +117,7 @@ function StudentLogin() {
                   disabled={loading}
                 />
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <FaUser className="h-4 w-4 text-gray-400" />
+                  👤
                 </div>
               </div>
             </div>
@@ -141,7 +141,7 @@ function StudentLogin() {
                   disabled={loading}
                 />
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <FaLock className="h-4 w-4 text-gray-400" />
+                  🔒
                 </div>
                 <button
                   type="button"
@@ -150,9 +150,9 @@ function StudentLogin() {
                   disabled={loading}
                 >
                   {showPassword ? (
-                    <FaEyeSlash className="h-4 w-4 text-gray-400 hover:text-gray-600" />
+                    👁️‍🗨️
                   ) : (
-                    <FaEye className="h-4 w-4 text-gray-400 hover:text-gray-600" />
+                    👁️
                   )}
                 </button>
               </div>
@@ -204,7 +204,7 @@ function StudentLogin() {
                 className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
               >
                 <span className="absolute left-0 inset-y-0 flex items-center pl-3">
-                  <FaSignInAlt className={`h-5 w-5 text-indigo-500 group-hover:text-indigo-400 ${loading ? 'animate-pulse' : ''}`} />
+                  🔑
                 </span>
                 {loading ? 'Signing in...' : 'Sign in'}
               </button>
@@ -232,7 +232,7 @@ function StudentLogin() {
             to="/"
             className="inline-flex items-center text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
           >
-            <FaArrowLeft className="mr-2 h-3 w-3" />
+            ⬅️
             Back to Home
           </Link>
         </div>

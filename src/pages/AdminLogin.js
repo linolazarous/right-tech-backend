@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useAdminAuth } from '../contexts/AdminAuthContext';
 import { useNavigate, Link } from 'react-router-dom';
-import { FaShield, FaArrowLeft, FaUser, FaLock, FaEye, FaEyeSlash } from 'react-icons/fa';
+
 
 function AdminLogin() {
   const [email, setEmail] = useState('');
@@ -33,7 +33,7 @@ function AdminLogin() {
       <div className="max-w-md w-full space-y-8">
         <div className="text-center">
           <div className="mx-auto h-16 w-16 bg-green-100 rounded-full flex items-center justify-center">
-            <FaShield className="h-8 w-8 text-green-600" />
+            🛡️
           </div>
           <h2 className="mt-6 text-3xl font-extrabold text-white">
             Admin Portal
@@ -61,7 +61,7 @@ function AdminLogin() {
                   placeholder="admin@righttechcentre.com"
                 />
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <FaUser className="h-4 w-4 text-gray-400" />
+                  👤
                 </div>
               </div>
             </div>
@@ -82,7 +82,7 @@ function AdminLogin() {
                   placeholder="Enter admin password"
                 />
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <FaLock className="h-4 w-4 text-gray-400" />
+                  🔒
                 </div>
                 <button
                   type="button"
@@ -90,9 +90,9 @@ function AdminLogin() {
                   onClick={() => setShowPassword(!showPassword)}
                 >
                   {showPassword ? (
-                    <FaEyeSlash className="h-4 w-4 text-gray-400" />
+                    👁️‍🗨️
                   ) : (
-                    <FaEye className="h-4 w-4 text-gray-400" />
+                    👁️
                   )}
                 </button>
               </div>
@@ -139,7 +139,7 @@ function AdminLogin() {
                 to="/"
                 className="inline-flex items-center text-sm text-green-600 hover:text-green-500 transition-colors"
               >
-                <FaArrowLeft className="mr-2 h-3 w-3" />
+                ⬅️
                 Back to Home
               </Link>
             </div>
