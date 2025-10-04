@@ -7,7 +7,7 @@ import VRLoading from '../components/vr/VRLoading';
 import { logger } from '../utils/logger';
 import { usePageTracking } from '../hooks/usePageTracking';
 
-const VRLabComponent = React.lazy(() => import('../components/vr/VRLabComponent'));
+const VRLabComponent = React.lazy(() => import('../components/vr/VRLabComponent.js'));
 
 const VRLabPage = () => {
   const { currentUser } = useAuth();

@@ -7,7 +7,7 @@ import ErrorBoundary from '../components/ErrorBoundary';
 import { logger } from '../utils/logger';
 import { usePageTracking } from '../hooks/usePageTracking';
 
-const VirtualLabView = React.lazy(() => import('../components/virtual-lab/VirtualLabView'));
+const VirtualLabView = React.lazy(() => import('../components/virtual-lab/VirtualLabView.js'));
 
 const VirtualLabPage = () => {
   const { currentUser } = useAuth();
