@@ -5,7 +5,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 import App from './App.js';
 import RootErrorBoundary from './components/RootErrorBoundary.js';
-import initSentry from './utils/sentry.js';
+import initSentry from './utils/sentry.js'; // ✅ Add .js extension here
 import './i18n/config.js';
 import './assets/styles/global.css';
 
