@@ -1,5 +1,9 @@
 import React from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import { Toaster } from 'react-hot-toast';
+import SentryErrorBoundary from './components/SentryErrorBoundary';
 import HomePage from './pages/HomePage';
 import CoursePage from './pages/CoursePage';
 import ProfilePage from './pages/ProfilePage';
@@ -10,19 +14,14 @@ import TermsOfService from './pages/TermsOfService';
 import ContactPage from './pages/ContactPage';
 import FormSuccess from './pages/FormSuccess';
 import APITest from './components/APITest';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
-import { Toaster } from 'react-hot-toast';
+import AdminPage from './pages/AdminPage';
 import { setUserContext, clearUserContext } from './utils/sentry';
-import SentryErrorBoundary from './components/SentryErrorBoundary';
-import AdminPage from './pages/AdminPage'; // <-- 1. IMPORT THE NEW ADMIN PAGE
 
-// A simple component for your 404 page
 function NotFound() {
   return (
-    <div style={{ textAlign: 'center', padding: '50px' }}>
-      <h1>404 - Not Found</h1>
-      <p>The page you are looking for does not exist.</p>
+    <div className="text-center p-16">
+      <h1 className="text-4xl font-bold mb-4">404 - Not Found</h1>
+      <p className="text-lg">The page you are looking for does not exist.</p>
     </div>
   );
 }
@@ -32,15 +31,16 @@ function AppContent() {
 
   React.useEffect(() => {
     try {
-        const user = JSON.parse(localStorage.getItem('userData'));
-        if (user) {
-            setUserContext({ id: user.id, email: user.email, username: user.username });
-        } else {
-            clearUserContext();
-        }
-    } catch (error) {
-        console.error("Failed to parse user data from localStorage", error);
+      const userData = localStorage.getItem('userData');
+      if (userData) {
+        const user = JSON.parse(userData);
+        setUserContext({ id: user.id, email: user.email, username: user.username });
+      } else {
         clearUserContext();
+      }
+    } catch (error) {
+      console.error('Failed to parse user data from localStorage:', error);
+      clearUserContext();
     }
   }, [location]);
 
@@ -59,10 +59,7 @@ function AppContent() {
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/success" element={<FormSuccess />} />
           <Route path="/api-test" element={<APITest />} />
-
-          {/* 2. ADD THE ADMIN ROUTE HERE */}
           <Route path="/admin" element={<AdminPage />} />
-
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
@@ -81,4 +78,3 @@ function App() {
 }
 
 export default App;
-
