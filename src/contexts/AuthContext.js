@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useReducer, useEffect } from 'react';
+import React, { createContext, useContext, useReducer, useEffect, useMemo } from 'react';
 import userService from '../services/userService';
 
 const AuthContext = createContext();
@@ -33,10 +33,15 @@ export const AuthProvider = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, initialState);
 
   useEffect(() => {
-    const token = userService.getToken();
-    const user = userService.getCurrentUser();
-    if (token && user) {
-      dispatch({ type: 'LOGIN_SUCCESS', payload: user });
+    try {
+      const token = userService.getToken();
+      const user = userService.getCurrentUser();
+      if (token && user) {
+        dispatch({ type: 'LOGIN_SUCCESS', payload: user });
+      }
+    } catch (error) {
+      console.error('AuthContext initialization error:', error);
+      dispatch({ type: 'LOGOUT' });
     }
   }, []);
 
@@ -55,38 +60,27 @@ export const AuthProvider = ({ children }) => {
   const logout = async () => {
     try {
       await userService.logout();
-    } catch (error) {
-      console.error('Logout error:', error);
     } finally {
       dispatch({ type: 'LOGOUT' });
     }
   };
 
-  const updateUser = (updates) => {
-    dispatch({ type: 'UPDATE_USER', payload: updates });
-  };
+  const updateUser = (updates) => dispatch({ type: 'UPDATE_USER', payload: updates });
+  const clearError = () => dispatch({ type: 'CLEAR_ERROR' });
 
-  const clearError = () => {
-    dispatch({ type: 'CLEAR_ERROR' });
-  };
+  const value = useMemo(() => ({
+    ...state,
+    login,
+    logout,
+    updateUser,
+    clearError
+  }), [state]);
 
-  return (
-    <AuthContext.Provider value={{
-      ...state,
-      login,
-      logout,
-      updateUser,
-      clearError
-    }}>
-      {children}
-    </AuthContext.Provider>
-  );
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
 
 export const useAuth = () => {
   const context = useContext(AuthContext);
-  if (!context) {
-    throw new Error('useAuth must be used within an AuthProvider');
-  }
+  if (!context) throw new Error('useAuth must be used within an AuthProvider');
   return context;
 };
