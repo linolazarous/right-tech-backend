@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useReducer, useEffect } from 'react';
+import React, { createContext, useContext, useReducer, useEffect, useMemo, useRef } from 'react';
 
 const AdminAuthContext = createContext();
 
@@ -11,27 +11,11 @@ const adminAuthReducer = (state, action) => {
     case 'LOGIN_START':
       return { ...state, loading: true, error: null };
     case 'LOGIN_SUCCESS':
-      return { 
-        ...state, 
-        loading: false, 
-        admin: action.payload, 
-        isAdminAuthenticated: true, 
-        error: null 
-      };
+      return { ...state, loading: false, admin: action.payload, isAdminAuthenticated: true, error: null };
     case 'LOGIN_FAILURE':
-      return { 
-        ...state, 
-        loading: false, 
-        error: action.payload, 
-        isAdminAuthenticated: false 
-      };
+      return { ...state, loading: false, error: action.payload, isAdminAuthenticated: false };
     case 'LOGOUT':
-      return { 
-        admin: null, 
-        isAdminAuthenticated: false, 
-        loading: false,
-        error: null 
-      };
+      return { admin: null, isAdminAuthenticated: false, loading: false, error: null };
     case 'CLEAR_ERROR':
       return { ...state, error: null };
     default:
@@ -48,88 +32,65 @@ const initialState = {
 
 export const AdminAuthProvider = ({ children }) => {
   const [state, dispatch] = useReducer(adminAuthReducer, initialState);
-  const initializedRef = React.useRef(false);
-
-  // Your DigitalOcean backend URL
-  const API_BASE_URL = 'https://righttechcentre-kn5oq.ondigitalocean.app/api';
+  const initializedRef = useRef(false);
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'https://righttechcentre-kn5oq.ondigitalocean.app/api';
 
   useEffect(() => {
     if (initializedRef.current) return;
     initializedRef.current = true;
 
-    const initializeAdminAuth = async () => {
+    const initAdmin = async () => {
       try {
-        const adminToken = localStorage.getItem('adminToken');
+        const token = localStorage.getItem('adminToken');
         const adminData = localStorage.getItem('adminData');
-        
-        if (adminToken && adminData) {
-          // Verify token with backend
+
+        if (token && adminData) {
           try {
-            const response = await fetch(`${API_BASE_URL}/admin/me`, {
-              headers: {
-                'Authorization': `Bearer ${adminToken}`,
-                'Content-Type': 'application/json'
-              }
+            const res = await fetch(`${API_BASE_URL}/admin/me`, {
+              headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' }
             });
-            
-            if (response.ok) {
-              const admin = await response.json();
-              dispatch({ type: 'INIT_COMPLETE', payload: admin });
-            } else {
-              // Token invalid, clear storage
+            const admin = res.ok ? await res.json() : null;
+            if (!res.ok) {
               localStorage.removeItem('adminToken');
               localStorage.removeItem('adminData');
-              dispatch({ type: 'INIT_COMPLETE', payload: null });
             }
+            dispatch({ type: 'INIT_COMPLETE', payload: admin || JSON.parse(adminData) });
           } catch (error) {
             console.warn('Admin token verification failed:', error);
-            // Fallback to local storage data
-            const admin = JSON.parse(adminData);
-            dispatch({ type: 'INIT_COMPLETE', payload: admin });
+            dispatch({ type: 'INIT_COMPLETE', payload: JSON.parse(adminData) });
           }
         } else {
           dispatch({ type: 'INIT_COMPLETE', payload: null });
         }
       } catch (error) {
-        console.error('Admin auth initialization error:', error);
+        console.error('Admin initialization error:', error);
         dispatch({ type: 'INIT_COMPLETE', payload: null });
       }
     };
 
-    setTimeout(initializeAdminAuth, 0);
-  }, []);
+    initAdmin();
+  }, [API_BASE_URL]);
 
   const login = async (credentials) => {
     dispatch({ type: 'LOGIN_START' });
     try {
-      // Real API call to your DigitalOcean backend
-      const response = await fetch(`${API_BASE_URL}/admin/login`, {
+      const res = await fetch(`${API_BASE_URL}/admin/login`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(credentials),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(credentials)
       });
+      const data = await res.json();
 
-      const data = await response.json();
+      if (!res.ok || !data.success) throw new Error(data.message || 'Admin login failed');
 
-      if (!response.ok) {
-        throw new Error(data.message || 'Admin login failed');
-      }
-
-      if (!data.success) {
-        throw new Error(data.message || 'Admin authentication failed');
-      }
-
-      // Store admin token and data separately from student data
       localStorage.setItem('adminToken', data.token || data.accessToken);
       localStorage.setItem('adminData', JSON.stringify(data.admin || data.user));
-      
+
       dispatch({ type: 'LOGIN_SUCCESS', payload: data.admin || data.user });
       return { admin: data.admin || data.user };
     } catch (error) {
-      const errorMessage = error.message || 'Admin login failed. Please check your credentials.';
-      dispatch({ type: 'LOGIN_FAILURE', payload: errorMessage });
+      const msg = error.message || 'Admin login failed';
+      dispatch({ type: 'LOGIN_FAILURE', payload: msg });
       throw error;
     }
   };
@@ -140,11 +101,9 @@ export const AdminAuthProvider = ({ children }) => {
     dispatch({ type: 'LOGOUT' });
   };
 
-  const clearError = () => {
-    dispatch({ type: 'CLEAR_ERROR' });
-  };
+  const clearError = () => dispatch({ type: 'CLEAR_ERROR' });
 
-  const value = React.useMemo(() => ({
+  const value = useMemo(() => ({
     admin: state.admin,
     isAdminAuthenticated: state.isAdminAuthenticated,
     loading: state.loading,
@@ -152,33 +111,23 @@ export const AdminAuthProvider = ({ children }) => {
     login,
     logout,
     clearError
-  }), [state.admin, state.isAdminAuthenticated, state.loading, state.error]);
+  }), [state]);
 
-  return (
-    <AdminAuthContext.Provider value={value}>
-      {children}
-    </AdminAuthContext.Provider>
-  );
+  return <AdminAuthContext.Provider value={value}>{children}</AdminAuthContext.Provider>;
 };
 
 export const useAdminAuth = () => {
-  try {
-    const context = useContext(AdminAuthContext);
-    if (context) {
-      return context;
-    }
-  } catch (error) {
-    console.warn('AdminAuthContext error:', error);
+  const context = useContext(AdminAuthContext);
+  if (!context) {
+    return {
+      admin: null,
+      isAdminAuthenticated: false,
+      loading: false,
+      error: null,
+      login: () => Promise.resolve(),
+      logout: () => {},
+      clearError: () => {}
+    };
   }
-  
-  // Fallback values
-  return {
-    admin: null,
-    isAdminAuthenticated: false,
-    loading: false,
-    error: null,
-    login: () => Promise.resolve(),
-    logout: () => {},
-    clearError: () => {}
-  };
+  return context;
 };
