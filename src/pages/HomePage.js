@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import PageLayout from '../layouts/PageLayout';
 import { logger } from '../utils/logger';
 import { usePageTracking } from '../hooks/usePageTracking';
@@ -12,24 +12,27 @@ import ErrorBoundary from '../components/ErrorBoundary';
 const HomePage = () => {
   usePageTracking();
 
+  // Initialize AOS animations safely
+  const initializeAOS = useCallback(async () => {
+    if (typeof window === 'undefined') return; // SSR-safe
+    try {
+      const AOS = (await import('aos')).default;
+      AOS.init({
+        duration: 800,
+        easing: 'ease-in-out',
+        once: true,
+        disable: window.innerWidth < 768, // Disable on mobile
+      });
+      logger.info('AOS animations initialized');
+    } catch (error) {
+      logger.warn('Failed to initialize AOS:', error);
+    }
+  }, []);
+
   useEffect(() => {
     logger.info('Home page visited');
-    
-    // Initialize animations
-    const initializeAOS = async () => {
-      if (typeof window !== 'undefined') {
-        const AOS = (await import('aos')).default;
-        AOS.init({
-          duration: 800,
-          easing: 'ease-in-out',
-          once: true,
-          disable: window.innerWidth < 768 // Disable on mobile
-        });
-      }
-    };
-
     initializeAOS();
-  }, []);
+  }, [initializeAOS]);
 
   return (
     <PageLayout noFooterMargin noNavbarPadding>
@@ -44,4 +47,5 @@ const HomePage = () => {
   );
 };
 
+// React.memo to prevent unnecessary re-renders
 export default React.memo(HomePage);
