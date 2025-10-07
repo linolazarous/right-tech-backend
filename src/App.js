@@ -15,7 +15,7 @@ import ContactPage from './pages/ContactPage';
 import FormSuccess from './pages/FormSuccess';
 import APITest from './components/APITest';
 import AdminPage from './pages/AdminPage';
-import { setUserContext, clearUserContext } from './utils/sentry';
+import { setUserContext, clearUserContext } from './utils/sentry.js';
 
 function NotFound() {
   return (
@@ -78,3 +78,4 @@ function App() {
 }
 
 export default App;
+
