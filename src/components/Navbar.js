@@ -1,198 +1,157 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import { Menu, X } from 'lucide-react';
-import LanguageSwitcher from './LanguageSwitcher';
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X, GraduationCap, Sun, Moon } from "lucide-react";
+import { Link } from "react-router-dom";
+import LanguageSwitcher from "./LanguageSwitcher";
 
-const Navbar = ({ isAuthenticated, user, onLogout }) => {
-  const location = useLocation();
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+const Navbar = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const dropdownRef = useRef(null);
+
+  // Scroll effect for shadow
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 10);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Dark mode toggle
+  useEffect(() => {
+    const theme = localStorage.getItem("theme");
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+      setIsDarkMode(true);
+    }
+  }, []);
+
+  const toggleDarkMode = () => {
+    if (isDarkMode) {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    } else {
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    }
+    setIsDarkMode(!isDarkMode);
+  };
 
   const navLinks = [
-    { path: '/courses', label: 'Courses' },
-    { path: '/forum', label: 'Forum' },
-    { path: '/resources', label: 'Resources' },
-    { path: '/about', label: 'About' }
+    { label: "Home", to: "/" },
+    { label: "Courses", to: "/courses" },
+    { label: "About", to: "/about" },
+    { label: "Contact", to: "/contact" },
   ];
 
-  // Change navbar background when scrolled
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  // Close dropdown on outside click
-  useEffect(() => {
-    const handleClickOutside = e => {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
-        setMobileMenuOpen(false);
-      }
-    };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
-
   return (
-    <nav
-      className={`fixed w-full top-0 left-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-white shadow-md' : 'bg-transparent'
+    <motion.nav
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+        scrolled
+          ? "bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-sm"
+          : "bg-transparent"
       }`}
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.4, ease: "easeOut" }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          
-          {/* Brand / Logo */}
-          <Link
-            to="/"
-            className="text-xl font-bold text-blue-600 tracking-wide hover:text-blue-700 transition-colors"
-          >
-            Right Tech Centre
-          </Link>
+      <div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-3 sm:py-4">
+        {/* Logo */}
+        <Link
+          to="/"
+          className="flex items-center gap-2 text-2xl font-semibold text-blue-600 dark:text-blue-400"
+        >
+          <GraduationCap className="w-6 h-6" />
+          <span>Right Tech Centre</span>
+        </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navLinks.map(link => (
-              <Link
-                key={link.path}
-                to={link.path}
-                className={`text-gray-700 font-medium hover:text-blue-600 transition-colors ${
-                  location.pathname === link.path ? 'text-blue-600' : ''
-                }`}
-              >
-                {link.label}
-              </Link>
-            ))}
+        {/* Desktop Links */}
+        <div className="hidden md:flex items-center gap-8">
+          {navLinks.map((link) => (
+            <Link
+              key={link.to}
+              to={link.to}
+              className="relative text-gray-700 dark:text-gray-200 font-medium hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+            >
+              {link.label}
+              <motion.span
+                className="absolute bottom-0 left-0 h-[2px] bg-blue-600 dark:bg-blue-400"
+                initial={{ width: 0 }}
+                whileHover={{ width: "100%" }}
+                transition={{ duration: 0.3 }}
+              />
+            </Link>
+          ))}
 
-            <LanguageSwitcher />
-
-            {isAuthenticated ? (
-              <div className="relative" ref={dropdownRef}>
-                <button className="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-colors">
-                  <img
-                    src={user?.avatar || '/default-avatar.png'}
-                    alt="User avatar"
-                    className="w-8 h-8 rounded-full border border-gray-300"
-                  />
-                  <span className="font-medium">{user?.name}</span>
-                </button>
-
-                <div className="absolute right-0 mt-2 w-48 bg-white shadow-lg rounded-xl py-2 z-50">
-                  <Link
-                    to="/profile"
-                    className="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors"
-                  >
-                    Profile
-                  </Link>
-                  <Link
-                    to="/settings"
-                    className="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors"
-                  >
-                    Settings
-                  </Link>
-                  <button
-                    onClick={onLogout}
-                    className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors"
-                  >
-                    Logout
-                  </button>
-                </div>
-              </div>
-            ) : (
-              <Link
-                to="/login"
-                className="bg-blue-600 text-white px-4 py-2 rounded-xl font-semibold hover:bg-blue-700 transition-colors"
-              >
-                Login
-              </Link>
-            )}
-          </div>
-
-          {/* Mobile Menu Button */}
+          <LanguageSwitcher />
           <button
-            className="md:hidden text-gray-800"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Toggle menu"
+            onClick={toggleDarkMode}
+            className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition"
+            aria-label="Toggle dark mode"
           >
-            {mobileMenuOpen ? <X size={26} /> : <Menu size={26} />}
+            {isDarkMode ? (
+              <Sun className="text-yellow-400 w-5 h-5" />
+            ) : (
+              <Moon className="text-gray-700 dark:text-gray-300 w-5 h-5" />
+            )}
           </button>
         </div>
+
+        {/* Mobile Menu Button */}
+        <button
+          className="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition"
+          onClick={() => setMenuOpen((prev) => !prev)}
+          aria-label="Toggle menu"
+        >
+          {menuOpen ? (
+            <X className="w-6 h-6 text-gray-800 dark:text-gray-200" />
+          ) : (
+            <Menu className="w-6 h-6 text-gray-800 dark:text-gray-200" />
+          )}
+        </button>
       </div>
 
-      {/* Mobile Navigation */}
-      {mobileMenuOpen && (
-        <div className="md:hidden bg-white shadow-md border-t">
-          <div className="flex flex-col space-y-2 p-4">
-            {navLinks.map(link => (
-              <Link
-                key={link.path}
-                to={link.path}
-                onClick={() => setMobileMenuOpen(false)}
-                className={`block px-3 py-2 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors ${
-                  location.pathname === link.path ? 'bg-blue-100 text-blue-600' : ''
-                }`}
-              >
-                {link.label}
-              </Link>
-            ))}
-
-            <LanguageSwitcher />
-
-            {isAuthenticated ? (
-              <>
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            key="mobile-menu"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.25, ease: "easeInOut" }}
+            className="md:hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 overflow-hidden"
+          >
+            <div className="flex flex-col py-4 px-5 space-y-3">
+              {navLinks.map((link) => (
                 <Link
-                  to="/profile"
-                  className="block px-3 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg"
-                  onClick={() => setMobileMenuOpen(false)}
+                  key={link.to}
+                  to={link.to}
+                  onClick={() => setMenuOpen(false)}
+                  className="text-gray-700 dark:text-gray-200 font-medium hover:text-blue-600 dark:hover:text-blue-400 transition"
                 >
-                  Profile
+                  {link.label}
                 </Link>
-                <Link
-                  to="/settings"
-                  className="block px-3 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Settings
-                </Link>
+              ))}
+              <div className="flex items-center justify-between pt-3 border-t border-gray-200 dark:border-gray-800">
+                <LanguageSwitcher />
                 <button
-                  onClick={() => {
-                    onLogout();
-                    setMobileMenuOpen(false);
-                  }}
-                  className="block text-left px-3 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg"
+                  onClick={toggleDarkMode}
+                  className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition"
+                  aria-label="Toggle dark mode"
                 >
-                  Logout
+                  {isDarkMode ? (
+                    <Sun className="text-yellow-400 w-5 h-5" />
+                  ) : (
+                    <Moon className="text-gray-700 dark:text-gray-300 w-5 h-5" />
+                  )}
                 </button>
-              </>
-            ) : (
-              <Link
-                to="/login"
-                className="block bg-blue-600 text-white text-center py-2 rounded-xl font-semibold hover:bg-blue-700 transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Login
-              </Link>
-            )}
-          </div>
-        </div>
-      )}
-    </nav>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.nav>
   );
 };
 
-Navbar.propTypes = {
-  isAuthenticated: PropTypes.bool.isRequired,
-  user: PropTypes.shape({
-    name: PropTypes.string,
-    avatar: PropTypes.string,
-  }),
-  onLogout: PropTypes.func.isRequired,
-};
-
-Navbar.defaultProps = {
-  user: null,
-};
-
-export default React.memo(Navbar);
+export default Navbar;
